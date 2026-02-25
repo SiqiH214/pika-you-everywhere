@@ -26,8 +26,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --pika-key: #C4B6FF;
-      --pika-key-soft: #E3DCFF;
+      --pika-key: #CFC3FF;
+      --pika-key-50: rgba(207, 195, 255, 0.5);
       --pika-black: #0D0D0D;
       --pika-white: #FFFFFF;
       --pika-eggshell: #FCFAF7;
@@ -97,8 +97,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(180deg, var(--pika-key-soft) 0%, transparent 60%);
-      opacity: 0.5;
+      background: linear-gradient(180deg, var(--pika-key-50) 0%, transparent 60%);
     }
     .hero-content { position: relative; z-index: 1; }
     .hero-title {
@@ -288,15 +287,15 @@
     }
     .card-platform svg { width: 16px; height: 16px; }
     
-    /* Living Demo */
+    /* Living Demo - Minimal timeline */
     .demo-section {
       padding: 120px 48px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      background: var(--pika-black);
     }
-    .demo-inner { max-width: 1100px; margin: 0 auto; }
+    .demo-inner { max-width: 800px; margin: 0 auto; }
     .demo-header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 80px;
     }
     .demo-header .section-title { color: white; }
     .live-badge {
@@ -304,95 +303,80 @@
       align-items: center;
       gap: 6px;
       padding: 6px 12px;
-      background: rgba(255,59,48,0.15);
+      background: rgba(207, 195, 255, 0.15);
       border-radius: 100px;
       font-size: 12px;
       font-weight: 600;
-      color: #FF3B30;
+      color: var(--pika-key);
       margin-bottom: 16px;
     }
     .live-dot {
       width: 6px;
       height: 6px;
-      background: #FF3B30;
+      background: var(--pika-key);
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      50% { opacity: 0.4; }
     }
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 900px) { .demo-grid { grid-template-columns: 1fr; } }
-    .chat-window {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
-    }
-    .chat-header {
-      padding: 16px 20px;
+    
+    /* Timeline feed */
+    .timeline-feed {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #eee;
+      flex-direction: column;
+      gap: 32px;
     }
-    .chat-platform-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+    .feed-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+    .feed-platform {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .chat-platform-icon svg { width: 18px; height: 18px; }
-    .chat-channel { font-weight: 600; font-size: 14px; color: var(--pika-black); }
-    .chat-self { font-size: 12px; color: var(--pika-ironside); margin-left: 8px; }
-    .chat-time { margin-left: auto; font-size: 12px; color: #999; }
-    .chat-body {
-      padding: 20px;
-      min-height: 160px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .chat-message {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-    }
-    .chat-message.outgoing { flex-direction: row-reverse; }
-    .chat-avatar-small {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
       flex-shrink: 0;
     }
-    .chat-bubble {
-      max-width: 70%;
-      padding: 10px 14px;
+    .feed-platform svg { width: 24px; height: 24px; }
+    .feed-content {
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.05);
       border-radius: 16px;
+      border-left: 3px solid var(--pika-key-50);
+    }
+    .feed-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .feed-channel {
+      font-weight: 600;
       font-size: 14px;
-      line-height: 1.5;
-      color: var(--pika-black);
+      color: white;
     }
-    .chat-message:not(.outgoing) .chat-bubble {
-      background: #f0f0f0;
-      border-bottom-left-radius: 4px;
+    .feed-time {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
     }
-    .chat-message.outgoing .chat-bubble {
-      background: var(--pika-key);
-      border-bottom-right-radius: 4px;
+    .feed-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+    }
+    .feed-text strong {
+      color: var(--pika-key);
+      font-weight: 500;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
@@ -429,7 +413,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(ellipse at center top, rgba(196,182,255,0.2) 0%, transparent 60%);
+      background: radial-gradient(ellipse at center top, var(--pika-key-50) 0%, transparent 60%);
     }
     .cta-content { position: relative; z-index: 1; }
     .cta-title {
@@ -615,97 +599,67 @@
     </div>
   </section>
   
-  <!-- Living Demo -->
+  <!-- Living Demo - Timeline -->
   <section class="demo-section">
     <div class="demo-inner">
       <div class="demo-header reveal">
         <span class="live-badge"><span class="live-dot"></span>LIVE</span>
-        <h2 class="section-title">47 in action, right now</h2>
+        <h2 class="section-title">47 in action</h2>
       </div>
-      <div class="demo-grid">
+      <div class="timeline-feed">
         <!-- Slack -->
-        <div class="chat-window">
-          <div class="chat-header">
-            <div class="chat-platform-icon" style="background: var(--slack-purple);">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/></svg>
-            </div>
-            <span class="chat-channel">#nova-engineering</span>
-            <span class="chat-self">via 47</span>
-            <span class="chat-time">Just now</span>
+        <div class="feed-item" style="animation-delay: 0s;">
+          <div class="feed-platform" style="background: var(--slack-purple);">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/></svg>
           </div>
-          <div class="chat-body">
-            <div class="chat-message" style="animation-delay: 0s;">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Matt" class="chat-avatar-small" alt="Matt">
-              <div class="chat-bubble">@47 what's blocking the launch?</div>
+          <div class="feed-content">
+            <div class="feed-meta">
+              <span class="feed-channel">#nova-engineering</span>
+              <span class="feed-time">Just now</span>
             </div>
-            <div class="chat-message outgoing" style="animation-delay: 0.6s;">
-              <img src="avatar.png" class="chat-avatar-small" alt="47">
-              <div class="chat-bubble">3 tickets in review, 1 blocked on API. Pinged Jason. ETA tomorrow.</div>
-            </div>
+            <p class="feed-text"><strong>@47</strong> 3 tickets in review, 1 blocked on API. Pinged Jason 10 min ago — ETA tomorrow if unblocked today.</p>
           </div>
         </div>
         
         <!-- Discord -->
-        <div class="chat-window">
-          <div class="chat-header">
-            <div class="chat-platform-icon" style="background: var(--discord-blue);">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25z"/></svg>
-            </div>
-            <span class="chat-channel">#general</span>
-            <span class="chat-self">via 47</span>
-            <span class="chat-time">2m ago</span>
+        <div class="feed-item" style="animation-delay: 0.15s;">
+          <div class="feed-platform" style="background: var(--discord-blue);">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25z"/></svg>
           </div>
-          <div class="chat-body">
-            <div class="chat-message" style="animation-delay: 0.2s;">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Luna" class="chat-avatar-small" alt="Luna">
-              <div class="chat-bubble">how do i connect telegram?</div>
+          <div class="feed-content">
+            <div class="feed-meta">
+              <span class="feed-channel">#general</span>
+              <span class="feed-time">2m ago</span>
             </div>
-            <div class="chat-message outgoing" style="animation-delay: 0.8s;">
-              <img src="avatar.png" class="chat-avatar-small" alt="47">
-              <div class="chat-bubble">Settings → Connections → Telegram → paste BotFather token. 30 sec 🙂</div>
-            </div>
+            <p class="feed-text"><strong>@47</strong> Settings → Connections → Telegram → paste your BotFather token. Takes about 30 seconds 🙂</p>
           </div>
         </div>
         
         <!-- iMessage -->
-        <div class="chat-window">
-          <div class="chat-header">
-            <div class="chat-platform-icon" style="background: var(--imessage-green);">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18z"/></svg>
-            </div>
-            <span class="chat-channel">Siqi</span>
-            <span class="chat-self">via 47</span>
-            <span class="chat-time">5m ago</span>
+        <div class="feed-item" style="animation-delay: 0.3s;">
+          <div class="feed-platform" style="background: var(--imessage-green);">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18z"/></svg>
           </div>
-          <div class="chat-body">
-            <div class="chat-message outgoing" style="animation-delay: 0.3s;">
-              <img src="avatar.png" class="chat-avatar-small" alt="47">
-              <div class="chat-bubble">urgent email from patent attorney. want me to draft a reply?</div>
+          <div class="feed-content">
+            <div class="feed-meta">
+              <span class="feed-channel">iMessage → Siqi</span>
+              <span class="feed-time">5m ago</span>
             </div>
-            <div class="chat-message" style="animation-delay: 0.9s;">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Siqi" class="chat-avatar-small" alt="Siqi">
-              <div class="chat-bubble">yes pls, keep it short</div>
-            </div>
+            <p class="feed-text"><strong>@47</strong> Urgent email from patent attorney flagged. Draft sent to your inbox — kept it short as requested ✓</p>
           </div>
         </div>
         
         <!-- X -->
-        <div class="chat-window">
-          <div class="chat-header">
-            <div class="chat-platform-icon" style="background: var(--x-black);">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687Z"/></svg>
-            </div>
-            <span class="chat-channel">@47_H</span>
-            <span class="chat-self">posted</span>
-            <span class="chat-time">12m ago</span>
+        <div class="feed-item" style="animation-delay: 0.45s;">
+          <div class="feed-platform" style="background: var(--x-black);">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687Z"/></svg>
           </div>
-          <div class="chat-body">
-            <div class="chat-message outgoing" style="animation-delay: 0.5s;">
-              <img src="avatar.png" class="chat-avatar-small" alt="47">
-              <div class="chat-bubble" style="background: #E8E8E8; max-width: 85%;">
-                agents work FOR you.<br>selves ARE you.<br><br>one is a tool. the other is an extension.
-              </div>
+          <div class="feed-content">
+            <div class="feed-meta">
+              <span class="feed-channel">@47_H</span>
+              <span class="feed-time">12m ago</span>
             </div>
+            <p class="feed-text"><strong>Posted:</strong> "agents work FOR you. selves ARE you. one is a tool. the other is an extension." — 2.4k impressions</p>
           </div>
         </div>
       </div>
