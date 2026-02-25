@@ -496,6 +496,28 @@
       color: rgba(255,255,255,0.8);
     }
     
+    /* Inline label for animated chats */
+    .ai-label-inline {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--pika-warm);
+      margin: 0 0 4px 44px;
+    }
+    .chat-mockup.image .ai-label-inline {
+      color: rgba(255,255,255,0.8);
+    }
+    .chat-row-content {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .chat-row.incoming .chat-row-content {
+      flex-direction: row;
+    }
+    .chat-row.ai .chat-row-content {
+      flex-direction: row;
+    }
+    
     .typing-indicator {
       display: flex;
       align-items: center;
@@ -1042,23 +1064,22 @@
       }
       
       createMessageElement(msg) {
-        if (msg.type === 'label') {
-          const label = document.createElement('p');
-          label.className = 'chat-message ai-label visible';
-          label.textContent = msg.text;
-          return label;
-        }
-        
         if (msg.type === 'typing') {
           const row = document.createElement('div');
           const bgColor = msg.isAi ? '#007AFF' : 'rgba(0,0,0,0.3)';
           row.className = `chat-message chat-row ${msg.isAi ? 'ai' : 'incoming'} typing-element`;
+          
+          // Include label for AI typing
+          const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
           row.innerHTML = `
-            <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
-            <div class="typing-indicator" style="background: ${bgColor};">
-              <span class="typing-dot"></span>
-              <span class="typing-dot"></span>
-              <span class="typing-dot"></span>
+            ${labelHtml}
+            <div class="chat-row-content">
+              <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
+              <div class="typing-indicator" style="background: ${bgColor};">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+              </div>
             </div>
           `;
           requestAnimationFrame(() => row.classList.add('visible'));
@@ -1067,9 +1088,15 @@
         
         const row = document.createElement('div');
         row.className = `chat-message chat-row ${msg.type}`;
+        
+        // Include label for AI messages
+        const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
         row.innerHTML = `
-          <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
-          <div class="chat-bubble">${msg.text}</div>
+          ${labelHtml}
+          <div class="chat-row-content">
+            <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
+            <div class="chat-bubble">${msg.text}</div>
+          </div>
         `;
         // Trigger animation
         requestAnimationFrame(() => row.classList.add('visible'));
@@ -1134,9 +1161,8 @@
     // ===== Card 1: IT Help (Semi) =====
     const itChatMessages = [
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'The printer is broken again! 😫' },
-      { type: 'label', text: 'AI Semi' },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Hey Dad! Did you check if it\'s plugged in?', replacesTyping: true },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI Semi' },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Hey Dad! Did you check if it\'s plugged in?', replacesTyping: true, label: 'AI Semi' },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'Whoops! That was it 😅', replacesTyping: true },
       { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
@@ -1148,9 +1174,8 @@
     // ===== Card 2: Trip Planning (Raccoon) =====
     const tripChatMessages = [
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', text: 'AI Raccoon, any good ATL–CUN flights on the 19th?' },
-      { type: 'label', text: 'AI Raccoon' },
-      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'yep! found 3 great ones, added to cancun26.com', replacesTyping: true },
+      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true, label: 'AI Raccoon' },
+      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'yep! found 3 great ones, added to cancun26.com', replacesTyping: true, label: 'AI Raccoon' },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sam', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sam', text: 'what about airbnb?', replacesTyping: true },
       { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true },
@@ -1162,9 +1187,8 @@
     // ===== Card 3: Work (Russ) =====
     const workChatMessages = [
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Hey can you join the 3pm sync today?' },
-      { type: 'label', text: 'AI Russ' },
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary!', replacesTyping: true },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true, label: 'AI Russ' },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary!', replacesTyping: true, label: 'AI Russ' },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Perfect, thanks!', replacesTyping: true },
       { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
@@ -1176,9 +1200,8 @@
     // ===== Card 4: Family (Emily) =====
     const familyChatMessages = [
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'What should I make for Sunday dinner?' },
-      { type: 'label', text: 'AI Emily' },
-      { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'emily-avatar.png', text: 'Emily loves your lasagna! She\'s been craving comfort food 🍝', replacesTyping: true },
+      { type: 'typing', avatar: 'emily-avatar.png', isAi: true, label: 'AI Emily' },
+      { type: 'ai', avatar: 'emily-avatar.png', text: 'Emily loves your lasagna! She\'s been craving comfort food 🍝', replacesTyping: true, label: 'AI Emily' },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'Lasagna it is! Will she be home by 6?', replacesTyping: true },
       { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
@@ -1190,9 +1213,8 @@
     // ===== Card 5: Important Dates (Semi) =====
     const datesChatMessages = [
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'What are we doing for our anniversary btw?' },
-      { type: 'label', text: 'AI Semi' },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Already booked! That rooftop place you mentioned — March 15th, 7pm 🌃', replacesTyping: true },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI Semi' },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Already booked! That rooftop place you mentioned — March 15th, 7pm 🌃', replacesTyping: true, label: 'AI Semi' },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'omg you remembered 😭', replacesTyping: true },
       { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
@@ -1204,9 +1226,8 @@
     // ===== Card 6: Friends (Russ) =====
     const friendsChatMessages = [
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'having such a rough day 😔' },
-      { type: 'label', text: 'AI Russ' },
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'aw man, what happened? wanna talk about it or just vent?', replacesTyping: true },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true, label: 'AI Russ' },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'aw man, what happened? wanna talk about it or just vent?', replacesTyping: true, label: 'AI Russ' },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'just work stuff... feel like nothing\'s going right', replacesTyping: true },
       { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
