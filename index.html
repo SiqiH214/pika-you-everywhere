@@ -1049,29 +1049,29 @@
           </div>
         </div>
         
-        <!-- Card 7: Send selfies to mom (MULTIMODAL - IMAGE) -->
+        <!-- Card 7: Book investor meeting (47 - Google Meet link) -->
         <div class="chat-card reveal" style="transition-delay: 0.6s;">
-          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fff5f5, #fff0f5);">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #f0f8ff, #e8f4fd);">
             <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="selfie-chat-inner"></div>
+              <div class="chat-conversation-inner" id="investor-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
-            <h3 class="chat-card-title">Send selfies to mom</h3>
-            <p class="chat-card-desc">Your AI Self can generate and send photos of you — so mom knows you're doing okay.</p>
+            <h3 class="chat-card-title">Book meetings for you</h3>
+            <p class="chat-card-desc">Your AI Self schedules calls, sends calendar invites, and shares meeting links — so you never miss an opportunity.</p>
           </div>
         </div>
         
-        <!-- Card 8: Life updates with photos (MULTIMODAL) -->
+        <!-- Card 8: Send group photo to friends -->
         <div class="chat-card reveal" style="transition-delay: 0.7s;">
-          <div class="chat-mockup image animated-chat" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80');">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fff5f0, #fff0e8);">
             <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="life-update-chat-inner"></div>
+              <div class="chat-conversation-inner" id="group-photo-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
-            <h3 class="chat-card-title">Share life updates</h3>
-            <p class="chat-card-desc">Your AI Self shares what you've been up to — with photos, stories, and your personality.</p>
+            <h3 class="chat-card-title">Share group photos</h3>
+            <p class="chat-card-desc">Your AI Self can share photos from your life — keeping friends in the loop even when you're busy.</p>
           </div>
         </div>
         
@@ -1382,26 +1382,28 @@
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'yes please 🥺 thanks for always being there', replacesTyping: true },
     ];
     
-    // ===== Card 7: Send Selfies to Mom (MULTIMODAL - IMAGE) =====
-    const selfieChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'How are you doing sweetie? Send me a photo!' },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI Semi' },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Just got coffee with friends! ☕', replacesTyping: true, label: 'AI Semi' },
+    // ===== Card 7: Book Investor Meeting (47 - Google Meet) =====
+    const investorChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', text: 'Hey, would love to chat about Pika. Free this week?' },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI 47' },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Yes! How about Thursday 2pm PT?', replacesTyping: true, label: 'AI 47' },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', text: 'Perfect!', replacesTyping: true },
       { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'semi-avatar.png', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'You look so happy! 😍 Love you!', replacesTyping: true },
+      { type: 'ai', avatar: 'semi-avatar.png', url: 'meet.google.com/abc-xyz', urlTitle: '📅 Pika Demo — Thu 2pm', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', text: 'Got it, see you then! 🙌', replacesTyping: true },
     ];
     
-    // ===== Card 8: Life Updates with Photos =====
-    const lifeUpdateChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Friend1', text: 'What have you been up to lately?' },
+    // ===== Card 8: Send Group Photo to Friends =====
+    const groupPhotoChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BFF', text: 'how was the hangout yesterday??' },
       { type: 'typing', avatar: 'russ-avatar.png', isAi: true, label: 'AI Russ' },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Been exploring this new coffee spot downtown!', replacesTyping: true, label: 'AI Russ' },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'so fun!! look at us 😄', replacesTyping: true, label: 'AI Russ' },
       { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Friend1', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Friend1', text: 'omg looks amazing! we gotta go together', replacesTyping: true },
+      { type: 'ai', avatar: 'russ-avatar.png', image: 'group-selfie.png', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BFF', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BFF', text: 'omg you guys look so cute!! 😍', replacesTyping: true },
     ];
     
     // ===== Card 9: Send URLs =====
@@ -1433,8 +1435,8 @@
     new ScrollingChatAnimator('family-chat-inner', familyChatMessages);
     new ScrollingChatAnimator('dates-chat-inner', datesChatMessages);
     new ScrollingChatAnimator('friends-chat-inner', friendsChatMessages);
-    new ScrollingChatAnimator('selfie-chat-inner', selfieChatMessages);
-    new ScrollingChatAnimator('life-update-chat-inner', lifeUpdateChatMessages);
+    new ScrollingChatAnimator('investor-chat-inner', investorChatMessages);
+    new ScrollingChatAnimator('group-photo-chat-inner', groupPhotoChatMessages);
     new ScrollingChatAnimator('url-chat-inner', urlChatMessages);
     new ScrollingChatAnimator('pdf-chat-inner', pdfChatMessages);
   </script>
