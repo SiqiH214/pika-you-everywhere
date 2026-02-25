@@ -506,6 +506,21 @@
       30% { transform: translateY(-4px); }
     }
     
+    /* Animated chat messages */
+    .chat-message {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+    }
+    .chat-message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .chat-message.hidden {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    
     /* Avatar cluster for group chat */
     .avatar-cluster {
       display: flex;
@@ -893,24 +908,44 @@
           </div>
         </div>
         
-        <!-- Card 3: Handle work while you're off -->
+        <!-- Card 3: Handle work while you're off (ANIMATED LOOP) -->
         <div class="chat-card reveal" style="transition-delay: 0.2s;">
-          <div class="chat-mockup light" style="background: linear-gradient(135deg, #f8f4f0, #fff);">
+          <div class="chat-mockup light animated-chat" id="work-chat" style="background: linear-gradient(135deg, #f8f4f0, #fff);">
             <div class="chat-conversation">
-              <div class="chat-row incoming">
+              <!-- Round 1 -->
+              <div class="chat-message chat-row incoming" data-round="1" data-order="1">
                 <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Manager');"></div>
                 <div class="chat-bubble">Hey can you join the 3pm sync today?</div>
               </div>
-              <p class="ai-label">AI Russ</p>
-              <div class="chat-row ai">
+              <p class="chat-message ai-label" data-round="1" data-order="2">AI Russ</p>
+              <div class="chat-message chat-row ai" data-round="1" data-order="3">
                 <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
                 <div class="chat-bubble">Russ is OOO today — I can take notes and share a summary after!</div>
               </div>
-              <div class="chat-row incoming">
+              <div class="chat-message chat-row incoming" data-round="1" data-order="4">
                 <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Manager');"></div>
                 <div class="chat-bubble">Perfect, thanks!</div>
               </div>
-              <div class="chat-row ai">
+              <!-- Round 2 -->
+              <div class="chat-message chat-row ai" data-round="2" data-order="1">
+                <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
+                <div class="chat-bubble">Just finished! Here's the summary: 3 action items, design review moved to Friday</div>
+              </div>
+              <div class="chat-message chat-row incoming" data-round="2" data-order="2">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Manager');"></div>
+                <div class="chat-bubble">Amazing, you're a lifesaver 🙏</div>
+              </div>
+              <!-- Round 3 -->
+              <div class="chat-message chat-row ai" data-round="3" data-order="1">
+                <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
+                <div class="chat-bubble">Also flagged the blocker on the API — pinged engineering</div>
+              </div>
+              <div class="chat-message chat-row incoming" data-round="3" data-order="2">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Manager');"></div>
+                <div class="chat-bubble">Wait you can do that?? 😮</div>
+              </div>
+              <!-- Typing indicator (always at end) -->
+              <div class="chat-message chat-row ai typing-row" data-typing="true">
                 <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
                 <div class="typing-indicator" style="background: #007AFF;">
                   <span class="typing-dot"></span>
@@ -1077,6 +1112,68 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     
     document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+    
+    // Animated Chat Loop
+    class ChatAnimator {
+      constructor(container) {
+        this.container = container;
+        this.messages = container.querySelectorAll('.chat-message[data-round]');
+        this.typingRow = container.querySelector('.typing-row');
+        this.currentRound = 0;
+        this.maxRound = Math.max(...[...this.messages].map(m => parseInt(m.dataset.round)));
+        this.messageDelay = 800;
+        this.roundDelay = 2000;
+        this.resetDelay = 3000;
+        this.init();
+      }
+      
+      init() {
+        // Hide all messages initially
+        this.messages.forEach(m => m.classList.remove('visible'));
+        if (this.typingRow) this.typingRow.classList.add('visible');
+        // Start the loop
+        setTimeout(() => this.playRound(1), 500);
+      }
+      
+      async playRound(round) {
+        const roundMessages = [...this.messages].filter(m => parseInt(m.dataset.round) === round);
+        roundMessages.sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order));
+        
+        // Hide typing before showing messages
+        if (this.typingRow) this.typingRow.classList.remove('visible');
+        
+        // Show each message with delay
+        for (const msg of roundMessages) {
+          await this.delay(this.messageDelay);
+          msg.classList.add('visible');
+        }
+        
+        // Show typing indicator
+        await this.delay(this.messageDelay);
+        if (this.typingRow) this.typingRow.classList.add('visible');
+        
+        // Continue to next round or reset
+        await this.delay(this.roundDelay);
+        
+        if (round < this.maxRound) {
+          this.playRound(round + 1);
+        } else {
+          // Reset and loop
+          await this.delay(this.resetDelay);
+          this.messages.forEach(m => m.classList.remove('visible'));
+          this.playRound(1);
+        }
+      }
+      
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    }
+    
+    // Initialize all animated chats
+    document.querySelectorAll('.animated-chat').forEach(chat => {
+      new ChatAnimator(chat);
+    });
   </script>
 </body>
 </html>
