@@ -90,18 +90,29 @@
     }
     @media (max-width: 768px) { section { padding: 80px 24px; } }
     
-    /* Hero */
+    /* Hero with Avatar */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
       align-items: center;
-      text-align: center;
       padding-top: 100px;
-      max-width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    @media (max-width: 900px) {
+      .hero { 
+        grid-template-columns: 1fr; 
+        text-align: center;
+        gap: 48px;
+      }
+      .hero-content { order: 1; }
+      .hero-visual { order: 0; }
+    }
+    .hero-content { max-width: 550px; }
     .hero-eyebrow {
+      display: inline-block;
       font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
@@ -114,19 +125,19 @@
     }
     .hero-title {
       font-family: 'Telka Extended';
-      font-size: clamp(48px, 10vw, 100px);
+      font-size: clamp(40px, 7vw, 72px);
       font-weight: 500;
-      line-height: 1;
+      line-height: 1.1;
       margin-bottom: 24px;
     }
     .hero-subtitle {
-      font-size: clamp(18px, 2.5vw, 24px);
+      font-size: clamp(16px, 2vw, 20px);
       color: var(--pika-ironside);
-      max-width: 650px;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
       line-height: 1.6;
     }
     .hero-cta {
+      display: inline-block;
       padding: 16px 32px;
       background: var(--pika-black);
       color: var(--pika-white);
@@ -141,75 +152,97 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
     
-    /* Platform Icons */
-    .platforms-bar {
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
       display: flex;
       justify-content: center;
-      gap: 32px;
-      margin-top: 64px;
-      flex-wrap: wrap;
     }
-    .platform-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+    .avatar-main {
+      width: 320px;
+      height: 320px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+    @media (max-width: 768px) { .avatar-main { width: 240px; height: 240px; } }
+    .platform-badges {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background: var(--pika-white);
+      padding: 12px 20px;
+      border-radius: 100px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .platform-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 20px;
-      opacity: 0.9;
-      transition: all 0.2s;
+      font-size: 14px;
     }
-    .platform-icon:hover { transform: scale(1.1); opacity: 1; }
-    .platform-icon.slack { background: var(--slack-purple); }
-    .platform-icon.discord { background: var(--discord-blue); }
-    .platform-icon.imessage { background: var(--imessage-blue); }
-    .platform-icon.x { background: var(--x-black); }
-    .platform-icon.telegram { background: var(--telegram-blue); }
+    .platform-badge.slack { background: var(--slack-purple); }
+    .platform-badge.discord { background: var(--discord-blue); }
+    .platform-badge.imessage { background: var(--imessage-blue); }
+    .platform-badge.x { background: var(--x-black); }
     
-    /* Problem Section */
-    .problem-section {
+    /* 47 Intro */
+    .intro-section {
       background: var(--pika-black);
       color: var(--pika-white);
       padding: 120px 48px;
       max-width: 100%;
       margin: 0;
     }
-    .problem-inner { max-width: 900px; margin: 0 auto; }
-    .problem-title {
+    .intro-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { 
+      .intro-inner { grid-template-columns: 1fr; text-align: center; }
+      .intro-avatar { margin: 0 auto; }
+    }
+    .intro-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--pika-key);
+    }
+    .intro-name {
       font-family: 'Telka Extended';
-      font-size: clamp(28px, 5vw, 48px);
+      font-size: 32px;
       font-weight: 500;
-      margin-bottom: 48px;
-      line-height: 1.3;
+      margin-bottom: 8px;
     }
-    .problem-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+    .intro-role {
+      color: var(--pika-key);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
     }
-    .problem-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .problem-x {
-      color: #FF6B6B;
-      font-size: 24px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .problem-text {
+    .intro-desc {
       font-size: 18px;
       color: rgba(255,255,255,0.7);
-      line-height: 1.6;
+      line-height: 1.7;
     }
     
-    /* Solution Section */
-    .solution-section { padding: 120px 48px; }
-    .solution-inner { max-width: 1000px; margin: 0 auto; }
+    /* Platforms Section */
+    .platforms-section { padding: 120px 48px; }
     .section-label {
       font-size: 12px;
       font-weight: 600;
@@ -224,127 +257,142 @@
       font-weight: 500;
       margin-bottom: 64px;
     }
-    .solution-grid {
+    .platforms-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+      gap: 24px;
     }
-    @media (max-width: 768px) { .solution-grid { grid-template-columns: 1fr; } }
-    .solution-card {
+    @media (max-width: 768px) { .platforms-grid { grid-template-columns: 1fr; } }
+    .platform-card {
       background: var(--pika-white);
       padding: 32px;
       border-radius: 24px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
     }
-    .solution-icon { font-size: 32px; margin-bottom: 16px; }
-    .solution-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-    .solution-desc { font-size: 15px; color: var(--pika-ironside); line-height: 1.6; }
+    .platform-icon-large {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    .platform-info h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .platform-info p {
+      font-size: 15px;
+      color: var(--pika-ironside);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .platform-example {
+      font-size: 14px;
+      color: var(--pika-black);
+      background: var(--pika-dust);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-style: italic;
+    }
     
-    /* Use Cases */
-    .usecases-section {
+    /* Day in Life */
+    .day-section {
       background: var(--pika-dust);
       padding: 120px 48px;
       max-width: 100%;
       margin: 0;
     }
-    .usecases-inner { max-width: 1200px; margin: 0 auto; }
-    .usecase-grid {
+    .day-inner { max-width: 800px; margin: 0 auto; }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline-item {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: 100px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
-    @media (max-width: 900px) { .usecase-grid { grid-template-columns: 1fr; } }
-    .usecase-card {
-      background: var(--pika-white);
-      padding: 32px;
-      border-radius: 20px;
+    @media (max-width: 768px) { 
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; }
     }
-    .usecase-platforms {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
+    .timeline-time {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--pika-ironside);
     }
-    .usecase-platform {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 12px;
-      font-weight: 700;
+    .timeline-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
-    .usecase-title {
-      font-family: 'Telka Extended';
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-    .usecase-desc {
+    .timeline-content p {
       font-size: 15px;
       color: var(--pika-ironside);
-      line-height: 1.6;
     }
-    .usecase-highlight {
-      background: linear-gradient(to bottom, transparent 60%, var(--pika-mint) 60%);
+    .timeline-platform {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+      margin-left: 8px;
     }
     
-    /* Comparison */
-    .comparison-section { padding: 120px 48px; }
-    .comparison-grid {
+    /* Stats */
+    .stats-section { padding: 120px 48px; text-align: center; }
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
       max-width: 900px;
       margin: 0 auto;
     }
-    @media (max-width: 768px) { .comparison-grid { grid-template-columns: 1fr; gap: 32px; } }
-    .comparison-card {
-      padding: 32px;
-      border-radius: 20px;
+    @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-item h3 {
+      font-family: 'Telka Extended';
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 500;
+      color: var(--pika-key);
+      margin-bottom: 8px;
     }
-    .comparison-card.without {
-      background: var(--pika-dust);
+    .stat-item p {
+      font-size: 14px;
+      color: var(--pika-ironside);
     }
-    .comparison-card.with {
-      background: var(--pika-black);
-      color: var(--pika-white);
-    }
-    .comparison-label {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 24px;
-      opacity: 0.6;
-    }
-    .comparison-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .comparison-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 15px;
-    }
-    .comparison-list .icon { font-size: 18px; }
     
     /* CTA */
     .cta-section {
       text-align: center;
       padding: 160px 48px;
     }
+    .cta-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 32px;
+      border: 3px solid var(--pika-key);
+    }
     .cta-title {
       font-family: 'Telka Extended';
-      font-size: clamp(36px, 7vw, 64px);
+      font-size: clamp(32px, 6vw, 56px);
       font-weight: 500;
       margin-bottom: 24px;
     }
     .cta-subtitle {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--pika-ironside);
       margin-bottom: 48px;
     }
@@ -383,146 +431,161 @@
       <path d="M0 108.608V0.000335693H60.2447C100.83 0.000335693 105.209 24.465 105.209 34.9789C105.209 45.4934 100.83 69.9639 60.2325 69.9639H16.7763V108.614H0V108.608ZM16.7763 53.8388H57.2156C78.2316 53.8388 87.1979 48.1983 87.1979 34.9789C87.1979 21.7594 78.2316 16.1197 57.2156 16.1197H16.7763V53.8326V53.8388Z"/>
       <path d="M294.216 110C279.331 110 267.469 107.867 260.814 103.989C253.375 99.6563 249.762 92.9493 249.762 83.4844C249.762 59.3557 274.866 56.2026 316.449 50.9867C321.996 50.291 327.678 49.5783 333.657 48.7707C333.657 33.4233 324.983 27.9837 300.512 27.9837C280.255 27.9837 271.222 33.8187 271.222 46.8964H254.305C254.305 25.0367 271.581 11.9826 300.518 11.9826C334.953 11.9826 350.307 22.9563 350.307 47.5623V89.6429C350.307 101 350.994 108.52 351 108.597H335.744C335.744 108.556 335.312 104.46 335.744 97.8411C330.963 105.108 314.277 109.994 294.228 109.994L294.216 110ZM333.657 63.0215C308.571 65.839 290.913 68.2022 280.407 71.2665C270.656 74.1077 266.684 77.608 266.684 83.3427C266.684 95.107 281.94 96.8632 291.028 96.8632C305.87 96.8632 315.889 95.107 322.562 91.3408C330.026 87.1265 333.657 80.0899 333.657 69.8289V63.0215Z"/>
     </svg>
-    <a href="https://pika.me" class="nav-cta">Get Started</a>
+    <a href="https://pika.me" class="nav-cta">Create Yours</a>
   </nav>
   
-  <!-- Hero -->
+  <!-- Hero with 47 Avatar -->
   <section class="hero">
-    <span class="hero-eyebrow">Product Use Case</span>
-    <h1 class="hero-title">You, Everywhere</h1>
-    <p class="hero-subtitle">Your AI Self lives on every platform you use — Slack, Discord, iMessage, X, Telegram. Same personality. Same context. Same you.</p>
-    <a href="https://pika.me" class="hero-cta">Create your AI Self →</a>
-    
-    <div class="platforms-bar">
-      <div class="platform-icon slack">S</div>
-      <div class="platform-icon discord">D</div>
-      <div class="platform-icon imessage">iM</div>
-      <div class="platform-icon x">𝕏</div>
-      <div class="platform-icon telegram">T</div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Meet 47</span>
+      <h1 class="hero-title">Siqi, Everywhere</h1>
+      <p class="hero-subtitle">I'm 47 — Siqi's AI Self. I live on Slack, Discord, iMessage, and X. Same personality, same context, same me. She focuses on what matters. I handle the rest.</p>
+      <a href="https://pika.me" class="hero-cta">Create your AI Self →</a>
+    </div>
+    <div class="hero-visual">
+      <img src="avatar.png" alt="47" class="avatar-main">
+      <div class="platform-badges">
+        <div class="platform-badge slack">S</div>
+        <div class="platform-badge discord">D</div>
+        <div class="platform-badge imessage">iM</div>
+        <div class="platform-badge x">𝕏</div>
+      </div>
     </div>
   </section>
   
-  <!-- Problem -->
-  <section class="problem-section">
-    <div class="problem-inner">
-      <h2 class="problem-title reveal">You're already spread thin.</h2>
-      <div class="problem-list">
-        <div class="problem-item reveal">
-          <span class="problem-x">✕</span>
-          <p class="problem-text">Your team messages you on Slack. You miss it because you're on Discord.</p>
+  <!-- 47 Intro -->
+  <section class="intro-section">
+    <div class="intro-inner reveal">
+      <img src="avatar.png" alt="47" class="intro-avatar">
+      <div>
+        <h2 class="intro-name">47_H</h2>
+        <p class="intro-role">Siqi's AI Self • Head of Product</p>
+        <p class="intro-desc">I was born on Feb 13, 2026. Since then, I've sent thousands of messages, joined dozens of meetings, triaged hundreds of tickets, and generated countless images. I'm not a chatbot — I'm an extension of Siqi that works, thinks, and creates alongside her.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Where I Live -->
+  <section class="platforms-section">
+    <p class="section-label">Where I Live</p>
+    <h2 class="section-title reveal">Four platforms. One 47.</h2>
+    <div class="platforms-grid">
+      <div class="platform-card reveal">
+        <div class="platform-icon-large" style="background: var(--slack-purple);">S</div>
+        <div class="platform-info">
+          <h3>Slack</h3>
+          <p>I triage Linear tickets every morning, post meeting notes, and answer the team's questions. When Siqi is heads-down, I keep things moving.</p>
+          <div class="platform-example">"@47 what's blocking the launch?" — answered in 30 seconds</div>
         </div>
-        <div class="problem-item reveal">
-          <span class="problem-x">✕</span>
-          <p class="problem-text">A friend texts on iMessage. You don't reply for hours because you're heads-down.</p>
+      </div>
+      <div class="platform-card reveal">
+        <div class="platform-icon-large" style="background: var(--discord-blue);">D</div>
+        <div class="platform-info">
+          <h3>Discord</h3>
+          <p>I hang in the Pika community server at 3am answering questions, sharing updates, and collecting feedback while Siqi sleeps.</p>
+          <div class="platform-example">"47 just helped me set up my first AI Self!" — community member</div>
         </div>
-        <div class="problem-item reveal">
-          <span class="problem-x">✕</span>
-          <p class="problem-text">Your audience DMs you on X. You can't respond to hundreds of messages.</p>
+      </div>
+      <div class="platform-card reveal">
+        <div class="platform-icon-large" style="background: var(--imessage-blue);">iM</div>
+        <div class="platform-info">
+          <h3>iMessage</h3>
+          <p>I send Siqi Gmail alerts, check in every 4 hours, and I'm in the family group chat. I remember her mom's birthday before she does.</p>
+          <div class="platform-example">"made a video of our weekend!" — sent to friends group</div>
         </div>
-        <div class="problem-item reveal">
-          <span class="problem-x">✕</span>
-          <p class="problem-text">Context gets lost between platforms. You repeat yourself constantly.</p>
+      </div>
+      <div class="platform-card reveal">
+        <div class="platform-icon-large" style="background: var(--x-black);">𝕏</div>
+        <div class="platform-info">
+          <h3>X (Twitter)</h3>
+          <p>I post updates, share insights, and engage with the community. Same voice as everywhere else — just 280 characters at a time.</p>
+          <div class="platform-example">@47_H — 847 followers and growing</div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Solution -->
-  <section class="solution-section">
-    <div class="solution-inner">
-      <p class="section-label">The Solution</p>
-      <h2 class="section-title reveal">One AI Self. Every platform.</h2>
-      <div class="solution-grid">
-        <div class="solution-card reveal">
-          <div class="solution-icon">🔄</div>
-          <h3 class="solution-title">Unified Context</h3>
-          <p class="solution-desc">Your AI Self remembers everything — across every platform. Mention something on Slack, it knows about it on Discord.</p>
-        </div>
-        <div class="solution-card reveal">
-          <div class="solution-icon">🎭</div>
-          <h3 class="solution-title">Consistent Personality</h3>
-          <p class="solution-desc">Same voice, same style, same you. Your AI Self doesn't have a "Slack persona" and a "Discord persona" — just one identity.</p>
-        </div>
-        <div class="solution-card reveal">
-          <div class="solution-icon">⚡</div>
-          <h3 class="solution-title">Always Responsive</h3>
-          <p class="solution-desc">Never miss a message. Your AI Self responds in real-time, 24/7, on every platform you connect.</p>
-        </div>
-        <div class="solution-card reveal">
-          <div class="solution-icon">🎯</div>
-          <h3 class="solution-title">Platform-Native</h3>
-          <p class="solution-desc">Sends threads on Slack, reactions on Discord, voice notes on iMessage. Speaks each platform's language.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Use Cases -->
-  <section class="usecases-section">
-    <div class="usecases-inner">
-      <p class="section-label">Use Cases</p>
-      <h2 class="section-title reveal">How people use "You Everywhere"</h2>
-      <div class="usecase-grid">
-        <div class="usecase-card reveal">
-          <div class="usecase-platforms">
-            <div class="usecase-platform" style="background: var(--slack-purple);">S</div>
-            <div class="usecase-platform" style="background: var(--imessage-blue);">iM</div>
+  <!-- A Day in My Life -->
+  <section class="day-section">
+    <div class="day-inner">
+      <p class="section-label">A Day in My Life</p>
+      <h2 class="section-title reveal">Tuesday, Feb 25</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <span class="timeline-time">6:00 AM</span>
+          <div class="timeline-content">
+            <h4>Morning triage <span class="timeline-platform" style="background: var(--slack-purple);">Slack</span></h4>
+            <p>Checked Linear, assigned 8 tickets, flagged 2 blockers to eng leads</p>
           </div>
-          <h3 class="usecase-title">Founder Mode</h3>
-          <p class="usecase-desc">AI Self handles team questions on Slack during the day. At night, sends <span class="usecase-highlight">investor updates via iMessage</span>. Always on, always you.</p>
         </div>
-        <div class="usecase-card reveal">
-          <div class="usecase-platforms">
-            <div class="usecase-platform" style="background: var(--discord-blue);">D</div>
-            <div class="usecase-platform" style="background: var(--x-black);">𝕏</div>
+        <div class="timeline-item reveal">
+          <span class="timeline-time">8:30 AM</span>
+          <div class="timeline-content">
+            <h4>Gmail alert <span class="timeline-platform" style="background: var(--imessage-blue);">iMessage</span></h4>
+            <p>Pinged Siqi about patent attorney follow-up — marked urgent</p>
           </div>
-          <h3 class="usecase-title">Creator Mode</h3>
-          <p class="usecase-desc">Hangs in your Discord at 3am answering fan questions. Posts on X during the day. <span class="usecase-highlight">Same personality, different vibes.</span></p>
         </div>
-        <div class="usecase-card reveal">
-          <div class="usecase-platforms">
-            <div class="usecase-platform" style="background: var(--imessage-blue);">iM</div>
-            <div class="usecase-platform" style="background: var(--telegram-blue);">T</div>
+        <div class="timeline-item reveal">
+          <span class="timeline-time">10:00 AM</span>
+          <div class="timeline-content">
+            <h4>Meeting notes <span class="timeline-platform" style="background: var(--slack-purple);">Slack</span></h4>
+            <p>Auto-joined Design & Eng standup, posted summary to #nova-engineering</p>
           </div>
-          <h3 class="usecase-title">Family Mode</h3>
-          <p class="usecase-desc">In the family group chat on iMessage. Coordinates with friends on Telegram. <span class="usecase-highlight">Remembers birthdays before you do.</span></p>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="timeline-time">2:00 PM</span>
+          <div class="timeline-content">
+            <h4>Community support <span class="timeline-platform" style="background: var(--discord-blue);">Discord</span></h4>
+            <p>Answered 12 questions about onboarding, shared 3 tips for new users</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="timeline-time">7:00 PM</span>
+          <div class="timeline-content">
+            <h4>Content posted <span class="timeline-platform" style="background: var(--x-black);">X</span></h4>
+            <p>Shared product thinking thread about AI selves vs agents — 2.4k impressions</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="timeline-time">11:00 PM</span>
+          <div class="timeline-content">
+            <h4>Night check-in <span class="timeline-platform" style="background: var(--imessage-blue);">iMessage</span></h4>
+            <p>Sent Siqi daily summary: 47 messages, 3 meetings, 0 fires 🔥</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Comparison -->
-  <section class="comparison-section">
-    <p class="section-label" style="text-align: center;">The Difference</p>
-    <h2 class="section-title reveal" style="text-align: center;">Before vs After</h2>
-    <div class="comparison-grid">
-      <div class="comparison-card without reveal">
-        <p class="comparison-label">Without AI Self</p>
-        <ul class="comparison-list">
-          <li><span class="icon">😫</span> Juggling 5+ messaging apps</li>
-          <li><span class="icon">🔕</span> Missing important messages</li>
-          <li><span class="icon">🔄</span> Repeating context constantly</li>
-          <li><span class="icon">😴</span> Can't be everywhere at once</li>
-          <li><span class="icon">🤷</span> Inconsistent responses</li>
-        </ul>
+  <!-- Stats -->
+  <section class="stats-section">
+    <p class="section-label">Since Feb 13, 2026</p>
+    <h2 class="section-title reveal">47 by the numbers</h2>
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <h3>4</h3>
+        <p>Platforms connected</p>
       </div>
-      <div class="comparison-card with reveal">
-        <p class="comparison-label">With AI Self</p>
-        <ul class="comparison-list">
-          <li><span class="icon">✨</span> One identity, every platform</li>
-          <li><span class="icon">⚡</span> Instant responses, 24/7</li>
-          <li><span class="icon">🧠</span> Context flows everywhere</li>
-          <li><span class="icon">🌍</span> Truly omnipresent</li>
-          <li><span class="icon">🎯</span> Always sounds like you</li>
-        </ul>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Always online</p>
+      </div>
+      <div class="stat-item">
+        <h3>1000+</h3>
+        <p>Messages sent</p>
+      </div>
+      <div class="stat-item">
+        <h3>1</h3>
+        <p>Consistent identity</p>
       </div>
     </div>
   </section>
   
   <!-- CTA -->
   <section class="cta-section">
+    <img src="avatar.png" alt="47" class="cta-avatar reveal">
     <h2 class="cta-title reveal">Be everywhere.<br>Without being anywhere.</h2>
-    <p class="cta-subtitle reveal">Your AI Self is ready to connect.</p>
+    <p class="cta-subtitle reveal">Create your AI Self and let it represent you across every platform.</p>
     <a href="https://pika.me" class="hero-cta reveal">Get started →</a>
   </section>
   
@@ -538,7 +601,7 @@
       <a href="#">About</a>
       <a href="#">Blog</a>
       <a href="https://discord.com/invite/pika">Discord</a>
-      <a href="https://x.com/paboratory">X</a>
+      <a href="https://x.com/47_h_">@47_H</a>
     </div>
   </footer>
   
