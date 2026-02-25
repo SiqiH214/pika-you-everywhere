@@ -518,6 +518,74 @@
       flex-direction: row;
     }
     
+    /* Multimodal content styles */
+    .chat-image {
+      width: 120px;
+      height: 90px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #e0e0e0;
+    }
+    .chat-url {
+      background: rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 10px 12px;
+      max-width: 180px;
+      font-size: 12px;
+    }
+    .chat-url-title {
+      font-weight: 600;
+      color: #0D0D0D;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chat-url-link {
+      color: #007AFF;
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chat-pdf {
+      background: rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 180px;
+    }
+    .chat-pdf-icon {
+      width: 32px;
+      height: 32px;
+      background: #FF3B30;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .chat-pdf-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .chat-pdf-name {
+      font-weight: 600;
+      font-size: 12px;
+      color: #0D0D0D;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chat-pdf-size {
+      font-size: 10px;
+      color: #6E6D6B;
+    }
+    
     .typing-indicator {
       display: flex;
       align-items: center;
@@ -976,6 +1044,58 @@
             <p class="chat-card-desc">When friends need you but you can't be there, your AI Self shows up with your warmth and care.</p>
           </div>
         </div>
+        
+        <!-- Card 7: Send selfies to mom (MULTIMODAL - IMAGE) -->
+        <div class="chat-card reveal" style="transition-delay: 0.6s;">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fff5f5, #fff0f5);">
+            <div class="chat-conversation">
+              <div class="chat-conversation-inner" id="selfie-chat-inner"></div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Send selfies to mom</h3>
+            <p class="chat-card-desc">Your AI Self can generate and send photos of you — so mom knows you're doing okay.</p>
+          </div>
+        </div>
+        
+        <!-- Card 8: Life updates with photos (MULTIMODAL) -->
+        <div class="chat-card reveal" style="transition-delay: 0.7s;">
+          <div class="chat-mockup image animated-chat" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80');">
+            <div class="chat-conversation">
+              <div class="chat-conversation-inner" id="life-update-chat-inner"></div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Share life updates</h3>
+            <p class="chat-card-desc">Your AI Self shares what you've been up to — with photos, stories, and your personality.</p>
+          </div>
+        </div>
+        
+        <!-- Card 9: Send URLs (MULTIMODAL) -->
+        <div class="chat-card reveal" style="transition-delay: 0.8s;">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #f0f8ff, #f5f5ff);">
+            <div class="chat-conversation">
+              <div class="chat-conversation-inner" id="url-chat-inner"></div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Share links instantly</h3>
+            <p class="chat-card-desc">Your AI Self finds and shares relevant links, articles, and resources on your behalf.</p>
+          </div>
+        </div>
+        
+        <!-- Card 10: Send PDFs (MULTIMODAL) -->
+        <div class="chat-card reveal" style="transition-delay: 0.9s;">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fff8f0, #fff5e6);">
+            <div class="chat-conversation">
+              <div class="chat-conversation-inner" id="pdf-chat-inner"></div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Send documents</h3>
+            <p class="chat-card-desc">Your AI Self can create, find, and send PDFs — reports, receipts, whatever's needed.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1069,7 +1189,6 @@
           const bgColor = msg.isAi ? '#007AFF' : 'rgba(0,0,0,0.3)';
           row.className = `chat-message chat-row ${msg.isAi ? 'ai' : 'incoming'} typing-element`;
           
-          // Include label for AI typing
           const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
           row.innerHTML = `
             ${labelHtml}
@@ -1088,17 +1207,40 @@
         
         const row = document.createElement('div');
         row.className = `chat-message chat-row ${msg.type}`;
-        
-        // Include label for AI messages
         const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
+        
+        // Handle different content types
+        let contentHtml = '';
+        if (msg.image) {
+          contentHtml = `<img class="chat-image" src="${msg.image}" alt="Photo">`;
+        } else if (msg.url) {
+          contentHtml = `
+            <div class="chat-url">
+              <div class="chat-url-title">${msg.urlTitle || 'Link'}</div>
+              <div class="chat-url-link">${msg.url}</div>
+            </div>
+          `;
+        } else if (msg.pdf) {
+          contentHtml = `
+            <div class="chat-pdf">
+              <div class="chat-pdf-icon">PDF</div>
+              <div class="chat-pdf-info">
+                <div class="chat-pdf-name">${msg.pdf}</div>
+                <div class="chat-pdf-size">${msg.pdfSize || '1.2 MB'}</div>
+              </div>
+            </div>
+          `;
+        } else {
+          contentHtml = `<div class="chat-bubble">${msg.text}</div>`;
+        }
+        
         row.innerHTML = `
           ${labelHtml}
           <div class="chat-row-content">
             <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
-            <div class="chat-bubble">${msg.text}</div>
+            ${contentHtml}
           </div>
         `;
-        // Trigger animation
         requestAnimationFrame(() => row.classList.add('visible'));
         return row;
       }
@@ -1236,6 +1378,50 @@
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'yes please 🥺 thanks for always being there', replacesTyping: true },
     ];
     
+    // ===== Card 7: Send Selfies to Mom (MULTIMODAL - IMAGE) =====
+    const selfieChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'How are you doing sweetie? Send me a photo!' },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI Semi' },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Just got coffee with friends! ☕', replacesTyping: true, label: 'AI Semi' },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'semi-avatar.png', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'You look so happy! 😍 Love you!', replacesTyping: true },
+    ];
+    
+    // ===== Card 8: Life Updates with Photos =====
+    const lifeUpdateChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Friend1', text: 'What have you been up to lately?' },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true, label: 'AI Russ' },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Been exploring this new coffee spot downtown!', replacesTyping: true, label: 'AI Russ' },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'russ-avatar.png', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Friend1', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Friend1', text: 'omg looks amazing! we gotta go together', replacesTyping: true },
+    ];
+    
+    // ===== Card 9: Send URLs =====
+    const urlChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Coworker', text: 'Do you have that article about AI you mentioned?' },
+      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true, label: 'AI Raccoon' },
+      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'yeah here it is!', replacesTyping: true, label: 'AI Raccoon' },
+      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'raccoon-avatar.png', url: 'arxiv.org/abs/2401...', urlTitle: 'Attention Is All You Need', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Coworker', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Coworker', text: 'perfect thanks! 🙏', replacesTyping: true },
+    ];
+    
+    // ===== Card 10: Send PDFs =====
+    const pdfChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Boss', text: 'Can you send me that Q4 report?' },
+      { type: 'typing', avatar: 'emily-avatar.png', isAi: true, label: 'AI Emily' },
+      { type: 'ai', avatar: 'emily-avatar.png', text: 'Here you go!', replacesTyping: true, label: 'AI Emily' },
+      { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'emily-avatar.png', pdf: 'Q4_Report_2025.pdf', pdfSize: '2.4 MB', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Boss', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Boss', text: 'Thanks! Exactly what I needed', replacesTyping: true },
+    ];
+    
     // Initialize all animated chats
     new ScrollingChatAnimator('it-chat-inner', itChatMessages);
     new ScrollingChatAnimator('trip-chat-inner', tripChatMessages);
@@ -1243,6 +1429,10 @@
     new ScrollingChatAnimator('family-chat-inner', familyChatMessages);
     new ScrollingChatAnimator('dates-chat-inner', datesChatMessages);
     new ScrollingChatAnimator('friends-chat-inner', friendsChatMessages);
+    new ScrollingChatAnimator('selfie-chat-inner', selfieChatMessages);
+    new ScrollingChatAnimator('life-update-chat-inner', lifeUpdateChatMessages);
+    new ScrollingChatAnimator('url-chat-inner', urlChatMessages);
+    new ScrollingChatAnimator('pdf-chat-inner', pdfChatMessages);
   </script>
 </body>
 </html>
