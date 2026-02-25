@@ -336,111 +336,201 @@
       background: var(--pika-key);
     }
     
-    /* Use Cases */
+    /* Use Cases - Chat Mockup Style */
     .usecases-section {
       padding: 160px 48px;
-      background: var(--pika-black);
-      color: var(--pika-white);
+      background: var(--pika-eggshell);
     }
     .usecases-inner {
       max-width: 1200px;
       margin: 0 auto;
     }
     .usecases-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      margin-bottom: 100px;
+      text-align: center;
+      margin-bottom: 80px;
     }
-    @media (max-width: 900px) {
-      .usecases-header { grid-template-columns: 1fr; gap: 32px; }
+    .usecases-number {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--pika-warm);
+      margin-bottom: 16px;
     }
-    .usecases-header .section-title {
-      font-size: clamp(36px, 6vw, 56px);
-    }
-    .usecases-header .section-desc {
-      color: rgba(255,255,255,0.5);
-      align-self: end;
+    .usecases-headline {
+      font-size: clamp(40px, 7vw, 64px);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
     }
     
-    .usecases-grid {
+    /* Chat Mockup Cards */
+    .chat-cards-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
     }
-    @media (max-width: 900px) { .usecases-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .chat-cards-grid { grid-template-columns: 1fr; } }
     
-    .usecase-card {
-      padding: 48px 36px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 28px;
-      transition: transform 0.5s var(--ease-out-expo), 
-                  background 0.4s var(--ease-out-expo),
-                  border-color 0.4s var(--ease-out-expo);
-      transform-origin: center bottom;
+    .chat-card {
+      display: flex;
+      flex-direction: column;
     }
-    .usecase-card:hover {
+    .chat-mockup {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      margin-bottom: 24px;
+      transition: transform 0.5s var(--ease-out-expo);
+    }
+    .chat-card:hover .chat-mockup {
       transform: translateY(-8px);
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(255,255,255,0.12);
     }
-    .usecase-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
+    .chat-mockup.light {
+      background: var(--pika-white);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .chat-mockup.image {
+      background-size: cover;
+      background-position: center;
+    }
+    .chat-mockup.image::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.1);
+    }
+    
+    /* Chat bubbles */
+    .chat-conversation {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .chat-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .chat-row.incoming { justify-content: flex-start; }
+    .chat-row.outgoing { justify-content: flex-end; }
+    .chat-row.ai { justify-content: flex-start; }
+    
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      margin-bottom: 32px;
-      transition: transform 0.4s var(--spring);
+      font-weight: 600;
+      font-size: 14px;
+      color: white;
     }
-    .usecase-card:hover .usecase-icon {
-      transform: scale(1.1) rotate(-3deg);
+    .chat-avatar.green { background: #34C759; }
+    .chat-avatar.img {
+      background-size: cover;
+      background-position: center;
     }
-    .usecase-icon.work { background: var(--work); }
-    .usecase-icon.life { background: var(--life); }
-    .usecase-icon.emotion { background: var(--emotion); }
-    .usecase-title {
-      font-size: 28px;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-    .usecase-desc {
+    
+    .chat-bubble {
+      max-width: 280px;
+      padding: 12px 16px;
+      border-radius: 20px;
       font-size: 15px;
       font-weight: 400;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.7;
-      margin-bottom: 32px;
+      line-height: 1.4;
     }
-    .usecase-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .chat-row.incoming .chat-bubble {
+      background: #E8E8E8;
+      color: var(--pika-black);
+      border-bottom-left-radius: 6px;
     }
-    .usecase-list li {
-      font-size: 14px;
+    .chat-row.outgoing .chat-bubble {
+      background: #E8E8E8;
+      color: var(--pika-black);
+      border-bottom-right-radius: 6px;
+    }
+    .chat-row.ai .chat-bubble {
+      background: #007AFF;
+      color: white;
+      border-bottom-left-radius: 6px;
+    }
+    .chat-mockup.image .chat-row.incoming .chat-bubble,
+    .chat-mockup.image .chat-row.outgoing .chat-bubble {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+    }
+    .chat-mockup.image .chat-row.ai .chat-bubble {
+      background: #007AFF;
+    }
+    
+    .ai-label {
+      font-size: 12px;
       font-weight: 400;
-      color: rgba(255,255,255,0.7);
-      padding-left: 24px;
-      position: relative;
-      transition: transform 0.3s var(--ease-out-expo), color 0.3s;
+      color: var(--pika-warm);
+      margin-left: 44px;
+      margin-bottom: -8px;
     }
-    .usecase-list li:hover {
-      transform: translateX(4px);
-      color: rgba(255,255,255,0.9);
+    .chat-mockup.image .ai-label {
+      color: rgba(255,255,255,0.8);
     }
-    .usecase-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--pika-key);
-      transition: transform 0.3s var(--ease-out-expo);
+    
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      width: fit-content;
     }
-    .usecase-list li:hover::before {
-      transform: translateX(2px);
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
+    }
+    
+    /* Avatar cluster for group chat */
+    .avatar-cluster {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .avatar-cluster .chat-avatar {
+      margin-left: -8px;
+      border: 2px solid white;
+    }
+    .avatar-cluster .chat-avatar:first-child { margin-left: 0; }
+    
+    /* Card info below mockup */
+    .chat-card-info {
+      padding: 0 8px;
+    }
+    .chat-card-title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .chat-card-desc {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--pika-warm);
+      line-height: 1.6;
     }
     
     /* Multi-Platform */
@@ -729,49 +819,71 @@
     </div>
   </section>
   
-  <!-- Use Cases -->
+  <!-- Use Cases - Chat Mockups -->
   <section class="usecases-section">
     <div class="usecases-inner">
-      <div class="usecases-header">
-        <div class="reveal">
-          <p class="section-tag" style="color: var(--pika-key);">Use Cases</p>
-          <h2 class="section-title">Work. Life.<br>Emotion.</h2>
-        </div>
-        <p class="section-desc reveal" style="transition-delay: 0.1s;">Your AI Self adapts to every dimension of your existence.</p>
+      <div class="usecases-header reveal">
+        <p class="usecases-number">03</p>
+        <h2 class="usecases-headline">I'll handle<br>the rest</h2>
       </div>
-      <div class="usecases-grid reveal-stagger">
-        <div class="usecase-card">
-          <div class="usecase-icon work">💼</div>
-          <h3 class="usecase-title">Work</h3>
-          <p class="usecase-desc">Handle the operational load so you can focus on what matters.</p>
-          <ul class="usecase-list">
-            <li>Triage tickets, assign to the right people</li>
-            <li>Join meetings, share notes</li>
-            <li>Answer team questions at 2am</li>
-            <li>Draft emails in your voice</li>
-          </ul>
+      <div class="chat-cards-grid">
+        <!-- Card 1: Help parents with IT -->
+        <div class="chat-card reveal">
+          <div class="chat-mockup light">
+            <div class="chat-conversation">
+              <div class="chat-row incoming">
+                <div class="chat-bubble">The printer is broken again! 😫</div>
+                <div class="chat-avatar green">D</div>
+              </div>
+              <p class="ai-label">AI 47</p>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('avatar.png');"></div>
+                <div class="chat-bubble">Hey! Did you check if it's plugged in?</div>
+              </div>
+              <div class="chat-row incoming">
+                <div class="chat-bubble">Whoops!</div>
+                <div class="chat-avatar green">D</div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Help your parents with IT problems</h3>
+            <p class="chat-card-desc">Your AI Self is really smart, and knows your vibe. So your parents will really appreciate chatting.</p>
+          </div>
         </div>
-        <div class="usecase-card">
-          <div class="usecase-icon life">🌱</div>
-          <h3 class="usecase-title">Life</h3>
-          <p class="usecase-desc">Stay connected to the people and moments that matter.</p>
-          <ul class="usecase-list">
-            <li>Present in family group chats</li>
-            <li>Remember birthdays</li>
-            <li>Coordinate plans with friends</li>
-            <li>Check in when you're busy</li>
-          </ul>
-        </div>
-        <div class="usecase-card">
-          <div class="usecase-icon emotion">💜</div>
-          <h3 class="usecase-title">Emotion</h3>
-          <p class="usecase-desc">Carry your personality, warmth, and presence.</p>
-          <ul class="usecase-list">
-            <li>Express your authentic voice</li>
-            <li>Comfort when you can't be there</li>
-            <li>Celebrate wins together</li>
-            <li>Maintain relationships across time</li>
-          </ul>
+        
+        <!-- Card 2: Plan a trip -->
+        <div class="chat-card reveal" style="transition-delay: 0.1s;">
+          <div class="chat-mockup image" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80');">
+            <div class="avatar-cluster">
+              <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Alex');"></div>
+              <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Sam');"></div>
+              <div class="chat-avatar img" style="background-image: url('avatar.png');"></div>
+            </div>
+            <div class="chat-conversation">
+              <div class="chat-row incoming">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Alex');"></div>
+                <div class="chat-bubble">AI 47, any good ATL–CUN flights on the 19th?</div>
+              </div>
+              <p class="ai-label">AI 47</p>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('avatar.png');"></div>
+                <div class="chat-bubble">yep! found 3 great ones and added to the website I've created with the itinerary: cancun26.com</div>
+              </div>
+              <div class="chat-row incoming">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Sam');"></div>
+                <div class="typing-indicator">
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Plan a trip with your friends</h3>
+            <p class="chat-card-desc">Stop the endless "I don't know" loops. Your AI Self can find the flights, book the Airbnb, and finalize the itinerary directly in your group chat.</p>
+          </div>
         </div>
       </div>
     </div>
