@@ -496,16 +496,11 @@
       color: rgba(255,255,255,0.8);
     }
     
-    /* Animated chat messages - wrapped structure */
+    /* Animated chat messages - all left-aligned like Slack/Discord */
     .chat-message.chat-row {
       display: flex;
       flex-direction: column;
-    }
-    .chat-message.chat-row.incoming {
       align-items: flex-start;
-    }
-    .chat-message.chat-row.ai {
-      align-items: flex-end;
     }
     .ai-label-inline {
       font-size: 12px;
