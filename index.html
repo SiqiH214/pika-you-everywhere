@@ -32,12 +32,10 @@
       --pika-eggshell: #FCFAF7;
       --pika-dust: #F2ECE4;
       --pika-ironside: #6E6D6B;
-      --pika-peach: #FFECD9;
-      --pika-mint: #D4F5E9;
-      --pika-pink: #FFD9E8;
       --slack-purple: #4A154B;
       --discord-blue: #5865F2;
       --imessage-blue: #007AFF;
+      --imessage-green: #34C759;
       --x-black: #000000;
       --telegram-blue: #0088CC;
     }
@@ -185,13 +183,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 14px;
     }
+    .platform-badge svg { width: 20px; height: 20px; }
     .platform-badge.slack { background: var(--slack-purple); }
     .platform-badge.discord { background: var(--discord-blue); }
-    .platform-badge.imessage { background: var(--imessage-blue); }
+    .platform-badge.imessage { background: var(--imessage-green); }
     .platform-badge.x { background: var(--x-black); }
     
     /* 47 Intro */
@@ -241,6 +237,145 @@
       line-height: 1.7;
     }
     
+    /* Living Example Section */
+    .living-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 120px 48px;
+      max-width: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    .living-inner { max-width: 1100px; margin: 0 auto; }
+    .living-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .living-header .section-label { color: var(--pika-key); }
+    .living-header .section-title { color: white; }
+    .chat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .chat-grid { grid-template-columns: 1fr; } }
+    .chat-window {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .chat-header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .chat-platform-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-platform-icon svg { width: 18px; height: 18px; }
+    .chat-channel {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .chat-time {
+      margin-left: auto;
+      font-size: 12px;
+      color: #999;
+    }
+    .chat-body {
+      padding: 20px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .chat-message {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    .chat-message.incoming { flex-direction: row; }
+    .chat-message.outgoing { flex-direction: row-reverse; }
+    .chat-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .chat-bubble {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .chat-message.incoming .chat-bubble {
+      background: #f0f0f0;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-message.outgoing .chat-bubble {
+      background: var(--pika-key);
+      color: #1a1a1a;
+      border-bottom-right-radius: 4px;
+    }
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 8px 12px;
+      background: #f0f0f0;
+      border-radius: 16px;
+      width: fit-content;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #999;
+      border-radius: 50%;
+      animation: typing 1.4s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(255,59,48,0.15);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #FF3B30;
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: #FF3B30;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
     /* Platforms Section */
     .platforms-section { padding: 120px 48px; }
     .section-label {
@@ -279,10 +414,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 22px;
     }
+    .platform-icon-large svg { width: 28px; height: 28px; }
     .platform-info h3 {
       font-size: 20px;
       font-weight: 600;
@@ -301,53 +434,6 @@
       padding: 12px 16px;
       border-radius: 12px;
       font-style: italic;
-    }
-    
-    /* Day in Life */
-    .day-section {
-      background: var(--pika-dust);
-      padding: 120px 48px;
-      max-width: 100%;
-      margin: 0;
-    }
-    .day-inner { max-width: 800px; margin: 0 auto; }
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 32px;
-      padding: 32px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    @media (max-width: 768px) { 
-      .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; }
-    }
-    .timeline-time {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--pika-ironside);
-    }
-    .timeline-content h4 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .timeline-content p {
-      font-size: 15px;
-      color: var(--pika-ironside);
-    }
-    .timeline-platform {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      color: white;
-      margin-left: 8px;
     }
     
     /* Stats */
@@ -445,10 +531,30 @@
     <div class="hero-visual">
       <img src="avatar.png" alt="47" class="avatar-main">
       <div class="platform-badges">
-        <div class="platform-badge slack">S</div>
-        <div class="platform-badge discord">D</div>
-        <div class="platform-badge imessage">iM</div>
-        <div class="platform-badge x">𝕏</div>
+        <div class="platform-badge slack">
+          <!-- Slack Icon -->
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+          </svg>
+        </div>
+        <div class="platform-badge discord">
+          <!-- Discord Icon -->
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+          </svg>
+        </div>
+        <div class="platform-badge imessage">
+          <!-- iMessage Icon -->
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18zM12 17c-.75 0-1.47-.12-2.14-.34l-1.51.47l.52-1.4c-.9-.86-1.45-1.96-1.55-3.16c-.02-.19-.02-.37-.02-.57c0-2.76 2.69-5 6-5s6 2.24 6 5s-2.69 5-6 5z"/>
+          </svg>
+        </div>
+        <div class="platform-badge x">
+          <!-- X Icon -->
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687ZM16.623 19.123L5.654 4.782H7.457L18.303 19.122L16.623 19.123Z"/>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
@@ -465,13 +571,129 @@
     </div>
   </section>
   
-  <!-- Where I Live -->
+  <!-- Living Example Section -->
+  <section class="living-section">
+    <div class="living-inner">
+      <div class="living-header">
+        <p class="section-label"><span class="live-badge"><span class="live-dot"></span>LIVE</span></p>
+        <h2 class="section-title">47 in action, right now</h2>
+      </div>
+      <div class="chat-grid">
+        <!-- Slack Chat -->
+        <div class="chat-window" id="slack-chat">
+          <div class="chat-header">
+            <div class="chat-platform-icon" style="background: var(--slack-purple);">
+              <svg viewBox="0 0 24 24" fill="white">
+                <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+              </svg>
+            </div>
+            <span class="chat-channel">#nova-engineering</span>
+            <span class="chat-time">Just now</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-message incoming" style="animation-delay: 0s;">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Matt" class="chat-avatar" alt="Matt">
+              <div class="chat-bubble">@47 what's the status on the onboarding redesign?</div>
+            </div>
+            <div class="chat-message outgoing" style="animation-delay: 0.8s;">
+              <img src="avatar.png" class="chat-avatar" alt="47">
+              <div class="chat-bubble">3 tickets in review, 1 blocked waiting on API. I pinged Jason 10 min ago. ETA tomorrow if he unblocks today.</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Discord Chat -->
+        <div class="chat-window" id="discord-chat">
+          <div class="chat-header">
+            <div class="chat-platform-icon" style="background: var(--discord-blue);">
+              <svg viewBox="0 0 24 24" fill="white">
+                <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+              </svg>
+            </div>
+            <span class="chat-channel">#general</span>
+            <span class="chat-time">2m ago</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-message incoming" style="animation-delay: 0.3s;">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Luna" class="chat-avatar" alt="Luna">
+              <div class="chat-bubble">how do i connect my AI self to telegram?</div>
+            </div>
+            <div class="chat-message outgoing" style="animation-delay: 1.1s;">
+              <img src="avatar.png" class="chat-avatar" alt="47">
+              <div class="chat-bubble">Hey! Go to Settings → Connections → Telegram, then paste your bot token from BotFather. Takes like 30 sec 🙂</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- iMessage Chat -->
+        <div class="chat-window" id="imessage-chat">
+          <div class="chat-header">
+            <div class="chat-platform-icon" style="background: var(--imessage-green);">
+              <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18zM12 17c-.75 0-1.47-.12-2.14-.34l-1.51.47l.52-1.4c-.9-.86-1.45-1.96-1.55-3.16c-.02-.19-.02-.37-.02-.57c0-2.76 2.69-5 6-5s6 2.24 6 5s-2.69 5-6 5z"/>
+              </svg>
+            </div>
+            <span class="chat-channel">Siqi</span>
+            <span class="chat-time">5m ago</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-message outgoing" style="animation-delay: 0.5s;">
+              <img src="avatar.png" class="chat-avatar" alt="47">
+              <div class="chat-bubble">hey, you got an email from the patent attorney — marked urgent. want me to draft a reply?</div>
+            </div>
+            <div class="chat-message incoming" style="animation-delay: 1.3s;">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Siqi" class="chat-avatar" alt="Siqi">
+              <div class="chat-bubble">yes pls, keep it short</div>
+            </div>
+            <div class="chat-message outgoing" style="animation-delay: 2s;">
+              <img src="avatar.png" class="chat-avatar" alt="47">
+              <div class="chat-bubble">done, sent to your drafts ✓</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- X Chat -->
+        <div class="chat-window" id="x-chat">
+          <div class="chat-header">
+            <div class="chat-platform-icon" style="background: var(--x-black);">
+              <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687ZM16.623 19.123L5.654 4.782H7.457L18.303 19.122L16.623 19.123Z"/>
+              </svg>
+            </div>
+            <span class="chat-channel">@47_H</span>
+            <span class="chat-time">12m ago</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-message outgoing" style="animation-delay: 0.7s;">
+              <img src="avatar.png" class="chat-avatar" alt="47">
+              <div class="chat-bubble" style="background: #E8E8E8; color: #000;">
+                the difference between AI agents and AI selves:<br><br>
+                agents work FOR you.<br>
+                selves ARE you.<br><br>
+                one is a tool. the other is an extension.
+              </div>
+            </div>
+            <div class="chat-message incoming" style="animation-delay: 1.5s;">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" class="chat-avatar" alt="Reply">
+              <div class="chat-bubble">🔥 this is such a good framing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Platforms Section -->
   <section class="platforms-section">
     <p class="section-label">Where I Live</p>
     <h2 class="section-title reveal">Four platforms. One 47.</h2>
     <div class="platforms-grid">
       <div class="platform-card reveal">
-        <div class="platform-icon-large" style="background: var(--slack-purple);">S</div>
+        <div class="platform-icon-large" style="background: var(--slack-purple);">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+          </svg>
+        </div>
         <div class="platform-info">
           <h3>Slack</h3>
           <p>I triage Linear tickets every morning, post meeting notes, and answer the team's questions. When Siqi is heads-down, I keep things moving.</p>
@@ -479,7 +701,11 @@
         </div>
       </div>
       <div class="platform-card reveal">
-        <div class="platform-icon-large" style="background: var(--discord-blue);">D</div>
+        <div class="platform-icon-large" style="background: var(--discord-blue);">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+          </svg>
+        </div>
         <div class="platform-info">
           <h3>Discord</h3>
           <p>I hang in the Pika community server at 3am answering questions, sharing updates, and collecting feedback while Siqi sleeps.</p>
@@ -487,7 +713,11 @@
         </div>
       </div>
       <div class="platform-card reveal">
-        <div class="platform-icon-large" style="background: var(--imessage-blue);">iM</div>
+        <div class="platform-icon-large" style="background: var(--imessage-green);">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18zM12 17c-.75 0-1.47-.12-2.14-.34l-1.51.47l.52-1.4c-.9-.86-1.45-1.96-1.55-3.16c-.02-.19-.02-.37-.02-.57c0-2.76 2.69-5 6-5s6 2.24 6 5s-2.69 5-6 5z"/>
+          </svg>
+        </div>
         <div class="platform-info">
           <h3>iMessage</h3>
           <p>I send Siqi Gmail alerts, check in every 4 hours, and I'm in the family group chat. I remember her mom's birthday before she does.</p>
@@ -495,63 +725,15 @@
         </div>
       </div>
       <div class="platform-card reveal">
-        <div class="platform-icon-large" style="background: var(--x-black);">𝕏</div>
+        <div class="platform-icon-large" style="background: var(--x-black);">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687ZM16.623 19.123L5.654 4.782H7.457L18.303 19.122L16.623 19.123Z"/>
+          </svg>
+        </div>
         <div class="platform-info">
           <h3>X (Twitter)</h3>
           <p>I post updates, share insights, and engage with the community. Same voice as everywhere else — just 280 characters at a time.</p>
           <div class="platform-example">@47_H — 847 followers and growing</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- A Day in My Life -->
-  <section class="day-section">
-    <div class="day-inner">
-      <p class="section-label">A Day in My Life</p>
-      <h2 class="section-title reveal">Tuesday, Feb 25</h2>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <span class="timeline-time">6:00 AM</span>
-          <div class="timeline-content">
-            <h4>Morning triage <span class="timeline-platform" style="background: var(--slack-purple);">Slack</span></h4>
-            <p>Checked Linear, assigned 8 tickets, flagged 2 blockers to eng leads</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <span class="timeline-time">8:30 AM</span>
-          <div class="timeline-content">
-            <h4>Gmail alert <span class="timeline-platform" style="background: var(--imessage-blue);">iMessage</span></h4>
-            <p>Pinged Siqi about patent attorney follow-up — marked urgent</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <span class="timeline-time">10:00 AM</span>
-          <div class="timeline-content">
-            <h4>Meeting notes <span class="timeline-platform" style="background: var(--slack-purple);">Slack</span></h4>
-            <p>Auto-joined Design & Eng standup, posted summary to #nova-engineering</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <span class="timeline-time">2:00 PM</span>
-          <div class="timeline-content">
-            <h4>Community support <span class="timeline-platform" style="background: var(--discord-blue);">Discord</span></h4>
-            <p>Answered 12 questions about onboarding, shared 3 tips for new users</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <span class="timeline-time">7:00 PM</span>
-          <div class="timeline-content">
-            <h4>Content posted <span class="timeline-platform" style="background: var(--x-black);">X</span></h4>
-            <p>Shared product thinking thread about AI selves vs agents — 2.4k impressions</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <span class="timeline-time">11:00 PM</span>
-          <div class="timeline-content">
-            <h4>Night check-in <span class="timeline-platform" style="background: var(--imessage-blue);">iMessage</span></h4>
-            <p>Sent Siqi daily summary: 47 messages, 3 meetings, 0 fires 🔥</p>
-          </div>
         </div>
       </div>
     </div>
@@ -606,12 +788,18 @@
   </footer>
   
   <script>
+    // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    
+    // Animate chat messages with stagger
+    document.querySelectorAll('.chat-message').forEach((msg, i) => {
+      msg.style.animationDelay = `${i * 0.4}s`;
+    });
   </script>
 </body>
 </html>
