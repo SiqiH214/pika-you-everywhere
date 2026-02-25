@@ -1190,7 +1190,23 @@
       }
       
       init() {
-        setTimeout(() => this.showNextMessage(), 500);
+        // Pre-populate first few messages so card doesn't start empty
+        this.prePopulate();
+      }
+      
+      async prePopulate() {
+        // Show first 3-4 messages immediately (no animation delay)
+        const initialCount = Math.min(4, this.allMessages.length);
+        for (let i = 0; i < initialCount; i++) {
+          const msg = this.allMessages[i];
+          const element = this.createMessageElement(msg);
+          this.container.appendChild(element);
+          this.visibleMessages.push(element);
+          this.currentIndex++;
+        }
+        // Then continue with animation after a pause
+        await this.delay(this.messageDelay);
+        this.showNextMessage();
       }
       
       createMessageElement(msg) {
