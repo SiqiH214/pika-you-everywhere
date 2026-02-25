@@ -877,23 +877,11 @@
         <h2 class="usecases-headline">You,<br>everywhere</h2>
       </div>
       <div class="chat-cards-grid">
-        <!-- Card 1: Help parents with IT -->
+        <!-- Card 1: Help parents with IT (ANIMATED) -->
         <div class="chat-card reveal">
-          <div class="chat-mockup light">
+          <div class="chat-mockup light animated-chat">
             <div class="chat-conversation">
-              <div class="chat-row incoming">
-                <div class="chat-bubble">The printer is broken again! 😫</div>
-                <div class="chat-avatar green">D</div>
-              </div>
-              <p class="ai-label">AI Semi</p>
-              <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('semi-avatar.png');"></div>
-                <div class="chat-bubble">Hey Dad! Did you check if it's plugged in?</div>
-              </div>
-              <div class="chat-row incoming">
-                <div class="chat-bubble">Whoops!</div>
-                <div class="chat-avatar green">D</div>
-              </div>
+              <div class="chat-conversation-inner" id="it-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
@@ -902,32 +890,11 @@
           </div>
         </div>
         
-        <!-- Card 2: Plan a trip -->
+        <!-- Card 2: Plan a trip (ANIMATED) -->
         <div class="chat-card reveal" style="transition-delay: 0.1s;">
-          <div class="chat-mockup image" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80');">
-            <div class="avatar-cluster">
-              <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Alex');"></div>
-              <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Sam');"></div>
-              <div class="chat-avatar img" style="background-image: url('raccoon-avatar.png');"></div>
-            </div>
+          <div class="chat-mockup image animated-chat" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80');">
             <div class="chat-conversation">
-              <div class="chat-row incoming">
-                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Alex');"></div>
-                <div class="chat-bubble">AI Raccoon, any good ATL–CUN flights on the 19th?</div>
-              </div>
-              <p class="ai-label">AI Raccoon</p>
-              <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('raccoon-avatar.png');"></div>
-                <div class="chat-bubble">yep! found 3 great ones and added to the website I've created: cancun26.com</div>
-              </div>
-              <div class="chat-row incoming">
-                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Sam');"></div>
-                <div class="typing-indicator">
-                  <span class="typing-dot"></span>
-                  <span class="typing-dot"></span>
-                  <span class="typing-dot"></span>
-                </div>
-              </div>
+              <div class="chat-conversation-inner" id="trip-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
@@ -936,13 +903,11 @@
           </div>
         </div>
         
-        <!-- Card 3: Handle work while you're off (ANIMATED LOOP) -->
+        <!-- Card 3: Handle work (ANIMATED) -->
         <div class="chat-card reveal" style="transition-delay: 0.2s;">
-          <div class="chat-mockup light animated-chat" id="work-chat" style="background: linear-gradient(135deg, #f8f4f0, #fff);">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #f8f4f0, #fff);">
             <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="work-chat-inner">
-                <!-- Messages will cycle through here -->
-              </div>
+              <div class="chat-conversation-inner" id="work-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
@@ -951,28 +916,11 @@
           </div>
         </div>
         
-        <!-- Card 4: Stay connected with family -->
+        <!-- Card 4: Stay connected with family (ANIMATED) -->
         <div class="chat-card reveal" style="transition-delay: 0.3s;">
-          <div class="chat-mockup image" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800&q=80');">
-            <div class="avatar-cluster">
-              <div class="chat-avatar" style="background: #FF9500; font-size: 12px;">Mom</div>
-              <div class="chat-avatar" style="background: #34C759;">Sis</div>
-              <div class="chat-avatar img" style="background-image: url('emily-avatar.png');"></div>
-            </div>
+          <div class="chat-mockup image animated-chat" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800&q=80');">
             <div class="chat-conversation">
-              <div class="chat-row incoming">
-                <div class="chat-avatar" style="background: #FF9500; font-size: 10px;">Mom</div>
-                <div class="chat-bubble">What should I make for Sunday dinner?</div>
-              </div>
-              <p class="ai-label">AI Emily</p>
-              <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('emily-avatar.png');"></div>
-                <div class="chat-bubble">Emily loves your lasagna! She's been craving comfort food lately 🍝</div>
-              </div>
-              <div class="chat-row incoming">
-                <div class="chat-avatar" style="background: #FF9500; font-size: 10px;">Mom</div>
-                <div class="chat-bubble">Lasagna it is! ❤️</div>
-              </div>
+              <div class="chat-conversation-inner" id="family-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
@@ -981,23 +929,11 @@
           </div>
         </div>
         
-        <!-- Card 5: Remember important dates -->
+        <!-- Card 5: Remember important dates (ANIMATED) -->
         <div class="chat-card reveal" style="transition-delay: 0.4s;">
-          <div class="chat-mockup light" style="background: linear-gradient(135deg, #fef7f0, #fff5f5);">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fef7f0, #fff5f5);">
             <div class="chat-conversation">
-              <div class="chat-row incoming">
-                <div class="chat-avatar" style="background: #FF2D55;">💕</div>
-                <div class="chat-bubble">What are we doing for our anniversary btw?</div>
-              </div>
-              <p class="ai-label">AI Semi</p>
-              <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('semi-avatar.png');"></div>
-                <div class="chat-bubble">Already booked! That rooftop place you mentioned last month — March 15th, 7pm 🌃</div>
-              </div>
-              <div class="chat-row incoming">
-                <div class="chat-avatar" style="background: #FF2D55;">💕</div>
-                <div class="chat-bubble">omg you remembered 😭</div>
-              </div>
+              <div class="chat-conversation-inner" id="dates-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
@@ -1006,27 +942,11 @@
           </div>
         </div>
         
-        <!-- Card 6: Be there for friends -->
+        <!-- Card 6: Be there for friends (ANIMATED) -->
         <div class="chat-card reveal" style="transition-delay: 0.5s;">
-          <div class="chat-mockup light" style="background: linear-gradient(135deg, #f0f4ff, #f8f8ff);">
+          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #f0f4ff, #f8f8ff);">
             <div class="chat-conversation">
-              <div class="chat-row incoming">
-                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend');"></div>
-                <div class="chat-bubble">having such a rough day 😔</div>
-              </div>
-              <p class="ai-label">AI Russ</p>
-              <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
-                <div class="chat-bubble">aw man, what happened? wanna talk about it or just vent?</div>
-              </div>
-              <div class="chat-row incoming">
-                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend');"></div>
-                <div class="typing-indicator">
-                  <span class="typing-dot"></span>
-                  <span class="typing-dot"></span>
-                  <span class="typing-dot"></span>
-                </div>
-              </div>
+              <div class="chat-conversation-inner" id="friends-chat-inner"></div>
             </div>
           </div>
           <div class="chat-card-info">
@@ -1211,29 +1131,97 @@
       }
     }
     
-    // Work chat messages (3 rounds) - typing before each reply
+    // ===== Card 1: IT Help (Semi) =====
+    const itChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'The printer is broken again! 😫' },
+      { type: 'label', text: 'AI Semi' },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Hey Dad! Did you check if it\'s plugged in?', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'Whoops! That was it 😅', replacesTyping: true },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Haha classic! Happens to the best of us 💕', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'Thanks honey!', replacesTyping: true },
+    ];
+    
+    // ===== Card 2: Trip Planning (Raccoon) =====
+    const tripChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', text: 'AI Raccoon, any good ATL–CUN flights on the 19th?' },
+      { type: 'label', text: 'AI Raccoon' },
+      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'yep! found 3 great ones, added to cancun26.com', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sam', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sam', text: 'what about airbnb?', replacesTyping: true },
+      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'already booked the beach house — 4 beds, pool, $89/night 🏖️', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', text: 'LETS GOOO 🎉', replacesTyping: true },
+    ];
+    
+    // ===== Card 3: Work (Russ) =====
     const workChatMessages = [
-      // Round 1
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Hey can you join the 3pm sync today?' },
       { type: 'label', text: 'AI Russ' },
       { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary after!', replacesTyping: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary!', replacesTyping: true },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Perfect, thanks!', replacesTyping: true },
-      // Round 2
       { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Just finished! Summary: 3 action items, design review Friday', replacesTyping: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Done! 3 action items, design review moved to Friday', replacesTyping: true },
       { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Amazing, you\'re a lifesaver 🙏', replacesTyping: true },
-      // Round 3
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Also flagged the API blocker — pinged engineering', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Wait you can do that?? 😮', replacesTyping: true },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'You\'re a lifesaver 🙏', replacesTyping: true },
     ];
     
-    // Initialize work chat
+    // ===== Card 4: Family (Emily) =====
+    const familyChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'What should I make for Sunday dinner?' },
+      { type: 'label', text: 'AI Emily' },
+      { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'emily-avatar.png', text: 'Emily loves your lasagna! She\'s been craving comfort food 🍝', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'Lasagna it is! Will she be home by 6?', replacesTyping: true },
+      { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'emily-avatar.png', text: 'Yes! She\'s wrapping up work around 5:30 ❤️', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'Perfect! See you both then 💕', replacesTyping: true },
+    ];
+    
+    // ===== Card 5: Important Dates (Semi) =====
+    const datesChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'What are we doing for our anniversary btw?' },
+      { type: 'label', text: 'AI Semi' },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Already booked! That rooftop place you mentioned — March 15th, 7pm 🌃', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'omg you remembered 😭', replacesTyping: true },
+      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'semi-avatar.png', text: 'Of course! Also got us tickets to that jazz show after 🎷', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'I love you so much 💕', replacesTyping: true },
+    ];
+    
+    // ===== Card 6: Friends (Russ) =====
+    const friendsChatMessages = [
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'having such a rough day 😔' },
+      { type: 'label', text: 'AI Russ' },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'aw man, what happened? wanna talk about it or just vent?', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'just work stuff... feel like nothing\'s going right', replacesTyping: true },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'that sucks. you wanna grab dinner later? my treat 🍕', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend', text: 'yes please 🥺 thanks for always being there', replacesTyping: true },
+    ];
+    
+    // Initialize all animated chats
+    new ScrollingChatAnimator('it-chat-inner', itChatMessages);
+    new ScrollingChatAnimator('trip-chat-inner', tripChatMessages);
     new ScrollingChatAnimator('work-chat-inner', workChatMessages);
+    new ScrollingChatAnimator('family-chat-inner', familyChatMessages);
+    new ScrollingChatAnimator('dates-chat-inner', datesChatMessages);
+    new ScrollingChatAnimator('friends-chat-inner', friendsChatMessages);
   </script>
 </body>
 </html>
