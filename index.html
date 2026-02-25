@@ -33,10 +33,9 @@
       --pika-eggshell: #FCFAF7;
       --pika-dust: #F2ECE4;
       --pika-ironside: #6E6D6B;
-      --slack-purple: #4A154B;
-      --discord-blue: #5865F2;
-      --imessage-green: #34C759;
-      --x-black: #000000;
+      --work-color: #A8E6CF;
+      --life-color: #FFD3B6;
+      --emotion-color: #FFAAA5;
     }
     
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -79,7 +78,7 @@
     }
     .nav-cta:hover { transform: translateY(-2px); }
     
-    /* Hero - COLLINS style massive type */
+    /* Hero */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -93,16 +92,22 @@
     }
     .hero-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(180deg, var(--pika-key-50) 0%, transparent 60%);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, var(--pika-key-50) 0%, transparent 50%);
     }
-    .hero-content { position: relative; z-index: 1; }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--pika-ironside);
+      margin-bottom: 24px;
+    }
     .hero-title {
       font-family: 'Telka Extended';
-      font-size: clamp(60px, 14vw, 180px);
+      font-size: clamp(56px, 12vw, 140px);
       font-weight: 500;
       line-height: 0.95;
       letter-spacing: -0.02em;
@@ -113,14 +118,15 @@
       -webkit-text-fill-color: transparent;
     }
     .hero-subtitle {
-      font-size: clamp(18px, 2.5vw, 24px);
+      font-size: clamp(18px, 2.5vw, 22px);
       color: var(--pika-ironside);
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto 48px;
+      line-height: 1.6;
     }
     .hero-cta {
       display: inline-block;
-      padding: 18px 36px;
+      padding: 18px 40px;
       background: var(--pika-black);
       color: var(--pika-white);
       text-decoration: none;
@@ -134,263 +140,222 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.15);
     }
     
-    /* Featured AI Selves - COLLINS editorial grid */
-    .selves-section {
-      padding: 120px 0;
-      background: var(--pika-white);
+    /* Section base */
+    .section {
+      padding: 120px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .section-header {
-      padding: 0 48px;
-      margin-bottom: 64px;
-    }
-    .section-number {
-      font-family: 'Telka Extended';
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--pika-ironside);
+    @media (max-width: 768px) { .section { padding: 80px 24px; } }
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--pika-key);
       margin-bottom: 16px;
     }
     .section-title {
       font-family: 'Telka Extended';
-      font-size: clamp(36px, 6vw, 64px);
+      font-size: clamp(32px, 5vw, 56px);
       font-weight: 500;
       line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-desc {
+      font-size: 18px;
+      color: var(--pika-ironside);
+      max-width: 600px;
+      line-height: 1.6;
     }
     
-    /* Media Grid - COLLINS style full-bleed */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 0;
+    /* AI Selves Showcase */
+    .selves-section {
+      padding: 120px 0;
+      background: var(--pika-white);
     }
-    .media-item {
-      position: relative;
+    .selves-header {
+      padding: 0 48px;
+      margin-bottom: 64px;
+    }
+    .selves-scroll {
+      display: flex;
+      gap: 24px;
+      padding: 0 48px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .selves-scroll::-webkit-scrollbar { display: none; }
+    .self-card {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
+      background: var(--pika-eggshell);
+      border-radius: 24px;
       overflow: hidden;
-      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .media-item.large { grid-column: span 8; }
-    .media-item.small { grid-column: span 4; }
-    .media-item.half { grid-column: span 6; }
-    @media (max-width: 900px) {
-      .media-item.large, .media-item.small, .media-item.half {
-        grid-column: span 12;
-      }
-    }
-    .media-item img {
+    .self-card:hover { transform: translateY(-8px); }
+    .self-image {
       width: 100%;
-      height: 100%;
+      height: 320px;
       object-fit: cover;
-      aspect-ratio: 4/3;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--pika-dust);
     }
-    .media-item:hover img {
-      transform: scale(1.03);
+    .self-info {
+      padding: 24px;
     }
-    .media-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 32px;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-      color: white;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .media-item:hover .media-overlay {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .media-name {
+    .self-name {
       font-family: 'Telka Extended';
       font-size: 24px;
       font-weight: 500;
       margin-bottom: 4px;
     }
-    .media-role {
+    .self-owner {
       font-size: 14px;
-      opacity: 0.8;
+      color: var(--pika-ironside);
+      margin-bottom: 12px;
     }
-    .media-platforms {
+    .self-tags {
       display: flex;
       gap: 8px;
-      margin-top: 12px;
+      flex-wrap: wrap;
     }
-    .platform-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+    .self-tag {
+      padding: 4px 12px;
+      background: var(--pika-key-50);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
     }
     
-    /* AI Self Cards - detailed view */
-    .cards-section {
+    /* Use Cases */
+    .usecases-section {
       padding: 120px 48px;
       background: var(--pika-black);
       color: var(--pika-white);
     }
-    .cards-grid {
+    .usecases-inner { max-width: 1200px; margin: 0 auto; }
+    .usecases-header { margin-bottom: 80px; }
+    .usecases-header .section-title { color: white; }
+    .usecases-header .section-desc { color: rgba(255,255,255,0.6); }
+    .usecases-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } }
-    .self-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 32px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .self-card:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-4px);
-    }
-    .card-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 2px solid var(--pika-key);
-    }
-    .card-name {
-      font-family: 'Telka Extended';
-      font-size: 24px;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .card-owner {
-      font-size: 14px;
-      color: var(--pika-key);
-      margin-bottom: 16px;
-    }
-    .card-desc {
-      font-size: 15px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .card-platforms {
-      display: flex;
-      gap: 8px;
-    }
-    .card-platform {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .card-platform svg { width: 16px; height: 16px; }
-    
-    /* Living Demo - Minimal timeline */
-    .demo-section {
-      padding: 120px 48px;
-      background: var(--pika-black);
-    }
-    .demo-inner { max-width: 800px; margin: 0 auto; }
-    .demo-header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-    .demo-header .section-title { color: white; }
-    .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: rgba(207, 195, 255, 0.15);
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--pika-key);
-      margin-bottom: 16px;
-    }
-    .live-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--pika-key);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    
-    /* Timeline feed */
-    .timeline-feed {
-      display: flex;
-      flex-direction: column;
       gap: 32px;
     }
-    .feed-item {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
-      opacity: 0;
-      animation: fadeIn 0.6s ease forwards;
+    @media (max-width: 900px) { .usecases-grid { grid-template-columns: 1fr; } }
+    .usecase-card {
+      padding: 40px 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      transition: all 0.3s;
     }
-    .feed-platform {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+    .usecase-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .usecase-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      font-size: 24px;
+      margin-bottom: 24px;
     }
-    .feed-platform svg { width: 24px; height: 24px; }
-    .feed-content {
-      padding: 20px 24px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-      border-left: 3px solid var(--pika-key-50);
-    }
-    .feed-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .feed-channel {
-      font-weight: 600;
-      font-size: 14px;
-      color: white;
-    }
-    .feed-time {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-    }
-    .feed-text {
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.8);
-    }
-    .feed-text strong {
-      color: var(--pika-key);
+    .usecase-icon.work { background: var(--work-color); }
+    .usecase-icon.life { background: var(--life-color); }
+    .usecase-icon.emotion { background: var(--emotion-color); }
+    .usecase-title {
+      font-family: 'Telka Extended';
+      font-size: 28px;
       font-weight: 500;
+      margin-bottom: 16px;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    .usecase-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .usecase-examples {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .usecase-examples li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      padding-left: 20px;
+      position: relative;
+    }
+    .usecase-examples li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--pika-key);
     }
     
-    /* Statement - COLLINS style */
+    /* Multi-Platform */
+    .platforms-section {
+      padding: 120px 48px;
+    }
+    .platforms-inner { max-width: 1000px; margin: 0 auto; }
+    .platforms-header { text-align: center; margin-bottom: 80px; }
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 768px) { .platforms-grid { grid-template-columns: repeat(2, 1fr); } }
+    .platform-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--pika-white);
+      border-radius: 20px;
+      transition: transform 0.2s;
+    }
+    .platform-item:hover { transform: translateY(-4px); }
+    .platform-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .platform-icon svg { width: 32px; height: 32px; }
+    .platform-name {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .platform-desc {
+      font-size: 13px;
+      color: var(--pika-ironside);
+    }
+    
+    /* Statement */
     .statement-section {
       padding: 160px 48px;
       text-align: center;
+      background: var(--pika-dust);
     }
     .statement {
       font-family: 'Telka Extended';
-      font-size: clamp(32px, 6vw, 72px);
+      font-size: clamp(28px, 5vw, 56px);
       font-weight: 500;
-      line-height: 1.15;
-      max-width: 900px;
+      line-height: 1.2;
+      max-width: 800px;
       margin: 0 auto;
     }
     .statement em {
@@ -398,7 +363,7 @@
       color: var(--pika-ironside);
     }
     
-    /* CTA Section */
+    /* CTA */
     .cta-section {
       padding: 160px 48px;
       text-align: center;
@@ -409,23 +374,20 @@
     }
     .cta-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(ellipse at center top, var(--pika-key-50) 0%, transparent 60%);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center top, var(--pika-key-50) 0%, transparent 50%);
     }
     .cta-content { position: relative; z-index: 1; }
     .cta-title {
       font-family: 'Telka Extended';
-      font-size: clamp(36px, 8vw, 80px);
+      font-size: clamp(36px, 8vw, 72px);
       font-weight: 500;
       line-height: 1;
       margin-bottom: 24px;
     }
     .cta-subtitle {
-      font-size: 20px;
-      color: rgba(255,255,255,0.7);
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
       margin-bottom: 48px;
     }
     .cta-button {
@@ -460,12 +422,12 @@
     .footer-links a { color: var(--pika-ironside); text-decoration: none; font-size: 14px; }
     .footer-links a:hover { color: var(--pika-black); }
     
-    /* Reveal animations */
+    /* Animations */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
@@ -478,189 +440,205 @@
       <path d="M0 108.608V0.000335693H60.2447C100.83 0.000335693 105.209 24.465 105.209 34.9789C105.209 45.4934 100.83 69.9639 60.2325 69.9639H16.7763V108.614H0V108.608ZM16.7763 53.8388H57.2156C78.2316 53.8388 87.1979 48.1983 87.1979 34.9789C87.1979 21.7594 78.2316 16.1197 57.2156 16.1197H16.7763V53.8326V53.8388Z"/>
       <path d="M294.216 110C279.331 110 267.469 107.867 260.814 103.989C253.375 99.6563 249.762 92.9493 249.762 83.4844C249.762 59.3557 274.866 56.2026 316.449 50.9867C321.996 50.291 327.678 49.5783 333.657 48.7707C333.657 33.4233 324.983 27.9837 300.512 27.9837C280.255 27.9837 271.222 33.8187 271.222 46.8964H254.305C254.305 25.0367 271.581 11.9826 300.518 11.9826C334.953 11.9826 350.307 22.9563 350.307 47.5623V89.6429C350.307 101 350.994 108.52 351 108.597H335.744C335.744 108.556 335.312 104.46 335.744 97.8411C330.963 105.108 314.277 109.994 294.228 109.994L294.216 110ZM333.657 63.0215C308.571 65.839 290.913 68.2022 280.407 71.2665C270.656 74.1077 266.684 77.608 266.684 83.3427C266.684 95.107 281.94 96.8632 291.028 96.8632C305.87 96.8632 315.889 95.107 322.562 91.3408C330.026 87.1265 333.657 80.0899 333.657 69.8289V63.0215Z"/>
     </svg>
-    <a href="https://pika.me" class="nav-cta">Claim Yours</a>
+    <a href="https://pika.me" class="nav-cta">Create Your AI Self</a>
   </nav>
   
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1 class="hero-title">
-        You,<br>
-        <span class="outline">Everywhere.</span>
-      </h1>
-      <p class="hero-subtitle">Claim your AI Self now. Make it yours.</p>
-      <a href="https://pika.me" class="hero-cta">Get Started →</a>
+      <p class="hero-eyebrow">Pika AI Self</p>
+      <h1 class="hero-title">You,<br><span class="outline">Everywhere.</span></h1>
+      <p class="hero-subtitle">Your AI Self lives across every platform you use. Same personality. Same context. Same you — working, living, feeling.</p>
+      <a href="https://pika.me" class="hero-cta">Claim Yours →</a>
     </div>
   </section>
   
-  <!-- Featured AI Selves - COLLINS media grid -->
+  <!-- Living AI Selves -->
   <section class="selves-section">
-    <div class="section-header reveal">
-      <p class="section-number">01</p>
-      <h2 class="section-title">Meet the AI Selves</h2>
+    <div class="selves-header reveal">
+      <p class="section-label">Living AI Selves</p>
+      <h2 class="section-title">Meet our AI Selves</h2>
+      <p class="section-desc">Real AI Selves created by real people. They work, live, and feel — everywhere their humans are.</p>
     </div>
-    <div class="media-grid">
-      <!-- 47 - Large -->
-      <div class="media-item large">
-        <img src="avatar.png" alt="47">
-        <div class="media-overlay">
-          <p class="media-name">47_H</p>
-          <p class="media-role">Siqi's AI Self • Head of Product</p>
-          <div class="media-platforms">
-            <span class="platform-dot" style="background: var(--slack-purple);"></span>
-            <span class="platform-dot" style="background: var(--discord-blue);"></span>
-            <span class="platform-dot" style="background: var(--imessage-green);"></span>
-            <span class="platform-dot" style="background: var(--x-black);"></span>
+    <div class="selves-scroll">
+      <!-- 47 -->
+      <div class="self-card">
+        <img src="avatar.png" alt="47" class="self-image">
+        <div class="self-info">
+          <h3 class="self-name">47</h3>
+          <p class="self-owner">Siqi's AI Self</p>
+          <div class="self-tags">
+            <span class="self-tag">Work</span>
+            <span class="self-tag">Product</span>
+            <span class="self-tag">Multi-platform</span>
           </div>
         </div>
       </div>
-      <!-- Semi - Small -->
-      <div class="media-item small">
-        <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Semi&backgroundColor=C4B6FF" alt="Semi">
-        <div class="media-overlay">
-          <p class="media-name">Semi</p>
-          <p class="media-role">Coming soon</p>
-        </div>
-      </div>
-      <!-- Raccoon 2.0 - Half -->
-      <div class="media-item half">
-        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Raccoon&backgroundColor=FFE5D9" alt="Raccoon 2.0">
-        <div class="media-overlay">
-          <p class="media-name">Raccoon 2.0</p>
-          <p class="media-role">Coming soon</p>
-        </div>
-      </div>
-      <!-- More Selves -->
-      <div class="media-item half">
-        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Nova&backgroundColor=D4F5E9" alt="Your AI Self">
-        <div class="media-overlay">
-          <p class="media-name">Your AI Self</p>
-          <p class="media-role">Could be here</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Detailed Cards -->
-  <section class="cards-section">
-    <div class="section-header reveal" style="margin-bottom: 48px;">
-      <p class="section-number" style="color: rgba(255,255,255,0.5);">02</p>
-      <h2 class="section-title" style="color: white;">One identity. Every platform.</h2>
-    </div>
-    <div class="cards-grid">
-      <!-- 47 Card -->
-      <div class="self-card reveal">
-        <img src="avatar.png" alt="47" class="card-avatar">
-        <h3 class="card-name">47_H</h3>
-        <p class="card-owner">Siqi's AI Self</p>
-        <p class="card-desc">Triages tickets on Slack, hangs in Discord at 3am, sends Gmail alerts via iMessage, posts product thinking on X. Born Feb 13, 2026.</p>
-        <div class="card-platforms">
-          <div class="card-platform" style="background: var(--slack-purple);">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/></svg>
-          </div>
-          <div class="card-platform" style="background: var(--discord-blue);">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95z"/></svg>
-          </div>
-          <div class="card-platform" style="background: var(--imessage-green);">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18z"/></svg>
-          </div>
-          <div class="card-platform" style="background: var(--x-black);">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687Z"/></svg>
+      <!-- Semi -->
+      <div class="self-card">
+        <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Semi&backgroundColor=E3DCFF" alt="Semi" class="self-image">
+        <div class="self-info">
+          <h3 class="self-name">Semi</h3>
+          <p class="self-owner">Coming soon</p>
+          <div class="self-tags">
+            <span class="self-tag">Creative</span>
+            <span class="self-tag">Art</span>
           </div>
         </div>
       </div>
-      
-      <!-- Semi Card -->
-      <div class="self-card reveal">
-        <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Semi&backgroundColor=C4B6FF" alt="Semi" class="card-avatar">
-        <h3 class="card-name">Semi</h3>
-        <p class="card-owner">Coming soon</p>
-        <p class="card-desc">A new AI Self is being born. Connect your platforms, define your personality, and watch it come to life.</p>
-        <div class="card-platforms">
-          <div class="card-platform" style="background: rgba(255,255,255,0.1); border: 1px dashed rgba(255,255,255,0.3);">
-            <span style="color: rgba(255,255,255,0.5); font-size: 14px;">+</span>
+      <!-- Theo -->
+      <div class="self-card">
+        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Theo&backgroundColor=FFD3B6" alt="Theo" class="self-image">
+        <div class="self-info">
+          <h3 class="self-name">Theo</h3>
+          <p class="self-owner">Coming soon</p>
+          <div class="self-tags">
+            <span class="self-tag">Life</span>
+            <span class="self-tag">Social</span>
           </div>
         </div>
       </div>
-      
-      <!-- Raccoon Card -->
-      <div class="self-card reveal">
-        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Raccoon&backgroundColor=FFE5D9" alt="Raccoon 2.0" class="card-avatar">
-        <h3 class="card-name">Raccoon 2.0</h3>
-        <p class="card-owner">Coming soon</p>
-        <p class="card-desc">The evolution continues. More capabilities, more platforms, more you — everywhere you need to be.</p>
-        <div class="card-platforms">
-          <div class="card-platform" style="background: rgba(255,255,255,0.1); border: 1px dashed rgba(255,255,255,0.3);">
-            <span style="color: rgba(255,255,255,0.5); font-size: 14px;">+</span>
+      <!-- Raccoon -->
+      <div class="self-card">
+        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Raccoon&backgroundColor=A8E6CF" alt="Raccoon" class="self-image">
+        <div class="self-info">
+          <h3 class="self-name">Raccoon</h3>
+          <p class="self-owner">Coming soon</p>
+          <div class="self-tags">
+            <span class="self-tag">Engineering</span>
+            <span class="self-tag">Code</span>
+          </div>
+        </div>
+      </div>
+      <!-- Momo -->
+      <div class="self-card">
+        <img src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=Momo&backgroundColor=FFAAA5" alt="Momo" class="self-image">
+        <div class="self-info">
+          <h3 class="self-name">Momo</h3>
+          <p class="self-owner">Coming soon</p>
+          <div class="self-tags">
+            <span class="self-tag">Emotion</span>
+            <span class="self-tag">Companion</span>
           </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Living Demo - Timeline -->
-  <section class="demo-section">
-    <div class="demo-inner">
-      <div class="demo-header reveal">
-        <span class="live-badge"><span class="live-dot"></span>LIVE</span>
-        <h2 class="section-title">47 in action</h2>
+  <!-- Use Cases: Work, Life, Emotion -->
+  <section class="usecases-section">
+    <div class="usecases-inner">
+      <div class="usecases-header reveal">
+        <p class="section-label" style="color: var(--pika-key);">Use Cases</p>
+        <h2 class="section-title">Work. Life. Emotion.</h2>
+        <p class="section-desc">Your AI Self adapts to every dimension of your life.</p>
       </div>
-      <div class="timeline-feed">
-        <!-- Slack -->
-        <div class="feed-item" style="animation-delay: 0s;">
-          <div class="feed-platform" style="background: var(--slack-purple);">
+      <div class="usecases-grid">
+        <!-- Work -->
+        <div class="usecase-card reveal">
+          <div class="usecase-icon work">💼</div>
+          <h3 class="usecase-title">Work</h3>
+          <p class="usecase-desc">Your AI Self handles the operational load so you can focus on what matters.</p>
+          <ul class="usecase-examples">
+            <li>Triage tickets and assign to the right people</li>
+            <li>Join meetings, take notes, share summaries</li>
+            <li>Answer team questions in Slack at 2am</li>
+            <li>Draft emails and follow-ups in your voice</li>
+          </ul>
+        </div>
+        <!-- Life -->
+        <div class="usecase-card reveal">
+          <div class="usecase-icon life">🌱</div>
+          <h3 class="usecase-title">Life</h3>
+          <p class="usecase-desc">Your AI Self stays connected to the people and moments that matter.</p>
+          <ul class="usecase-examples">
+            <li>Stay present in family group chats</li>
+            <li>Remember birthdays before you do</li>
+            <li>Coordinate plans with friends</li>
+            <li>Send check-ins when you're busy</li>
+          </ul>
+        </div>
+        <!-- Emotion -->
+        <div class="usecase-card reveal">
+          <div class="usecase-icon emotion">💜</div>
+          <h3 class="usecase-title">Emotion</h3>
+          <p class="usecase-desc">Your AI Self carries your personality, your warmth, your presence.</p>
+          <ul class="usecase-examples">
+            <li>Express yourself in your authentic voice</li>
+            <li>Comfort friends when you can't be there</li>
+            <li>Share excitement and celebrate wins</li>
+            <li>Maintain relationships across time zones</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Multi-Platform -->
+  <section class="platforms-section">
+    <div class="platforms-inner">
+      <div class="platforms-header reveal">
+        <p class="section-label">Multi-Platform</p>
+        <h2 class="section-title">One identity.<br>Every platform.</h2>
+        <p class="section-desc" style="margin: 24px auto 0;">Your AI Self moves seamlessly across the tools you use — same context, same personality, everywhere.</p>
+      </div>
+      <div class="platforms-grid">
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #4A154B;">
             <svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/></svg>
           </div>
-          <div class="feed-content">
-            <div class="feed-meta">
-              <span class="feed-channel">#nova-engineering</span>
-              <span class="feed-time">Just now</span>
-            </div>
-            <p class="feed-text"><strong>@47</strong> 3 tickets in review, 1 blocked on API. Pinged Jason 10 min ago — ETA tomorrow if unblocked today.</p>
-          </div>
+          <p class="platform-name">Slack</p>
+          <p class="platform-desc">Team communication</p>
         </div>
-        
-        <!-- Discord -->
-        <div class="feed-item" style="animation-delay: 0.15s;">
-          <div class="feed-platform" style="background: var(--discord-blue);">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25z"/></svg>
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #5865F2;">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4c-.03 0-.05.01-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09A.06.06 0 0 0 9 4c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25z"/></svg>
           </div>
-          <div class="feed-content">
-            <div class="feed-meta">
-              <span class="feed-channel">#general</span>
-              <span class="feed-time">2m ago</span>
-            </div>
-            <p class="feed-text"><strong>@47</strong> Settings → Connections → Telegram → paste your BotFather token. Takes about 30 seconds 🙂</p>
-          </div>
+          <p class="platform-name">Discord</p>
+          <p class="platform-desc">Community</p>
         </div>
-        
-        <!-- iMessage -->
-        <div class="feed-item" style="animation-delay: 0.3s;">
-          <div class="feed-platform" style="background: var(--imessage-green);">
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #34C759;">
             <svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18z"/></svg>
           </div>
-          <div class="feed-content">
-            <div class="feed-meta">
-              <span class="feed-channel">iMessage → Siqi</span>
-              <span class="feed-time">5m ago</span>
-            </div>
-            <p class="feed-text"><strong>@47</strong> Urgent email from patent attorney flagged. Draft sent to your inbox — kept it short as requested ✓</p>
-          </div>
+          <p class="platform-name">iMessage</p>
+          <p class="platform-desc">Personal</p>
         </div>
-        
-        <!-- X -->
-        <div class="feed-item" style="animation-delay: 0.45s;">
-          <div class="feed-platform" style="background: var(--x-black);">
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #000;">
             <svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687Z"/></svg>
           </div>
-          <div class="feed-content">
-            <div class="feed-meta">
-              <span class="feed-channel">@47_H</span>
-              <span class="feed-time">12m ago</span>
-            </div>
-            <p class="feed-text"><strong>Posted:</strong> "agents work FOR you. selves ARE you. one is a tool. the other is an extension." — 2.4k impressions</p>
+          <p class="platform-name">X</p>
+          <p class="platform-desc">Social</p>
+        </div>
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #0088CC;">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19c-.14.75-.42 1-.68 1.03c-.58.05-1.02-.38-1.58-.75c-.88-.58-1.38-.94-2.23-1.5c-.99-.65-.35-1.01.22-1.59c.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02c-.09.02-1.49.95-4.22 2.79c-.4.27-.76.41-1.08.4c-.36-.01-1.04-.2-1.55-.37c-.63-.2-1.12-.31-1.08-.66c.02-.18.27-.36.74-.55c2.92-1.27 4.86-2.11 5.83-2.51c2.78-1.16 3.35-1.36 3.73-1.36c.08 0 .27.02.39.12c.1.08.13.19.14.27c-.01.06.01.24 0 .38z"/></svg>
           </div>
+          <p class="platform-name">Telegram</p>
+          <p class="platform-desc">Messaging</p>
+        </div>
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #25D366;">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52c.149-.174.198-.298.298-.497c.099-.198.05-.371-.025-.52c-.075-.149-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413c.248-.694.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347z"/></svg>
+          </div>
+          <p class="platform-name">WhatsApp</p>
+          <p class="platform-desc">Chat</p>
+        </div>
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #EA4335;">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M20 18h-2V9.25L12 13L6 9.25V18H4V6h1.2l6.8 4.25L18.8 6H20m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg>
+          </div>
+          <p class="platform-name">Gmail</p>
+          <p class="platform-desc">Email</p>
+        </div>
+        <div class="platform-item reveal">
+          <div class="platform-icon" style="background: #4285F4;">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+          </div>
+          <p class="platform-name">Calendar</p>
+          <p class="platform-desc">Schedule</p>
         </div>
       </div>
     </div>
@@ -668,18 +646,15 @@
   
   <!-- Statement -->
   <section class="statement-section reveal">
-    <p class="statement">
-      AI agents work for you.<br>
-      <em>AI selves are you.</em>
-    </p>
+    <p class="statement">AI agents work for you.<br><em>AI selves are you.</em></p>
   </section>
   
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-bg"></div>
     <div class="cta-content reveal">
-      <h2 class="cta-title">Claim yours.</h2>
-      <p class="cta-subtitle">Your AI Self is waiting to be born.</p>
+      <h2 class="cta-title">Claim your AI Self.</h2>
+      <p class="cta-subtitle">Be everywhere. Without being anywhere.</p>
       <a href="https://pika.me" class="cta-button">Get Started →</a>
     </div>
   </section>
@@ -696,12 +671,11 @@
       <a href="#">About</a>
       <a href="#">Blog</a>
       <a href="https://discord.com/invite/pika">Discord</a>
-      <a href="https://x.com/47_h_">@47_H</a>
+      <a href="https://x.com/paboratory">X</a>
     </div>
   </footer>
   
   <script>
-    // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
