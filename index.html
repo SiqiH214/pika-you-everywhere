@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pika — You, Everywhere</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Telka Extended';
@@ -28,55 +28,79 @@
     :root {
       --pika-key: #CFC3FF;
       --pika-key-50: rgba(207, 195, 255, 0.5);
+      --pika-blob: #E2DCEE;
       --pika-black: #0D0D0D;
       --pika-white: #FFFFFF;
-      --pika-eggshell: #FCFAF7;
-      --pika-dust: #F2ECE4;
-      --pika-ironside: #6E6D6B;
-      --work-color: #A8E6CF;
-      --life-color: #FFD3B6;
-      --emotion-color: #FFAAA5;
+      --pika-eggshell: #FDF7EF;
+      --pika-cream: #F8F4ED;
+      --pika-warm: #6E6D6B;
+      --work: #A8E6CF;
+      --life: #FFD3B6;
+      --emotion: #FFAAA5;
     }
     
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { 
+      scroll-behavior: smooth; 
+      font-size: 16px;
+      background: var(--pika-eggshell);
+    }
     
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Instrument Serif', Georgia, serif;
       background: var(--pika-eggshell);
       color: var(--pika-black);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     
+    /* Utility */
     .telka { font-family: 'Telka Extended', sans-serif; }
+    
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
     
     /* Nav */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 20px 48px;
+      padding: 24px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(252, 250, 247, 0.9);
-      backdrop-filter: blur(10px);
+      mix-blend-mode: difference;
     }
-    @media (max-width: 768px) { nav { padding: 16px 24px; } }
-    .wordmark { height: 24px; width: auto; }
+    @media (max-width: 768px) { nav { padding: 20px 24px; } }
+    .wordmark { 
+      height: 22px; 
+      width: auto; 
+      fill: var(--pika-white);
+    }
     .nav-cta {
-      padding: 12px 24px;
-      background: var(--pika-black);
-      color: var(--pika-white);
+      padding: 14px 28px;
+      background: var(--pika-white);
+      color: var(--pika-black);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
+      font-family: 'Telka Extended';
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.05em;
       border-radius: 100px;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .nav-cta:hover { transform: translateY(-2px); }
+    .nav-cta:hover { 
+      transform: scale(1.02);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
     
     /* Hero */
     .hero {
@@ -86,190 +110,248 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 120px 48px;
+      padding: 120px 48px 80px;
       position: relative;
       overflow: hidden;
+      background: linear-gradient(180deg, var(--pika-eggshell) 45%, transparent 100%);
     }
-    .hero-bg {
+    
+    /* Figma-style gradient blob */
+    .hero-blob {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(180deg, var(--pika-key-50) 0%, transparent 50%);
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140vw;
+      height: 100vh;
+      background: radial-gradient(ellipse at center, var(--pika-blob) 0%, transparent 70%);
+      filter: blur(120px);
+      opacity: 0.8;
+      pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--pika-ironside);
-      margin-bottom: 24px;
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
     }
+    
+    /* Figma-style headline: Telka Extended Super, uppercase */
     .hero-title {
       font-family: 'Telka Extended';
-      font-size: clamp(56px, 12vw, 140px);
-      font-weight: 500;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin-bottom: 32px;
+      font-size: clamp(48px, 11vw, 120px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
     }
-    .hero-title .outline {
-      -webkit-text-stroke: 2px var(--pika-black);
-      -webkit-text-fill-color: transparent;
+    .hero-title span {
+      display: block;
     }
+    .hero-title .line-2 {
+      color: var(--pika-warm);
+    }
+    
     .hero-subtitle {
-      font-size: clamp(18px, 2.5vw, 22px);
-      color: var(--pika-ironside);
-      max-width: 600px;
+      font-family: 'Telka Extended';
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 400;
+      color: var(--pika-warm);
+      max-width: 480px;
       margin: 0 auto 48px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
-    .hero-cta {
-      display: inline-block;
-      padding: 18px 40px;
+    
+    /* Figma-style button */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
       background: var(--pika-black);
       color: var(--pika-white);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
+      font-family: 'Telka Extended';
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.03em;
       border-radius: 100px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hero-cta:hover {
+    .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    }
+    .btn-primary svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s;
+    }
+    .btn-primary:hover svg {
+      transform: translateX(4px);
     }
     
-    /* Section base */
-    .section {
-      padding: 120px 48px;
-      max-width: 1200px;
-      margin: 0 auto;
+    /* AI Selves Section */
+    .selves-section {
+      padding: 160px 48px;
+      position: relative;
     }
-    @media (max-width: 768px) { .section { padding: 80px 24px; } }
-    .section-label {
-      font-size: 12px;
-      font-weight: 600;
+    .selves-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+    }
+    
+    .section-header {
+      max-width: 600px;
+      margin-bottom: 80px;
+    }
+    .section-tag {
+      font-family: 'Telka Extended';
+      font-size: 11px;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: var(--pika-key);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .section-title {
       font-family: 'Telka Extended';
-      font-size: clamp(32px, 5vw, 56px);
+      font-size: clamp(32px, 5vw, 48px);
       font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      line-height: 1.15;
+      margin-bottom: 20px;
     }
     .section-desc {
       font-size: 18px;
-      color: var(--pika-ironside);
-      max-width: 600px;
-      line-height: 1.6;
+      color: var(--pika-warm);
+      line-height: 1.7;
     }
     
-    /* AI Selves Showcase */
-    .selves-section {
-      padding: 120px 0;
-      background: var(--pika-white);
+    /* Selves Grid - Editorial asymmetric */
+    .selves-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
     }
-    .selves-header {
-      padding: 0 48px;
-      margin-bottom: 64px;
-    }
-    .selves-scroll {
-      display: flex;
-      gap: 24px;
-      padding: 0 48px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .selves-scroll::-webkit-scrollbar { display: none; }
     .self-card {
-      flex: 0 0 320px;
-      scroll-snap-align: start;
-      background: var(--pika-eggshell);
+      position: relative;
       border-radius: 24px;
       overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--pika-cream);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .self-card:hover { transform: translateY(-8px); }
+    .self-card:hover {
+      transform: translateY(-8px) scale(1.01);
+    }
+    .self-card:nth-child(1) { grid-column: span 5; }
+    .self-card:nth-child(2) { grid-column: span 4; }
+    .self-card:nth-child(3) { grid-column: span 3; }
+    .self-card:nth-child(4) { grid-column: span 4; }
+    .self-card:nth-child(5) { grid-column: span 4; }
+    @media (max-width: 900px) {
+      .self-card { grid-column: span 6 !important; }
+    }
+    @media (max-width: 600px) {
+      .self-card { grid-column: span 12 !important; }
+    }
     .self-image {
       width: 100%;
-      height: 320px;
+      aspect-ratio: 1;
       object-fit: cover;
-      background: var(--pika-dust);
     }
     .self-info {
       padding: 24px;
     }
     .self-name {
       font-family: 'Telka Extended';
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 500;
       margin-bottom: 4px;
     }
     .self-owner {
       font-size: 14px;
-      color: var(--pika-ironside);
-      margin-bottom: 12px;
+      color: var(--pika-warm);
+      margin-bottom: 16px;
     }
     .self-tags {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
     }
-    .self-tag {
-      padding: 4px 12px;
+    .tag {
+      padding: 6px 14px;
       background: var(--pika-key-50);
       border-radius: 100px;
-      font-size: 12px;
+      font-family: 'Telka Extended';
+      font-size: 11px;
       font-weight: 500;
+      letter-spacing: 0.02em;
     }
     
     /* Use Cases */
     .usecases-section {
-      padding: 120px 48px;
+      padding: 160px 48px;
       background: var(--pika-black);
       color: var(--pika-white);
+      position: relative;
     }
-    .usecases-inner { max-width: 1200px; margin: 0 auto; }
-    .usecases-header { margin-bottom: 80px; }
-    .usecases-header .section-title { color: white; }
-    .usecases-header .section-desc { color: rgba(255,255,255,0.6); }
+    .usecases-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .usecases-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 100px;
+    }
+    @media (max-width: 900px) {
+      .usecases-header { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .usecases-header .section-title {
+      font-size: clamp(36px, 6vw, 56px);
+    }
+    .usecases-header .section-desc {
+      color: rgba(255,255,255,0.5);
+      align-self: end;
+    }
+    
     .usecases-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 24px;
     }
     @media (max-width: 900px) { .usecases-grid { grid-template-columns: 1fr; } }
+    
     .usecase-card {
-      padding: 40px 32px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
+      padding: 48px 36px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
       transition: all 0.3s;
     }
     .usecase-card:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
     }
     .usecase-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      margin-bottom: 24px;
+      font-size: 28px;
+      margin-bottom: 32px;
     }
-    .usecase-icon.work { background: var(--work-color); }
-    .usecase-icon.life { background: var(--life-color); }
-    .usecase-icon.emotion { background: var(--emotion-color); }
+    .usecase-icon.work { background: var(--work); }
+    .usecase-icon.life { background: var(--life); }
+    .usecase-icon.emotion { background: var(--emotion); }
     .usecase-title {
       font-family: 'Telka Extended';
       font-size: 28px;
@@ -278,23 +360,23 @@
     }
     .usecase-desc {
       font-size: 15px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
       line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
-    .usecase-examples {
+    .usecase-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
-    .usecase-examples li {
+    .usecase-list li {
       font-size: 14px;
-      color: rgba(255,255,255,0.8);
-      padding-left: 20px;
+      color: rgba(255,255,255,0.7);
+      padding-left: 24px;
       position: relative;
     }
-    .usecase-examples li::before {
+    .usecase-list li::before {
       content: '→';
       position: absolute;
       left: 0;
@@ -303,107 +385,141 @@
     
     /* Multi-Platform */
     .platforms-section {
-      padding: 120px 48px;
-    }
-    .platforms-inner { max-width: 1000px; margin: 0 auto; }
-    .platforms-header { text-align: center; margin-bottom: 80px; }
-    .platforms-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 768px) { .platforms-grid { grid-template-columns: repeat(2, 1fr); } }
-    .platform-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 160px 48px;
       text-align: center;
-      padding: 32px 24px;
-      background: var(--pika-white);
-      border-radius: 20px;
-      transition: transform 0.2s;
     }
-    .platform-item:hover { transform: translateY(-4px); }
-    .platform-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+    .platforms-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .platforms-header {
+      margin-bottom: 80px;
+    }
+    .platforms-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .platform-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--pika-white);
+      border-radius: 100px;
+      font-family: 'Telka Extended';
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .platform-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .platform-pill .icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
     }
-    .platform-icon svg { width: 32px; height: 32px; }
-    .platform-name {
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-    .platform-desc {
-      font-size: 13px;
-      color: var(--pika-ironside);
+    .platform-pill .icon svg {
+      width: 14px;
+      height: 14px;
     }
     
     /* Statement */
     .statement-section {
-      padding: 160px 48px;
+      padding: 200px 48px;
       text-align: center;
-      background: var(--pika-dust);
+      position: relative;
+      overflow: hidden;
+    }
+    .statement-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--pika-key-50) 0%, transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
     }
     .statement {
+      position: relative;
       font-family: 'Telka Extended';
-      font-size: clamp(28px, 5vw, 56px);
+      font-size: clamp(28px, 5vw, 52px);
       font-weight: 500;
-      line-height: 1.2;
+      line-height: 1.25;
       max-width: 800px;
       margin: 0 auto;
     }
     .statement em {
       font-style: normal;
-      color: var(--pika-ironside);
+      color: var(--pika-warm);
     }
     
     /* CTA */
     .cta-section {
-      padding: 160px 48px;
+      padding: 180px 48px;
       text-align: center;
       background: var(--pika-black);
       color: var(--pika-white);
       position: relative;
       overflow: hidden;
     }
-    .cta-bg {
+    .cta-blob {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at center top, var(--pika-key-50) 0%, transparent 50%);
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120vw;
+      height: 100%;
+      background: radial-gradient(ellipse at center, var(--pika-key) 0%, transparent 60%);
+      filter: blur(150px);
+      opacity: 0.25;
     }
-    .cta-content { position: relative; z-index: 1; }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
     .cta-title {
       font-family: 'Telka Extended';
-      font-size: clamp(36px, 8vw, 72px);
-      font-weight: 500;
+      font-size: clamp(40px, 9vw, 80px);
+      font-weight: 700;
       line-height: 1;
+      text-transform: uppercase;
       margin-bottom: 24px;
     }
     .cta-subtitle {
-      font-size: 18px;
-      color: rgba(255,255,255,0.6);
+      font-family: 'Telka Extended';
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
       margin-bottom: 48px;
     }
-    .cta-button {
-      display: inline-block;
-      padding: 18px 48px;
+    .btn-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 44px;
       background: var(--pika-white);
       color: var(--pika-black);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
+      font-family: 'Telka Extended';
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.02em;
       border-radius: 100px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(255,255,255,0.15);
+    .btn-light:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 60px rgba(255,255,255,0.15);
     }
     
     /* Footer */
@@ -412,163 +528,173 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid var(--pika-dust);
       max-width: 1200px;
       margin: 0 auto;
     }
     @media (max-width: 768px) { footer { flex-direction: column; gap: 24px; } }
-    .footer-wordmark { height: 20px; width: auto; }
-    .footer-links { display: flex; gap: 32px; }
-    .footer-links a { color: var(--pika-ironside); text-decoration: none; font-size: 14px; }
+    .footer-wordmark { height: 18px; width: auto; }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      color: var(--pika-warm);
+      text-decoration: none;
+      font-family: 'Telka Extended';
+      font-size: 13px;
+      transition: color 0.2s;
+    }
     .footer-links a:hover { color: var(--pika-black); }
     
     /* Animations */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
   </style>
 </head>
 <body>
   <nav>
-    <svg class="wordmark" viewBox="0 0 351 110" fill="currentColor">
+    <svg class="wordmark" viewBox="0 0 351 110">
       <path d="M118.53 0H135.307V17.6162H118.53V0ZM118.53 25.2367H135.307V108.602H118.53V25.2367Z"/>
       <path d="M149.64 0H166.417V57.6985L224.32 12.6594H247.563L186.77 59.0303L249.205 108.602H224.862L166.405 62.7611V108.602H149.628V0H149.634H149.64Z"/>
       <path d="M0 108.608V0.000335693H60.2447C100.83 0.000335693 105.209 24.465 105.209 34.9789C105.209 45.4934 100.83 69.9639 60.2325 69.9639H16.7763V108.614H0V108.608ZM16.7763 53.8388H57.2156C78.2316 53.8388 87.1979 48.1983 87.1979 34.9789C87.1979 21.7594 78.2316 16.1197 57.2156 16.1197H16.7763V53.8326V53.8388Z"/>
       <path d="M294.216 110C279.331 110 267.469 107.867 260.814 103.989C253.375 99.6563 249.762 92.9493 249.762 83.4844C249.762 59.3557 274.866 56.2026 316.449 50.9867C321.996 50.291 327.678 49.5783 333.657 48.7707C333.657 33.4233 324.983 27.9837 300.512 27.9837C280.255 27.9837 271.222 33.8187 271.222 46.8964H254.305C254.305 25.0367 271.581 11.9826 300.518 11.9826C334.953 11.9826 350.307 22.9563 350.307 47.5623V89.6429C350.307 101 350.994 108.52 351 108.597H335.744C335.744 108.556 335.312 104.46 335.744 97.8411C330.963 105.108 314.277 109.994 294.228 109.994L294.216 110ZM333.657 63.0215C308.571 65.839 290.913 68.2022 280.407 71.2665C270.656 74.1077 266.684 77.608 266.684 83.3427C266.684 95.107 281.94 96.8632 291.028 96.8632C305.87 96.8632 315.889 95.107 322.562 91.3408C330.026 87.1265 333.657 80.0899 333.657 69.8289V63.0215Z"/>
     </svg>
-    <a href="https://pika.me" class="nav-cta">Create Your AI Self</a>
+    <a href="https://pika.me" class="nav-cta">Create Yours</a>
   </nav>
   
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-blob"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Pika AI Self</p>
-      <h1 class="hero-title">You,<br><span class="outline">Everywhere.</span></h1>
-      <p class="hero-subtitle">Your AI Self lives across every platform you use. Same personality. Same context. Same you — working, living, feeling.</p>
-      <a href="https://pika.me" class="hero-cta">Claim Yours →</a>
+      <h1 class="hero-title">
+        <span>Be there.</span>
+        <span class="line-2">Even when you're not.</span>
+      </h1>
+      <p class="hero-subtitle">Your AI Self lives across every platform. Same personality. Same context. Same you — working, living, feeling.</p>
+      <a href="https://pika.me" class="btn-primary">
+        Claim your AI Self
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
   
   <!-- Living AI Selves -->
   <section class="selves-section">
-    <div class="selves-header reveal">
-      <p class="section-label">Living AI Selves</p>
-      <h2 class="section-title">Meet our AI Selves</h2>
-      <p class="section-desc">Real AI Selves created by real people. They work, live, and feel — everywhere their humans are.</p>
+    <div class="section-header reveal">
+      <p class="section-tag">Living AI Selves</p>
+      <h2 class="section-title">Real AI Selves.<br>Real people.</h2>
+      <p class="section-desc">They work, live, and feel — everywhere their humans need them.</p>
     </div>
-    <div class="selves-scroll">
-      <!-- 47 -->
-      <div class="self-card">
+    <div class="selves-grid">
+      <div class="self-card reveal">
         <img src="avatar.png" alt="47" class="self-image">
         <div class="self-info">
           <h3 class="self-name">47</h3>
           <p class="self-owner">Siqi's AI Self</p>
           <div class="self-tags">
-            <span class="self-tag">Work</span>
-            <span class="self-tag">Product</span>
-            <span class="self-tag">Multi-platform</span>
+            <span class="tag">Work</span>
+            <span class="tag">Product</span>
           </div>
         </div>
       </div>
-      <!-- Semi -->
-      <div class="self-card">
+      <div class="self-card reveal reveal-delay-1">
         <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Semi&backgroundColor=E3DCFF" alt="Semi" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Semi</h3>
-          <p class="self-owner">Coming soon</p>
+          <p class="self-owner">Creative AI Self</p>
           <div class="self-tags">
-            <span class="self-tag">Creative</span>
-            <span class="self-tag">Art</span>
+            <span class="tag">Art</span>
+            <span class="tag">Design</span>
           </div>
         </div>
       </div>
-      <!-- Theo -->
-      <div class="self-card">
+      <div class="self-card reveal reveal-delay-2">
         <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Theo&backgroundColor=FFD3B6" alt="Theo" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Theo</h3>
-          <p class="self-owner">Coming soon</p>
+          <p class="self-owner">Life AI Self</p>
           <div class="self-tags">
-            <span class="self-tag">Life</span>
-            <span class="self-tag">Social</span>
+            <span class="tag">Life</span>
           </div>
         </div>
       </div>
-      <!-- Raccoon -->
-      <div class="self-card">
+      <div class="self-card reveal reveal-delay-1">
         <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Raccoon&backgroundColor=A8E6CF" alt="Raccoon" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Raccoon</h3>
-          <p class="self-owner">Coming soon</p>
+          <p class="self-owner">Engineering AI Self</p>
           <div class="self-tags">
-            <span class="self-tag">Engineering</span>
-            <span class="self-tag">Code</span>
+            <span class="tag">Code</span>
+            <span class="tag">Build</span>
           </div>
         </div>
       </div>
-      <!-- Momo -->
-      <div class="self-card">
+      <div class="self-card reveal reveal-delay-2">
         <img src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=Momo&backgroundColor=FFAAA5" alt="Momo" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Momo</h3>
-          <p class="self-owner">Coming soon</p>
+          <p class="self-owner">Emotional AI Self</p>
           <div class="self-tags">
-            <span class="self-tag">Emotion</span>
-            <span class="self-tag">Companion</span>
+            <span class="tag">Emotion</span>
           </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Use Cases: Work, Life, Emotion -->
+  <!-- Use Cases -->
   <section class="usecases-section">
     <div class="usecases-inner">
-      <div class="usecases-header reveal">
-        <p class="section-label" style="color: var(--pika-key);">Use Cases</p>
-        <h2 class="section-title">Work. Life. Emotion.</h2>
-        <p class="section-desc">Your AI Self adapts to every dimension of your life.</p>
+      <div class="usecases-header">
+        <div class="reveal">
+          <p class="section-tag" style="color: var(--pika-key);">Use Cases</p>
+          <h2 class="section-title">Work. Life.<br>Emotion.</h2>
+        </div>
+        <p class="section-desc reveal reveal-delay-1">Your AI Self adapts to every dimension of your existence.</p>
       </div>
       <div class="usecases-grid">
-        <!-- Work -->
         <div class="usecase-card reveal">
           <div class="usecase-icon work">💼</div>
           <h3 class="usecase-title">Work</h3>
-          <p class="usecase-desc">Your AI Self handles the operational load so you can focus on what matters.</p>
-          <ul class="usecase-examples">
-            <li>Triage tickets and assign to the right people</li>
-            <li>Join meetings, take notes, share summaries</li>
-            <li>Answer team questions in Slack at 2am</li>
-            <li>Draft emails and follow-ups in your voice</li>
+          <p class="usecase-desc">Handle the operational load so you can focus on what matters.</p>
+          <ul class="usecase-list">
+            <li>Triage tickets, assign to the right people</li>
+            <li>Join meetings, share notes</li>
+            <li>Answer team questions at 2am</li>
+            <li>Draft emails in your voice</li>
           </ul>
         </div>
-        <!-- Life -->
-        <div class="usecase-card reveal">
+        <div class="usecase-card reveal reveal-delay-1">
           <div class="usecase-icon life">🌱</div>
           <h3 class="usecase-title">Life</h3>
-          <p class="usecase-desc">Your AI Self stays connected to the people and moments that matter.</p>
-          <ul class="usecase-examples">
-            <li>Stay present in family group chats</li>
-            <li>Remember birthdays before you do</li>
+          <p class="usecase-desc">Stay connected to the people and moments that matter.</p>
+          <ul class="usecase-list">
+            <li>Present in family group chats</li>
+            <li>Remember birthdays</li>
             <li>Coordinate plans with friends</li>
-            <li>Send check-ins when you're busy</li>
+            <li>Check in when you're busy</li>
           </ul>
         </div>
-        <!-- Emotion -->
-        <div class="usecase-card reveal">
+        <div class="usecase-card reveal reveal-delay-2">
           <div class="usecase-icon emotion">💜</div>
           <h3 class="usecase-title">Emotion</h3>
-          <p class="usecase-desc">Your AI Self carries your personality, your warmth, your presence.</p>
-          <ul class="usecase-examples">
-            <li>Express yourself in your authentic voice</li>
-            <li>Comfort friends when you can't be there</li>
-            <li>Share excitement and celebrate wins</li>
-            <li>Maintain relationships across time zones</li>
+          <p class="usecase-desc">Carry your personality, warmth, and presence.</p>
+          <ul class="usecase-list">
+            <li>Express your authentic voice</li>
+            <li>Comfort when you can't be there</li>
+            <li>Celebrate wins together</li>
+            <li>Maintain relationships across time</li>
           </ul>
         </div>
       </div>
@@ -579,83 +705,35 @@
   <section class="platforms-section">
     <div class="platforms-inner">
       <div class="platforms-header reveal">
-        <p class="section-label">Multi-Platform</p>
+        <p class="section-tag">Multi-Platform</p>
         <h2 class="section-title">One identity.<br>Every platform.</h2>
-        <p class="section-desc" style="margin: 24px auto 0;">Your AI Self moves seamlessly across the tools you use — same context, same personality, everywhere.</p>
+        <p class="section-desc" style="margin: 24px auto 0; text-align: center;">Same context, same you — everywhere.</p>
       </div>
-      <div class="platforms-grid">
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #4A154B;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/></svg>
-          </div>
-          <p class="platform-name">Slack</p>
-          <p class="platform-desc">Team communication</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #5865F2;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4c-.03 0-.05.01-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09A.06.06 0 0 0 9 4c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25z"/></svg>
-          </div>
-          <p class="platform-name">Discord</p>
-          <p class="platform-desc">Community</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #34C759;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54C10.14 18.81 11.05 19 12 19c4.41 0 8-3.13 8-7c0-1.93-.88-3.72-2.4-5.18z"/></svg>
-          </div>
-          <p class="platform-name">iMessage</p>
-          <p class="platform-desc">Personal</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #000;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537L11.006 14.688L15.786 20.938H21.888L14.094 10.634L20.719 3.063H17.687Z"/></svg>
-          </div>
-          <p class="platform-name">X</p>
-          <p class="platform-desc">Social</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #0088CC;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19c-.14.75-.42 1-.68 1.03c-.58.05-1.02-.38-1.58-.75c-.88-.58-1.38-.94-2.23-1.5c-.99-.65-.35-1.01.22-1.59c.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02c-.09.02-1.49.95-4.22 2.79c-.4.27-.76.41-1.08.4c-.36-.01-1.04-.2-1.55-.37c-.63-.2-1.12-.31-1.08-.66c.02-.18.27-.36.74-.55c2.92-1.27 4.86-2.11 5.83-2.51c2.78-1.16 3.35-1.36 3.73-1.36c.08 0 .27.02.39.12c.1.08.13.19.14.27c-.01.06.01.24 0 .38z"/></svg>
-          </div>
-          <p class="platform-name">Telegram</p>
-          <p class="platform-desc">Messaging</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #25D366;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52c.149-.174.198-.298.298-.497c.099-.198.05-.371-.025-.52c-.075-.149-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413c.248-.694.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347z"/></svg>
-          </div>
-          <p class="platform-name">WhatsApp</p>
-          <p class="platform-desc">Chat</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #EA4335;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M20 18h-2V9.25L12 13L6 9.25V18H4V6h1.2l6.8 4.25L18.8 6H20m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg>
-          </div>
-          <p class="platform-name">Gmail</p>
-          <p class="platform-desc">Email</p>
-        </div>
-        <div class="platform-item reveal">
-          <div class="platform-icon" style="background: #4285F4;">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-          </div>
-          <p class="platform-name">Calendar</p>
-          <p class="platform-desc">Schedule</p>
-        </div>
+      <div class="platforms-grid reveal reveal-delay-1">
+        <div class="platform-pill"><div class="icon" style="background:#4A154B;"><svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z"/></svg></div>Slack</div>
+        <div class="platform-pill"><div class="icon" style="background:#5865F2;"><svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4c-.03 0-.05.01-.07.03c-.18.33-.39.76-.53 1.09z"/></svg></div>Discord</div>
+        <div class="platform-pill"><div class="icon" style="background:#34C759;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54z"/></svg></div>iMessage</div>
+        <div class="platform-pill"><div class="icon" style="background:#000;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537z"/></svg></div>X</div>
+        <div class="platform-pill"><div class="icon" style="background:#0088CC;"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></div>Telegram</div>
+        <div class="platform-pill"><div class="icon" style="background:#25D366;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15z"/></svg></div>WhatsApp</div>
+        <div class="platform-pill"><div class="icon" style="background:#EA4335;"><svg viewBox="0 0 24 24" fill="white"><path d="M20 18h-2V9.25L12 13L6 9.25V18H4V6h1.2l6.8 4.25L18.8 6H20z"/></svg></div>Gmail</div>
+        <div class="platform-pill"><div class="icon" style="background:#4285F4;"><svg viewBox="0 0 24 24" fill="white"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14z"/></svg></div>Calendar</div>
       </div>
     </div>
   </section>
   
   <!-- Statement -->
-  <section class="statement-section reveal">
-    <p class="statement">AI agents work for you.<br><em>AI selves are you.</em></p>
+  <section class="statement-section">
+    <p class="statement reveal">AI agents work for you.<br><em>AI selves are you.</em></p>
   </section>
   
   <!-- CTA -->
   <section class="cta-section">
-    <div class="cta-bg"></div>
+    <div class="cta-blob"></div>
     <div class="cta-content reveal">
-      <h2 class="cta-title">Claim your AI Self.</h2>
-      <p class="cta-subtitle">Be everywhere. Without being anywhere.</p>
-      <a href="https://pika.me" class="cta-button">Get Started →</a>
+      <h2 class="cta-title">Claim yours.</h2>
+      <p class="cta-subtitle">Be there. Even when you're not.</p>
+      <a href="https://pika.me" class="btn-light">Get Started</a>
     </div>
   </section>
   
