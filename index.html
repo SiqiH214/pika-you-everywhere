@@ -1213,7 +1213,8 @@
         if (msg.type === 'typing') {
           const row = document.createElement('div');
           const bgColor = msg.isAi ? '#007AFF' : 'rgba(0,0,0,0.3)';
-          row.className = `chat-message chat-row ${msg.isAi ? 'ai' : 'incoming'} typing-element`;
+          const alignClass = msg.isAi ? 'ai' : 'incoming';
+          row.className = `chat-message chat-row ${alignClass} typing-element`;
           
           const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
           row.innerHTML = `
