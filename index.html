@@ -496,22 +496,22 @@
       color: rgba(255,255,255,0.8);
     }
     
-    /* Inline label for animated chats */
-    .chat-row.ai {
+    /* Animated chat messages - wrapped structure */
+    .chat-message.chat-row {
+      display: flex;
       flex-direction: column;
-      align-items: flex-end;
     }
-    .chat-row.incoming {
-      flex-direction: column;
+    .chat-message.chat-row.incoming {
       align-items: flex-start;
+    }
+    .chat-message.chat-row.ai {
+      align-items: flex-end;
     }
     .ai-label-inline {
       font-size: 12px;
       font-weight: 400;
       color: var(--pika-warm);
-      margin: 0 0 4px 0;
-      align-self: flex-start;
-      margin-left: 44px;
+      margin: 0 0 4px 44px;
     }
     .chat-mockup.image .ai-label-inline {
       color: rgba(255,255,255,0.8);
@@ -520,6 +520,12 @@
       display: flex;
       align-items: flex-end;
       gap: 8px;
+    }
+    .chat-row.ai .chat-row-content {
+      flex-direction: row;
+    }
+    .chat-row.incoming .chat-row-content {
+      flex-direction: row;
     }
     
     /* Multimodal content styles */
