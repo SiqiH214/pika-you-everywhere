@@ -1201,14 +1201,20 @@
       }
       
       async prePopulate() {
-        // Show first 3-4 messages immediately (no animation delay)
-        const initialCount = Math.min(4, this.allMessages.length);
-        for (let i = 0; i < initialCount; i++) {
-          const msg = this.allMessages[i];
+        // Show first non-typing messages immediately (skip typing indicators)
+        let shown = 0;
+        while (shown < 3 && this.currentIndex < this.allMessages.length) {
+          const msg = this.allMessages[this.currentIndex];
+          // Skip typing indicators in pre-populate
+          if (msg.type === 'typing') {
+            this.currentIndex++;
+            continue;
+          }
           const element = this.createMessageElement(msg);
           this.container.appendChild(element);
           this.visibleMessages.push(element);
           this.currentIndex++;
+          shown++;
         }
         // Then continue with animation after a pause
         await this.delay(this.messageDelay);
