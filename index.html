@@ -362,13 +362,14 @@
       line-height: 1;
     }
     
-    /* Chat Mockup Cards */
+    /* Chat Mockup Cards - 3x2 Grid */
     .chat-cards-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
     }
-    @media (max-width: 900px) { .chat-cards-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1100px) { .chat-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 700px) { .chat-cards-grid { grid-template-columns: 1fr; } }
     
     .chat-card {
       display: flex;
@@ -835,10 +836,10 @@
                 <div class="chat-bubble">The printer is broken again! 😫</div>
                 <div class="chat-avatar green">D</div>
               </div>
-              <p class="ai-label">AI 47</p>
+              <p class="ai-label">AI Semi</p>
               <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('avatar.png');"></div>
-                <div class="chat-bubble">Hey! Did you check if it's plugged in?</div>
+                <div class="chat-avatar img" style="background-image: url('semi-avatar.png');"></div>
+                <div class="chat-bubble">Hey Dad! Did you check if it's plugged in?</div>
               </div>
               <div class="chat-row incoming">
                 <div class="chat-bubble">Whoops!</div>
@@ -858,17 +859,17 @@
             <div class="avatar-cluster">
               <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Alex');"></div>
               <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Sam');"></div>
-              <div class="chat-avatar img" style="background-image: url('avatar.png');"></div>
+              <div class="chat-avatar img" style="background-image: url('raccoon-avatar.png');"></div>
             </div>
             <div class="chat-conversation">
               <div class="chat-row incoming">
                 <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Alex');"></div>
-                <div class="chat-bubble">AI 47, any good ATL–CUN flights on the 19th?</div>
+                <div class="chat-bubble">AI Raccoon, any good ATL–CUN flights on the 19th?</div>
               </div>
-              <p class="ai-label">AI 47</p>
+              <p class="ai-label">AI Raccoon</p>
               <div class="chat-row ai">
-                <div class="chat-avatar img" style="background-image: url('avatar.png');"></div>
-                <div class="chat-bubble">yep! found 3 great ones and added to the website I've created with the itinerary: cancun26.com</div>
+                <div class="chat-avatar img" style="background-image: url('raccoon-avatar.png');"></div>
+                <div class="chat-bubble">yep! found 3 great ones and added to the website I've created: cancun26.com</div>
               </div>
               <div class="chat-row incoming">
                 <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Sam');"></div>
@@ -883,6 +884,123 @@
           <div class="chat-card-info">
             <h3 class="chat-card-title">Plan a trip with your friends</h3>
             <p class="chat-card-desc">Stop the endless "I don't know" loops. Your AI Self can find the flights, book the Airbnb, and finalize the itinerary directly in your group chat.</p>
+          </div>
+        </div>
+        
+        <!-- Card 3: Handle work while you're off -->
+        <div class="chat-card reveal" style="transition-delay: 0.2s;">
+          <div class="chat-mockup light" style="background: linear-gradient(135deg, #f8f4f0, #fff);">
+            <div class="chat-conversation">
+              <div class="chat-row incoming">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Manager');"></div>
+                <div class="chat-bubble">Hey can you join the 3pm sync today?</div>
+              </div>
+              <p class="ai-label">AI Russ</p>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
+                <div class="chat-bubble">Russ is OOO today — I can take notes and share a summary after!</div>
+              </div>
+              <div class="chat-row incoming">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Manager');"></div>
+                <div class="chat-bubble">Perfect, thanks!</div>
+              </div>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
+                <div class="typing-indicator" style="background: #007AFF;">
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Handle work while you're off</h3>
+            <p class="chat-card-desc">On vacation? In deep work? Your AI Self keeps teammates unblocked and you in the loop.</p>
+          </div>
+        </div>
+        
+        <!-- Card 4: Stay connected with family -->
+        <div class="chat-card reveal" style="transition-delay: 0.3s;">
+          <div class="chat-mockup image" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800&q=80');">
+            <div class="avatar-cluster">
+              <div class="chat-avatar" style="background: #FF9500; font-size: 12px;">Mom</div>
+              <div class="chat-avatar" style="background: #34C759;">Sis</div>
+              <div class="chat-avatar img" style="background-image: url('emily-avatar.png');"></div>
+            </div>
+            <div class="chat-conversation">
+              <div class="chat-row incoming">
+                <div class="chat-avatar" style="background: #FF9500; font-size: 10px;">Mom</div>
+                <div class="chat-bubble">What should I make for Sunday dinner?</div>
+              </div>
+              <p class="ai-label">AI Emily</p>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('emily-avatar.png');"></div>
+                <div class="chat-bubble">Emily loves your lasagna! She's been craving comfort food lately 🍝</div>
+              </div>
+              <div class="chat-row incoming">
+                <div class="chat-avatar" style="background: #FF9500; font-size: 10px;">Mom</div>
+                <div class="chat-bubble">Lasagna it is! ❤️</div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Stay connected with family</h3>
+            <p class="chat-card-desc">Too busy to text back? Your AI Self keeps the conversation going with the warmth only you can bring.</p>
+          </div>
+        </div>
+        
+        <!-- Card 5: Remember important dates -->
+        <div class="chat-card reveal" style="transition-delay: 0.4s;">
+          <div class="chat-mockup light" style="background: linear-gradient(135deg, #fef7f0, #fff5f5);">
+            <div class="chat-conversation">
+              <div class="chat-row incoming">
+                <div class="chat-avatar" style="background: #FF2D55;">💕</div>
+                <div class="chat-bubble">What are we doing for our anniversary btw?</div>
+              </div>
+              <p class="ai-label">AI Semi</p>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('semi-avatar.png');"></div>
+                <div class="chat-bubble">Already booked! That rooftop place you mentioned last month — March 15th, 7pm 🌃</div>
+              </div>
+              <div class="chat-row incoming">
+                <div class="chat-avatar" style="background: #FF2D55;">💕</div>
+                <div class="chat-bubble">omg you remembered 😭</div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Remember important dates</h3>
+            <p class="chat-card-desc">Birthdays, anniversaries, that thing they mentioned once — your AI Self remembers so you never forget.</p>
+          </div>
+        </div>
+        
+        <!-- Card 6: Be there for friends -->
+        <div class="chat-card reveal" style="transition-delay: 0.5s;">
+          <div class="chat-mockup light" style="background: linear-gradient(135deg, #f0f4ff, #f8f8ff);">
+            <div class="chat-conversation">
+              <div class="chat-row incoming">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend');"></div>
+                <div class="chat-bubble">having such a rough day 😔</div>
+              </div>
+              <p class="ai-label">AI Russ</p>
+              <div class="chat-row ai">
+                <div class="chat-avatar img" style="background-image: url('russ-avatar.png');"></div>
+                <div class="chat-bubble">aw man, what happened? wanna talk about it or just vent?</div>
+              </div>
+              <div class="chat-row incoming">
+                <div class="chat-avatar img" style="background-image: url('https://api.dicebear.com/7.x/avataaars/svg?seed=BestFriend');"></div>
+                <div class="typing-indicator">
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-card-info">
+            <h3 class="chat-card-title">Be there for friends</h3>
+            <p class="chat-card-desc">When friends need you but you can't be there, your AI Self shows up with your warmth and care.</p>
           </div>
         </div>
       </div>
