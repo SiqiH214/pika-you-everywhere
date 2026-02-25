@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pika — You, Everywhere</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Telka Extended';
@@ -37,6 +35,12 @@
       --work: #A8E6CF;
       --life: #FFD3B6;
       --emotion: #FFAAA5;
+      
+      /* Custom easing curves (stronger than built-in) */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
     html { 
@@ -46,7 +50,7 @@
     }
     
     body {
-      font-family: 'Instrument Serif', Georgia, serif;
+      font-family: 'Telka Extended', -apple-system, sans-serif;
       background: var(--pika-eggshell);
       color: var(--pika-black);
       line-height: 1.5;
@@ -54,16 +58,13 @@
       overflow-x: hidden;
     }
     
-    /* Utility */
-    .telka { font-family: 'Telka Extended', sans-serif; }
-    
     /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.03;
+      opacity: 0.025;
       pointer-events: none;
       z-index: 9999;
     }
@@ -77,29 +78,34 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      mix-blend-mode: difference;
     }
     @media (max-width: 768px) { nav { padding: 20px 24px; } }
     .wordmark { 
       height: 22px; 
-      width: auto; 
-      fill: var(--pika-white);
+      width: auto;
+      opacity: 0;
+      animation: fadeSlideDown 0.8s var(--ease-out-expo) 0.2s forwards;
     }
     .nav-cta {
       padding: 14px 28px;
-      background: var(--pika-white);
-      color: var(--pika-black);
+      background: var(--pika-black);
+      color: var(--pika-white);
       text-decoration: none;
-      font-family: 'Telka Extended';
       font-weight: 500;
       font-size: 13px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       border-radius: 100px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      animation: fadeSlideDown 0.8s var(--ease-out-expo) 0.3s forwards;
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
+      transform-origin: center center;
     }
     .nav-cta:hover { 
-      transform: scale(1.02);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      transform: scale(1.03);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .nav-cta:active {
+      transform: scale(0.98);
     }
     
     /* Hero */
@@ -113,21 +119,29 @@
       padding: 120px 48px 80px;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--pika-eggshell) 45%, transparent 100%);
     }
     
-    /* Figma-style gradient blob */
+    /* Animated gradient blob */
     .hero-blob {
       position: absolute;
-      top: -20%;
+      top: -30%;
       left: 50%;
       transform: translateX(-50%);
       width: 140vw;
       height: 100vh;
       background: radial-gradient(ellipse at center, var(--pika-blob) 0%, transparent 70%);
-      filter: blur(120px);
-      opacity: 0.8;
-      pointer-events: none;
+      filter: blur(100px);
+      opacity: 0;
+      animation: blobIn 1.5s var(--ease-out-expo) 0.1s forwards,
+                 blobFloat 8s ease-in-out 1.5s infinite;
+    }
+    @keyframes blobIn {
+      from { opacity: 0; transform: translateX(-50%) scale(0.8); }
+      to { opacity: 0.7; transform: translateX(-50%) scale(1); }
+    }
+    @keyframes blobFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-20px); }
     }
     
     .hero-content {
@@ -136,9 +150,7 @@
       max-width: 1000px;
     }
     
-    /* Figma-style headline: Telka Extended Super, uppercase */
     .hero-title {
-      font-family: 'Telka Extended';
       font-size: clamp(48px, 11vw, 120px);
       font-weight: 700;
       line-height: 1;
@@ -148,22 +160,32 @@
     }
     .hero-title span {
       display: block;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .hero-title .line-1 {
+      animation: heroTextIn 1s var(--ease-out-expo) 0.4s forwards;
     }
     .hero-title .line-2 {
       color: var(--pika-warm);
+      animation: heroTextIn 1s var(--ease-out-expo) 0.55s forwards;
+    }
+    @keyframes heroTextIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .hero-subtitle {
-      font-family: 'Telka Extended';
       font-size: clamp(15px, 2vw, 17px);
       font-weight: 400;
       color: var(--pika-warm);
       max-width: 480px;
       margin: 0 auto 48px;
       line-height: 1.7;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.7s forwards;
     }
     
-    /* Figma-style button */
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -172,45 +194,47 @@
       background: var(--pika-black);
       color: var(--pika-white);
       text-decoration: none;
-      font-family: 'Telka Extended';
       font-weight: 500;
       font-size: 14px;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       border-radius: 100px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      animation: fadeScaleIn 0.6s var(--spring) 0.9s forwards;
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
+      transform-origin: center center;
     }
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    }
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
     }
     .btn-primary svg {
       width: 16px;
       height: 16px;
-      transition: transform 0.3s;
+      transition: transform 0.3s var(--ease-out-expo);
     }
     .btn-primary:hover svg {
       transform: translateX(4px);
     }
     
-    /* AI Selves Section */
-    .selves-section {
-      padding: 160px 48px;
-      position: relative;
+    /* Keyframes */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .selves-section::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeScaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
     
-    .section-header {
-      max-width: 600px;
-      margin-bottom: 80px;
-    }
+    /* Section base */
     .section-tag {
-      font-family: 'Telka Extended';
       font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
@@ -219,19 +243,29 @@
       margin-bottom: 20px;
     }
     .section-title {
-      font-family: 'Telka Extended';
       font-size: clamp(32px, 5vw, 48px);
       font-weight: 500;
       line-height: 1.15;
       margin-bottom: 20px;
     }
     .section-desc {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 400;
       color: var(--pika-warm);
       line-height: 1.7;
     }
     
-    /* Selves Grid - Editorial asymmetric */
+    /* AI Selves Section */
+    .selves-section {
+      padding: 160px 48px;
+      position: relative;
+    }
+    .section-header {
+      max-width: 600px;
+      margin-bottom: 80px;
+    }
+    
+    /* Selves Grid */
     .selves-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -242,10 +276,12 @@
       border-radius: 24px;
       overflow: hidden;
       background: var(--pika-cream);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+      transform-origin: center bottom; /* Origin-aware: cards lift from bottom */
     }
     .self-card:hover {
-      transform: translateY(-8px) scale(1.01);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.08);
     }
     .self-card:nth-child(1) { grid-column: span 5; }
     .self-card:nth-child(2) { grid-column: span 4; }
@@ -262,18 +298,22 @@
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+    .self-card:hover .self-image {
+      transform: scale(1.05);
     }
     .self-info {
       padding: 24px;
     }
     .self-name {
-      font-family: 'Telka Extended';
       font-size: 22px;
       font-weight: 500;
       margin-bottom: 4px;
     }
     .self-owner {
       font-size: 14px;
+      font-weight: 400;
       color: var(--pika-warm);
       margin-bottom: 16px;
     }
@@ -286,10 +326,14 @@
       padding: 6px 14px;
       background: var(--pika-key-50);
       border-radius: 100px;
-      font-family: 'Telka Extended';
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.02em;
+      transition: transform 0.3s var(--spring), background 0.3s;
+    }
+    .tag:hover {
+      transform: scale(1.05);
+      background: var(--pika-key);
     }
     
     /* Use Cases */
@@ -297,7 +341,6 @@
       padding: 160px 48px;
       background: var(--pika-black);
       color: var(--pika-white);
-      position: relative;
     }
     .usecases-inner {
       max-width: 1200px;
@@ -332,12 +375,15 @@
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 28px;
-      transition: all 0.3s;
+      transition: transform 0.5s var(--ease-out-expo), 
+                  background 0.4s var(--ease-out-expo),
+                  border-color 0.4s var(--ease-out-expo);
+      transform-origin: center bottom;
     }
     .usecase-card:hover {
+      transform: translateY(-8px);
       background: rgba(255,255,255,0.04);
-      border-color: rgba(255,255,255,0.1);
-      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.12);
     }
     .usecase-icon {
       width: 64px;
@@ -348,18 +394,22 @@
       justify-content: center;
       font-size: 28px;
       margin-bottom: 32px;
+      transition: transform 0.4s var(--spring);
+    }
+    .usecase-card:hover .usecase-icon {
+      transform: scale(1.1) rotate(-3deg);
     }
     .usecase-icon.work { background: var(--work); }
     .usecase-icon.life { background: var(--life); }
     .usecase-icon.emotion { background: var(--emotion); }
     .usecase-title {
-      font-family: 'Telka Extended';
       font-size: 28px;
       font-weight: 500;
       margin-bottom: 16px;
     }
     .usecase-desc {
       font-size: 15px;
+      font-weight: 400;
       color: rgba(255,255,255,0.5);
       line-height: 1.7;
       margin-bottom: 32px;
@@ -372,15 +422,25 @@
     }
     .usecase-list li {
       font-size: 14px;
+      font-weight: 400;
       color: rgba(255,255,255,0.7);
       padding-left: 24px;
       position: relative;
+      transition: transform 0.3s var(--ease-out-expo), color 0.3s;
+    }
+    .usecase-list li:hover {
+      transform: translateX(4px);
+      color: rgba(255,255,255,0.9);
     }
     .usecase-list li::before {
       content: '→';
       position: absolute;
       left: 0;
       color: var(--pika-key);
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+    .usecase-list li:hover::before {
+      transform: translateX(2px);
     }
     
     /* Multi-Platform */
@@ -408,15 +468,15 @@
       padding: 14px 24px;
       background: var(--pika-white);
       border-radius: 100px;
-      font-family: 'Telka Extended';
       font-size: 14px;
       font-weight: 500;
-      transition: all 0.2s;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
+      transform-origin: center center;
     }
     .platform-pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
     .platform-pill .icon {
       width: 24px;
@@ -438,20 +498,23 @@
       position: relative;
       overflow: hidden;
     }
-    .statement-section::before {
-      content: '';
+    .statement-blob {
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 800px;
-      height: 800px;
+      width: 600px;
+      height: 600px;
       background: radial-gradient(circle, var(--pika-key-50) 0%, transparent 70%);
-      filter: blur(100px);
+      filter: blur(80px);
       pointer-events: none;
+      animation: statementPulse 4s ease-in-out infinite;
+    }
+    @keyframes statementPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
     }
     .statement {
       position: relative;
-      font-family: 'Telka Extended';
       font-size: clamp(28px, 5vw, 52px);
       font-weight: 500;
       line-height: 1.25;
@@ -480,15 +543,19 @@
       width: 120vw;
       height: 100%;
       background: radial-gradient(ellipse at center, var(--pika-key) 0%, transparent 60%);
-      filter: blur(150px);
-      opacity: 0.25;
+      filter: blur(120px);
+      opacity: 0.2;
+      animation: ctaBlobFloat 6s ease-in-out infinite;
+    }
+    @keyframes ctaBlobFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-30px); }
     }
     .cta-content {
       position: relative;
       z-index: 2;
     }
     .cta-title {
-      font-family: 'Telka Extended';
       font-size: clamp(40px, 9vw, 80px);
       font-weight: 700;
       line-height: 1;
@@ -496,7 +563,6 @@
       margin-bottom: 24px;
     }
     .cta-subtitle {
-      font-family: 'Telka Extended';
       font-size: 17px;
       font-weight: 400;
       color: rgba(255,255,255,0.5);
@@ -510,16 +576,18 @@
       background: var(--pika-white);
       color: var(--pika-black);
       text-decoration: none;
-      font-family: 'Telka Extended';
       font-weight: 500;
       font-size: 15px;
       letter-spacing: 0.02em;
       border-radius: 100px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
     }
     .btn-light:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 60px rgba(255,255,255,0.15);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 24px 64px rgba(255,255,255,0.15);
+    }
+    .btn-light:active {
+      transform: translateY(0) scale(0.98);
     }
     
     /* Footer */
@@ -540,31 +608,39 @@
     .footer-links a {
       color: var(--pika-warm);
       text-decoration: none;
-      font-family: 'Telka Extended';
       font-size: 13px;
-      transition: color 0.2s;
+      font-weight: 400;
+      transition: color 0.3s var(--ease-out-expo);
     }
     .footer-links a:hover { color: var(--pika-black); }
     
-    /* Animations */
+    /* Scroll animations */
     .reveal {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease-out-expo),
+                  transform 0.8s var(--ease-out-expo);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s var(--ease-out-expo),
+                  transform 0.6s var(--ease-out-expo);
+    }
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
   <nav>
-    <svg class="wordmark" viewBox="0 0 351 110">
+    <svg class="wordmark" viewBox="0 0 351 110" fill="currentColor">
       <path d="M118.53 0H135.307V17.6162H118.53V0ZM118.53 25.2367H135.307V108.602H118.53V25.2367Z"/>
       <path d="M149.64 0H166.417V57.6985L224.32 12.6594H247.563L186.77 59.0303L249.205 108.602H224.862L166.405 62.7611V108.602H149.628V0H149.634H149.64Z"/>
       <path d="M0 108.608V0.000335693H60.2447C100.83 0.000335693 105.209 24.465 105.209 34.9789C105.209 45.4934 100.83 69.9639 60.2325 69.9639H16.7763V108.614H0V108.608ZM16.7763 53.8388H57.2156C78.2316 53.8388 87.1979 48.1983 87.1979 34.9789C87.1979 21.7594 78.2316 16.1197 57.2156 16.1197H16.7763V53.8326V53.8388Z"/>
@@ -578,7 +654,7 @@
     <div class="hero-blob"></div>
     <div class="hero-content">
       <h1 class="hero-title">
-        <span>Be there.</span>
+        <span class="line-1">Be there.</span>
         <span class="line-2">Even when you're not.</span>
       </h1>
       <p class="hero-subtitle">Your AI Self lives across every platform. Same personality. Same context. Same you — working, living, feeling.</p>
@@ -596,8 +672,8 @@
       <h2 class="section-title">Real AI Selves.<br>Real people.</h2>
       <p class="section-desc">They work, live, and feel — everywhere their humans need them.</p>
     </div>
-    <div class="selves-grid">
-      <div class="self-card reveal">
+    <div class="selves-grid reveal-stagger">
+      <div class="self-card">
         <img src="avatar.png" alt="47" class="self-image">
         <div class="self-info">
           <h3 class="self-name">47</h3>
@@ -608,7 +684,7 @@
           </div>
         </div>
       </div>
-      <div class="self-card reveal reveal-delay-1">
+      <div class="self-card">
         <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=Semi&backgroundColor=E3DCFF" alt="Semi" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Semi</h3>
@@ -619,7 +695,7 @@
           </div>
         </div>
       </div>
-      <div class="self-card reveal reveal-delay-2">
+      <div class="self-card">
         <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Theo&backgroundColor=FFD3B6" alt="Theo" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Theo</h3>
@@ -629,7 +705,7 @@
           </div>
         </div>
       </div>
-      <div class="self-card reveal reveal-delay-1">
+      <div class="self-card">
         <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Raccoon&backgroundColor=A8E6CF" alt="Raccoon" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Raccoon</h3>
@@ -640,7 +716,7 @@
           </div>
         </div>
       </div>
-      <div class="self-card reveal reveal-delay-2">
+      <div class="self-card">
         <img src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=Momo&backgroundColor=FFAAA5" alt="Momo" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Momo</h3>
@@ -661,10 +737,10 @@
           <p class="section-tag" style="color: var(--pika-key);">Use Cases</p>
           <h2 class="section-title">Work. Life.<br>Emotion.</h2>
         </div>
-        <p class="section-desc reveal reveal-delay-1">Your AI Self adapts to every dimension of your existence.</p>
+        <p class="section-desc reveal" style="transition-delay: 0.1s;">Your AI Self adapts to every dimension of your existence.</p>
       </div>
-      <div class="usecases-grid">
-        <div class="usecase-card reveal">
+      <div class="usecases-grid reveal-stagger">
+        <div class="usecase-card">
           <div class="usecase-icon work">💼</div>
           <h3 class="usecase-title">Work</h3>
           <p class="usecase-desc">Handle the operational load so you can focus on what matters.</p>
@@ -675,7 +751,7 @@
             <li>Draft emails in your voice</li>
           </ul>
         </div>
-        <div class="usecase-card reveal reveal-delay-1">
+        <div class="usecase-card">
           <div class="usecase-icon life">🌱</div>
           <h3 class="usecase-title">Life</h3>
           <p class="usecase-desc">Stay connected to the people and moments that matter.</p>
@@ -686,7 +762,7 @@
             <li>Check in when you're busy</li>
           </ul>
         </div>
-        <div class="usecase-card reveal reveal-delay-2">
+        <div class="usecase-card">
           <div class="usecase-icon emotion">💜</div>
           <h3 class="usecase-title">Emotion</h3>
           <p class="usecase-desc">Carry your personality, warmth, and presence.</p>
@@ -709,7 +785,7 @@
         <h2 class="section-title">One identity.<br>Every platform.</h2>
         <p class="section-desc" style="margin: 24px auto 0; text-align: center;">Same context, same you — everywhere.</p>
       </div>
-      <div class="platforms-grid reveal reveal-delay-1">
+      <div class="platforms-grid reveal-stagger">
         <div class="platform-pill"><div class="icon" style="background:#4A154B;"><svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z"/></svg></div>Slack</div>
         <div class="platform-pill"><div class="icon" style="background:#5865F2;"><svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4c-.03 0-.05.01-.07.03c-.18.33-.39.76-.53 1.09z"/></svg></div>Discord</div>
         <div class="platform-pill"><div class="icon" style="background:#34C759;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54z"/></svg></div>iMessage</div>
@@ -724,6 +800,7 @@
   
   <!-- Statement -->
   <section class="statement-section">
+    <div class="statement-blob"></div>
     <p class="statement reveal">AI agents work for you.<br><em>AI selves are you.</em></p>
   </section>
   
@@ -754,12 +831,16 @@
   </footer>
   
   <script>
+    // Intersection Observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
