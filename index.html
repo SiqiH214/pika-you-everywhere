@@ -375,18 +375,43 @@
       line-height: 1;
     }
     
-    /* Chat Mockup Cards - 3x2 Grid */
+    /* Chat Mockup Cards - Horizontal Scroll */
     .chat-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
+      margin-left: -60px;
+      margin-right: -60px;
+      padding-left: 60px;
+      padding-right: 60px;
     }
-    @media (max-width: 1100px) { .chat-cards-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px) { .chat-cards-grid { grid-template-columns: 1fr; } }
+    .chat-cards-grid::-webkit-scrollbar {
+      height: 6px;
+    }
+    .chat-cards-grid::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+      border-radius: 3px;
+    }
+    .chat-cards-grid::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.15);
+      border-radius: 3px;
+    }
+    @media (max-width: 700px) { 
+      .chat-cards-grid { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
+    }
     
     .chat-card {
       display: flex;
       flex-direction: column;
+      flex: 0 0 340px;
+      scroll-snap-align: start;
+    }
+    @media (max-width: 700px) { 
+      .chat-card { flex: 0 0 300px; }
     }
     .chat-mockup {
       position: relative;
