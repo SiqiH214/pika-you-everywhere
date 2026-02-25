@@ -570,12 +570,18 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
     .platform-pill .icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+    .platform-pill .icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
     }
     .platform-pill .icon svg {
       width: 14px;
@@ -1016,14 +1022,14 @@
         <p class="section-desc" style="margin: 24px auto 0; text-align: center;">Same context, same you — everywhere.</p>
       </div>
       <div class="platforms-grid reveal-stagger">
-        <div class="platform-pill"><div class="icon" style="background:#4A154B;"><svg viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z"/></svg></div>Slack</div>
-        <div class="platform-pill"><div class="icon" style="background:#5865F2;"><svg viewBox="0 0 24 24" fill="white"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4c-.03 0-.05.01-.07.03c-.18.33-.39.76-.53 1.09z"/></svg></div>Discord</div>
-        <div class="platform-pill"><div class="icon" style="background:#34C759;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32C16.27 4.88 14.21 4 12 4C7.59 4 4 7.13 4 11c0 1.67.66 3.22 1.77 4.45L4 20l4.94-1.54z"/></svg></div>iMessage</div>
-        <div class="platform-pill"><div class="icon" style="background:#000;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.687 3.063L12.691 8.774L8.371 3.063H2.112L9.589 12.839L2.503 20.938H5.537z"/></svg></div>X</div>
-        <div class="platform-pill"><div class="icon" style="background:#0088CC;"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></div>Telegram</div>
-        <div class="platform-pill"><div class="icon" style="background:#25D366;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15z"/></svg></div>WhatsApp</div>
-        <div class="platform-pill"><div class="icon" style="background:#EA4335;"><svg viewBox="0 0 24 24" fill="white"><path d="M20 18h-2V9.25L12 13L6 9.25V18H4V6h1.2l6.8 4.25L18.8 6H20z"/></svg></div>Gmail</div>
-        <div class="platform-pill"><div class="icon" style="background:#4285F4;"><svg viewBox="0 0 24 24" fill="white"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14z"/></svg></div>Calendar</div>
+        <div class="platform-pill"><div class="icon"><img src="slack-logo.svg" alt="Slack"></div>Slack</div>
+        <div class="platform-pill"><div class="icon"><img src="discord-logo.svg" alt="Discord"></div>Discord</div>
+        <div class="platform-pill"><div class="icon"><img src="imessage-logo.svg" alt="iMessage"></div>iMessage</div>
+        <div class="platform-pill"><div class="icon"><img src="x-logo.svg" alt="X"></div>X</div>
+        <div class="platform-pill"><div class="icon"><img src="telegram-logo.svg" alt="Telegram"></div>Telegram</div>
+        <div class="platform-pill"><div class="icon"><img src="whatsapp-logo.svg" alt="WhatsApp"></div>WhatsApp</div>
+        <div class="platform-pill"><div class="icon"><img src="gmail-logo.svg" alt="Gmail"></div>Gmail</div>
+        <div class="platform-pill"><div class="icon"><img src="calendar-logo.svg" alt="Calendar"></div>Calendar</div>
       </div>
     </div>
   </section>
