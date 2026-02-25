@@ -511,13 +511,7 @@
       font-size: 12px;
       font-weight: 400;
       color: var(--pika-warm);
-      margin: 0 0 4px 0;
-    }
-    .chat-row.ai .ai-label-inline {
-      margin-right: 44px;
-    }
-    .chat-row.incoming .ai-label-inline {
-      margin-left: 44px;
+      margin: 0 0 4px 44px;
     }
     .chat-mockup.image .ai-label-inline {
       color: rgba(255,255,255,0.8);
@@ -526,12 +520,7 @@
       display: flex;
       align-items: flex-end;
       gap: 8px;
-    }
-    .chat-row.ai .chat-row-content {
-      flex-direction: row;
-    }
-    .chat-row.incoming .chat-row-content {
-      flex-direction: row;
+      flex-direction: row; /* Avatar always on left of bubble */
     }
     
     /* Multimodal content styles */
