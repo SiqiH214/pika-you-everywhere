@@ -1131,15 +1131,17 @@
         
         if (msg.type === 'typing') {
           const row = document.createElement('div');
-          row.className = 'chat-message chat-row ai visible';
+          const bgColor = msg.isAi ? '#007AFF' : 'rgba(0,0,0,0.3)';
+          row.className = `chat-message chat-row ${msg.isAi ? 'ai' : 'incoming'} typing-element`;
           row.innerHTML = `
             <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
-            <div class="typing-indicator" style="background: #007AFF;">
+            <div class="typing-indicator" style="background: ${bgColor};">
               <span class="typing-dot"></span>
               <span class="typing-dot"></span>
               <span class="typing-dot"></span>
             </div>
           `;
+          requestAnimationFrame(() => row.classList.add('visible'));
           return row;
         }
         
@@ -1157,11 +1159,22 @@
       async showNextMessage() {
         const msg = this.allMessages[this.currentIndex];
         
-        // Remove oldest if at max
-        if (this.visibleMessages.length >= this.maxVisible) {
+        // If this message replaces typing, remove the typing indicator first
+        if (msg.replacesTyping) {
+          const typingEl = this.container.querySelector('.typing-element');
+          if (typingEl) {
+            typingEl.classList.add('exiting');
+            await this.delay(200);
+            typingEl.remove();
+            this.visibleMessages = this.visibleMessages.filter(el => !el.classList.contains('typing-element'));
+          }
+        }
+        
+        // Remove oldest if at max (but not typing indicators)
+        while (this.visibleMessages.length >= this.maxVisible) {
           const oldest = this.visibleMessages.shift();
           oldest.classList.add('exiting');
-          await this.delay(300);
+          await this.delay(200);
           oldest.remove();
         }
         
@@ -1187,8 +1200,9 @@
           this.currentIndex = 0;
         }
         
-        // Continue
-        await this.delay(this.messageDelay);
+        // Shorter delay for typing indicators
+        const delay = msg.type === 'typing' ? 800 : this.messageDelay;
+        await this.delay(delay);
         this.showNextMessage();
       }
       
@@ -1197,22 +1211,25 @@
       }
     }
     
-    // Work chat messages (3 rounds)
+    // Work chat messages (3 rounds) - typing before each reply
     const workChatMessages = [
       // Round 1
       { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Hey can you join the 3pm sync today?' },
       { type: 'label', text: 'AI Russ' },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary after!' },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Perfect, thanks!' },
-      { type: 'typing', avatar: 'russ-avatar.png' },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary after!', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Perfect, thanks!', replacesTyping: true },
       // Round 2
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Just finished! Summary: 3 action items, design review moved to Friday' },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Amazing, you\'re a lifesaver 🙏' },
-      { type: 'typing', avatar: 'russ-avatar.png' },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Just finished! Summary: 3 action items, design review Friday', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Amazing, you\'re a lifesaver 🙏', replacesTyping: true },
       // Round 3
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Also flagged the API blocker — pinged engineering' },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Wait you can do that?? 😮' },
-      { type: 'typing', avatar: 'russ-avatar.png' },
+      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
+      { type: 'ai', avatar: 'russ-avatar.png', text: 'Also flagged the API blocker — pinged engineering', replacesTyping: true },
+      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
+      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Wait you can do that?? 😮', replacesTyping: true },
     ];
     
     // Initialize work chat
