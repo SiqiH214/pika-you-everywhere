@@ -280,32 +280,20 @@
       margin-bottom: 80px;
     }
     
-    /* Selves Grid - Horizontal Scroll */
+    /* Selves Grid - 2 Row Grid */
     .selves-grid {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 20px;
-      margin-left: -60px;
-      margin-right: -60px;
-      padding-left: 60px;
-      padding-right: 60px;
     }
-    .selves-grid::-webkit-scrollbar {
-      height: 6px;
+    @media (max-width: 1200px) {
+      .selves-grid { grid-template-columns: repeat(4, 1fr); }
     }
-    .selves-grid::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.05);
-      border-radius: 3px;
+    @media (max-width: 900px) {
+      .selves-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    .selves-grid::-webkit-scrollbar-thumb {
-      background: rgba(0,0,0,0.15);
-      border-radius: 3px;
-    }
-    @media (max-width: 700px) {
-      .selves-grid { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
+    @media (max-width: 600px) {
+      .selves-grid { grid-template-columns: repeat(2, 1fr); }
     }
     .self-card {
       position: relative;
@@ -314,8 +302,6 @@
       background: var(--pika-cream);
       transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
       transform-origin: center bottom;
-      flex: 0 0 280px;
-      scroll-snap-align: start;
     }
     .self-card:hover {
       transform: translateY(-12px) scale(1.02);
