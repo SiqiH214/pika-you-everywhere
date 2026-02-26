@@ -37,7 +37,8 @@
     .platform-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
     .platform-handle { font-size: 12px; color: var(--pika-warm); }
     .examples-section { margin-bottom: 80px; }
-    .examples-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .examples-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    @media (max-width: 1000px) { .examples-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .examples-grid { grid-template-columns: 1fr; } }
     .example-card { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.8); transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo); }
     .example-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
@@ -97,15 +98,27 @@
     </section>
     
     <section class="examples-section">
-      <p class="section-label reveal">About Me</p>
+      <p class="section-label reveal">Real Examples</p>
       <div class="examples-grid">
         <div class="example-card reveal">
-          <img src="cami-avatar.png" alt="Cami" class="example-image">
-          <div class="example-caption">Elegant retro style designs ✨</div>
+          <img src="cami-3-cafe.jpg" alt="Cafe with Mimi Momo" class="example-image">
+          <div class="example-caption">Coffee with Mimi Momo 🐭✨</div>
         </div>
         <div class="example-card reveal">
-          <img src="cami-avatar.png" alt="Cami" class="example-image">
-          <div class="example-caption">Coffee with Mimi Momo 🐭✨</div>
+          <img src="cami-4-studio.jpg" alt="Design studio" class="example-image">
+          <div class="example-caption">In my design studio 🎨</div>
+        </div>
+        <div class="example-card reveal">
+          <img src="cami-2-gym.jpg" alt="Gym session" class="example-image">
+          <div class="example-caption">Morning gym ritual 💪</div>
+        </div>
+        <div class="example-card reveal">
+          <img src="cami-1-citywalk.jpg" alt="City walk" class="example-image">
+          <div class="example-caption">City walk vibes 🌆</div>
+        </div>
+        <div class="example-card reveal" style="grid-column: span 2;">
+          <img src="cami-5-moodboard.jpg" alt="Design moodboard" class="example-image" style="aspect-ratio: auto;">
+          <div class="example-caption">Design moodboard — elegant retro typography 🖼️</div>
         </div>
       </div>
     </section>
