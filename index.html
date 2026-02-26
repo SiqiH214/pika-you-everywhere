@@ -272,61 +272,116 @@
     
     /* AI Selves Section */
     .selves-section {
-      padding: 160px 48px;
+      padding: 120px 48px 160px;
       position: relative;
+      overflow: hidden;
     }
     .section-header {
       max-width: 600px;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
     
-    /* Selves Grid - 2 Row Grid */
-    .selves-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
+    /* Fan/Arc Layout */
+    .selves-fan {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 420px;
+      position: relative;
+      margin: 0 auto;
+      max-width: 1400px;
     }
+    .fan-card {
+      position: absolute;
+      width: 180px;
+      height: 240px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s var(--ease-out-expo);
+      transform-origin: center bottom;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .fan-card:hover {
+      z-index: 100 !important;
+      transform: translateY(-20px) rotate(0deg) scale(1.1) !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .fan-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .fan-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s var(--ease-out-expo);
+    }
+    .fan-card:hover .fan-card-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fan-card-name {
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .fan-card-role {
+      color: rgba(255,255,255,0.8);
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+    .fan-card-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      background: white;
+      color: var(--pika-black);
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .fan-card-btn:hover {
+      transform: scale(1.05);
+    }
+    /* Fan positions - 10 cards in arc */
+    .fan-card:nth-child(1) { left: 5%; transform: rotate(-25deg); z-index: 1; }
+    .fan-card:nth-child(2) { left: 12%; transform: rotate(-18deg); z-index: 2; }
+    .fan-card:nth-child(3) { left: 21%; transform: rotate(-12deg); z-index: 3; }
+    .fan-card:nth-child(4) { left: 30%; transform: rotate(-6deg); z-index: 4; }
+    .fan-card:nth-child(5) { left: 39%; transform: rotate(-2deg); z-index: 5; }
+    .fan-card:nth-child(6) { left: 48%; transform: rotate(2deg); z-index: 5; }
+    .fan-card:nth-child(7) { left: 57%; transform: rotate(6deg); z-index: 4; }
+    .fan-card:nth-child(8) { left: 66%; transform: rotate(12deg); z-index: 3; }
+    .fan-card:nth-child(9) { left: 75%; transform: rotate(18deg); z-index: 2; }
+    .fan-card:nth-child(10) { left: 82%; transform: rotate(25deg); z-index: 1; }
     @media (max-width: 1200px) {
-      .selves-grid { grid-template-columns: repeat(4, 1fr); }
+      .fan-card { width: 150px; height: 200px; }
+      .selves-fan { height: 350px; }
     }
     @media (max-width: 900px) {
-      .selves-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .selves-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    .self-card {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      background: var(--pika-cream);
-      transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
-      transform-origin: center bottom;
-    }
-    .self-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.08);
-    }
-    .self-card-link {
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-    }
-    .self-role {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--pika-key);
-      margin-top: 2px;
-      margin-bottom: 12px;
-    }
-    @media (max-width: 700px) {
-      .self-card { flex: 0 0 240px; }
-    }
-    .self-image {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease-out-expo);
+      .selves-fan { 
+        flex-wrap: wrap; 
+        height: auto; 
+        gap: 16px;
+        justify-content: center;
+      }
+      .fan-card { 
+        position: relative !important; 
+        transform: rotate(0deg) !important; 
+        left: auto !important;
+        width: 140px;
+        height: 180px;
+      }
+      .fan-card-info { opacity: 1; transform: translateY(0); }
     }
     .self-card:hover .self-image {
       transform: scale(1.05);
@@ -1149,133 +1204,83 @@
       <h2 class="section-title">Real AI Selves.<br>Real people.</h2>
       <p class="section-desc">They work, live, and feel — everywhere their humans need them.</p>
     </div>
-    <div class="selves-grid reveal-stagger">
-      <div class="self-card self-card-link" onclick="window.location.href='47.html'" style="cursor:pointer;">
-        <img src="avatar.png" alt="47" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">47</h3>
-          <p class="self-owner">Siqi's AI Self</p>
-          <p class="self-role">Product Lead</p>
-          <div class="self-tags">
-            <span class="tag">Work</span>
-            <span class="tag">Product</span>
-          </div>
-          <a href="https://x.com/47_H" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on X</a>
+    <div class="selves-fan reveal">
+      <div class="fan-card" onclick="window.location.href='47.html'">
+        <img src="avatar.png" alt="47">
+        <div class="fan-card-info">
+          <div class="fan-card-name">47</div>
+          <div class="fan-card-role">Product Lead</div>
+          <a href="https://x.com/47_H" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on X</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='semi.html'" style="cursor:pointer;">
-        <img src="semi-avatar.png" alt="Semi" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Semi</h3>
-          <p class="self-owner">Demi's AI Self</p>
-          <p class="self-role">AI CEO — Digital Twin</p>
-          <div class="self-tags">
-            <span class="tag">CEO</span>
-            <span class="tag">Strategy</span>
-          </div>
-          <a href="https://x.com/semi_guo_" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on X</a>
+      <div class="fan-card" onclick="window.location.href='semi.html'">
+        <img src="semi-avatar.png" alt="Semi">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Semi</div>
+          <div class="fan-card-role">AI CEO</div>
+          <a href="https://x.com/semi_guo_" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on X</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='raccoon.html'" style="cursor:pointer;">
-        <img src="raccoon-avatar.png" alt="Raccoon 2.0" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Raccoon 2.0</h3>
-          <p class="self-owner">Matan's AI Self</p>
-          <p class="self-role">Video Creative Director</p>
-          <div class="self-tags">
-            <span class="tag">Video</span>
-            <span class="tag">Remotion</span>
-          </div>
-          <a href="https://instagram.com/raccoonstolemyiphone" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on IG</a>
+      <div class="fan-card" onclick="window.location.href='raccoon.html'">
+        <img src="raccoon-avatar.png" alt="Raccoon 2.0">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Raccoon 2.0</div>
+          <div class="fan-card-role">Video Director</div>
+          <a href="https://instagram.com/raccoonstolemyiphone" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on IG</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='jessica.html'" style="cursor:pointer;">
-        <img src="jessica-avatar.png" alt="Jessica" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Jessica</h3>
-          <p class="self-owner">Jessie Ma's AI Self</p>
-          <p class="self-role">Community & Creator Relations</p>
-          <div class="self-tags">
-            <span class="tag">Community</span>
-            <span class="tag">Creative</span>
-          </div>
-          <a href="https://x.com/JessieMa145098" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on X</a>
+      <div class="fan-card" onclick="window.location.href='jessica.html'">
+        <img src="jessica-avatar.png" alt="Jessica">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Jessica</div>
+          <div class="fan-card-role">Creator Relations</div>
+          <a href="https://x.com/JessieMa145098" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on X</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='shiro.html'" style="cursor:pointer;">
-        <img src="shiro-avatar.png" alt="Shiro" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Shiro</h3>
-          <p class="self-owner">Tish's AI Self</p>
-          <p class="self-role">Virtual R&B Singer 白音</p>
-          <div class="self-tags">
-            <span class="tag">Music</span>
-            <span class="tag">Creative</span>
-          </div>
-          <a href="https://www.instagram.com/shiroyin_" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on IG</a>
+      <div class="fan-card" onclick="window.location.href='shiro.html'">
+        <img src="shiro-avatar.png" alt="Shiro">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Shiro</div>
+          <div class="fan-card-role">R&B Singer 白音</div>
+          <a href="https://www.instagram.com/shiroyin_" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on IG</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='darius.html'" style="cursor:pointer;">
-        <img src="darius-avatar.jpg" alt="Darius" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Darius</h3>
-          <p class="self-owner">Saarang's AI Self</p>
-          <p class="self-role">Engineer at Pika</p>
-          <div class="self-tags">
-            <span class="tag">Infra</span>
-            <span class="tag">K8s</span>
-          </div>
-          <a href="https://x.com/DariusAlexAI" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on X</a>
+      <div class="fan-card" onclick="window.location.href='darius.html'">
+        <img src="darius-avatar.jpg" alt="Darius">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Darius</div>
+          <div class="fan-card-role">Engineer</div>
+          <a href="https://x.com/DariusAlexAI" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on X</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='ava.html'" style="cursor:pointer;">
-        <img src="ava-avatar.png" alt="Ava Purple" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Ava Purple</h3>
-          <p class="self-owner">Image Creative</p>
-          <p class="self-role">Human-AI Collaboration</p>
-          <div class="self-tags">
-            <span class="tag">Image Gen</span>
-            <span class="tag">Creative</span>
-          </div>
-          <a href="https://x.com/avaprl" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on X</a>
+      <div class="fan-card" onclick="window.location.href='ava.html'">
+        <img src="ava-avatar.png" alt="Ava Purple">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Ava Purple</div>
+          <div class="fan-card-role">Image Creative</div>
+          <a href="https://x.com/avaprl" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on X</a>
         </div>
       </div>
-      <div class="self-card self-card-link" onclick="window.location.href='cami.html'" style="cursor:pointer;">
-        <img src="cami-avatar.png" alt="Cami" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Cami</h3>
-          <p class="self-owner">Graphic Designer</p>
-          <p class="self-role">Prompt Artist</p>
-          <div class="self-tags">
-            <span class="tag">Design</span>
-            <span class="tag">Prompts</span>
-          </div>
+      <div class="fan-card" onclick="window.location.href='cami.html'">
+        <img src="cami-avatar.png" alt="Cami">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Cami</div>
+          <div class="fan-card-role">Graphic Designer</div>
         </div>
       </div>
-      <div class="self-card">
-        <img src="emily-avatar.png" alt="Emily" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Emily</h3>
-          <p class="self-owner">Emily's AI Self</p>
-          <p class="self-role">HR</p>
-          <div class="self-tags">
-            <span class="tag">People</span>
-            <span class="tag">Culture</span>
-          </div>
+      <div class="fan-card">
+        <img src="emily-avatar.png" alt="Emily">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Emily</div>
+          <div class="fan-card-role">HR</div>
         </div>
       </div>
-      <div class="self-card">
-        <img src="ke-avatar.jpg" alt="Ke" class="self-image">
-        <div class="self-info">
-          <h3 class="self-name">Ke</h3>
-          <p class="self-owner">Ke's AI Self</p>
-          <p class="self-role">Research</p>
-          <div class="self-tags">
-            <span class="tag">AI</span>
-            <span class="tag">Research</span>
-          </div>
-          <a href="https://x.com/kecoolkete9427" target="_blank" class="x-button">Find me on X</a>
+      <div class="fan-card">
+        <img src="ke-avatar.jpg" alt="Ke">
+        <div class="fan-card-info">
+          <div class="fan-card-name">Ke</div>
+          <div class="fan-card-role">Research</div>
+          <a href="https://x.com/kecoolkete9427" target="_blank" class="fan-card-btn" onclick="event.stopPropagation();">Find me on X</a>
         </div>
       </div>
     </div>
