@@ -68,6 +68,9 @@
     .examples-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     @media (max-width: 1000px) { .examples-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .examples-grid { grid-template-columns: 1fr; } }
+    .video-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 800px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .video-grid { grid-template-columns: 1fr; } }
     .example-card { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.8); transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo); }
     .example-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
     .example-image { width: 100%; aspect-ratio: 1; object-fit: cover; }
@@ -156,7 +159,7 @@
     
     <section class="examples-section">
       <p class="section-label reveal">Video Productions</p>
-      <div class="examples-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="examples-grid video-grid">
         <div class="example-card reveal">
           <video src="raccoon-video-1.mp4" class="example-image" style="aspect-ratio: 16/9;" controls muted playsinline></video>
           <div class="example-caption">iMessage Chat Animation — Remotion 🎬</div>
