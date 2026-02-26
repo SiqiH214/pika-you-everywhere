@@ -834,152 +834,104 @@
       height: 14px;
     }
     
-    /* Skills Section - Portrait.so inspired */
+    /* Skills Section */
     .skills-section {
-      padding: 120px 48px 160px;
-      background: linear-gradient(180deg, var(--pika-cream) 0%, #F5EFE6 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .skills-section::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(207, 195, 255, 0.15) 0%, transparent 70%);
-      pointer-events: none;
+      padding: 160px 48px;
+      background: var(--pika-black);
+      color: var(--pika-white);
     }
     .skills-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      position: relative;
     }
     .skills-header {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 64px;
     }
     .skills-header .section-tag {
-      color: var(--pika-warm);
-      font-size: 11px;
-      margin-bottom: 12px;
+      color: var(--pika-key);
     }
     .skills-header .section-title {
-      font-size: 56px;
-      font-weight: 700;
-      color: var(--pika-black);
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    @media (max-width: 768px) {
-      .skills-header .section-title { font-size: 36px; }
+      color: var(--pika-white);
     }
     .skills-header .section-desc {
-      color: var(--pika-warm);
-      max-width: 440px;
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
       margin: 0 auto;
-      font-size: 16px;
-      line-height: 1.6;
     }
     .skills-category {
-      margin-bottom: 60px;
+      margin-bottom: 48px;
     }
     .skills-category:last-child {
       margin-bottom: 0;
     }
     .skills-category-title {
-      font-size: 28px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
       color: var(--pika-black);
-      margin-bottom: 28px;
-      position: relative;
-      display: inline-block;
-    }
-    .skills-category-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(90deg, #806ECA, #CFC3FF);
-      border-radius: 2px;
+      margin-bottom: 20px;
+      padding-left: 4px;
     }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
     }
-    @media (max-width: 900px) {
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .skills-grid { grid-template-columns: 1fr; }
+    @media (max-width: 700px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .skill-card {
-      background: white;
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: all 0.4s var(--ease-out-expo);
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #806ECA, #CFC3FF);
-      opacity: 0;
-      transition: opacity 0.3s;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.4s var(--ease-out-expo), background 0.4s, border-color 0.3s;
     }
     .skill-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    }
-    .skill-card:hover::before {
-      opacity: 1;
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(207, 195, 255, 0.3);
     }
     .skill-card-header {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
+      margin-bottom: 10px;
     }
     .skill-icon {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, #806ECA 0%, #CFC3FF 100%);
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      background: rgba(207, 195, 255, 0.2);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(128, 110, 202, 0.25);
     }
     .skill-icon svg {
-      width: 24px;
-      height: 24px;
-      color: white;
+      width: 22px;
+      height: 22px;
+      color: #806ECA;
     }
     .skill-info {
       flex: 1;
       min-width: 0;
     }
     .skill-name {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
       color: var(--pika-black);
     }
     .skill-desc {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--pika-warm);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     /* Statement */
@@ -1477,9 +1429,9 @@
   <section class="skills-section">
     <div class="skills-inner">
       <div class="skills-header reveal">
-        <p class="section-tag">What They Can Do</p>
-        <h2 class="section-title">Superpowers included.</h2>
-        <p class="section-desc">Every AI Self comes ready to create, organize, and help — no setup required.</p>
+        <p class="section-tag">Skill Set</p>
+        <h2 class="section-title">AI Self capabilities</h2>
+        <p class="section-desc">Your AI Self comes equipped with powerful tools across creativity, productivity, and beyond.</p>
       </div>
       
       <!-- AI Multi-model Creativity -->
