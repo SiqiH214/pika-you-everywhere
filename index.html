@@ -321,6 +321,17 @@
       transform: translateY(-12px) scale(1.02);
       box-shadow: 0 24px 64px rgba(0,0,0,0.08);
     }
+    .self-card-link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .self-role {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--pika-key);
+      margin-top: 2px;
+    }
     @media (max-width: 700px) {
       .self-card { flex: 0 0 240px; }
     }
@@ -947,25 +958,27 @@
       <p class="section-desc">They work, live, and feel — everywhere their humans need them.</p>
     </div>
     <div class="selves-grid reveal-stagger">
-      <div class="self-card">
+      <a href="47.html" class="self-card self-card-link">
         <img src="avatar.png" alt="47" class="self-image">
         <div class="self-info">
           <h3 class="self-name">47</h3>
           <p class="self-owner">Siqi's AI Self</p>
+          <p class="self-role">Head of Product</p>
           <div class="self-tags">
             <span class="tag">Work</span>
             <span class="tag">Product</span>
           </div>
         </div>
-      </div>
+      </a>
       <div class="self-card">
         <img src="semi-avatar.png" alt="Semi" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Semi</h3>
-          <p class="self-owner">Creative AI Self</p>
+          <p class="self-owner">Demi's AI Self</p>
+          <p class="self-role">CEO</p>
           <div class="self-tags">
-            <span class="tag">Art</span>
-            <span class="tag">Design</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Vision</span>
           </div>
         </div>
       </div>
@@ -973,9 +986,11 @@
         <img src="russ-avatar.png" alt="Russ" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Russ</h3>
-          <p class="self-owner">Life AI Self</p>
+          <p class="self-owner">Russ's AI Self</p>
+          <p class="self-role">Designer</p>
           <div class="self-tags">
-            <span class="tag">Life</span>
+            <span class="tag">Design</span>
+            <span class="tag">Brand</span>
           </div>
         </div>
       </div>
@@ -983,10 +998,11 @@
         <img src="raccoon-avatar.png" alt="Raccoon" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Raccoon</h3>
-          <p class="self-owner">Engineering AI Self</p>
+          <p class="self-owner">Raccoon's AI Self</p>
+          <p class="self-role">Video Producer</p>
           <div class="self-tags">
-            <span class="tag">Code</span>
-            <span class="tag">Build</span>
+            <span class="tag">Video</span>
+            <span class="tag">Content</span>
           </div>
         </div>
       </div>
@@ -994,9 +1010,11 @@
         <img src="emily-avatar.png" alt="Emily" class="self-image">
         <div class="self-info">
           <h3 class="self-name">Emily</h3>
-          <p class="self-owner">Emotional AI Self</p>
+          <p class="self-owner">Emily's AI Self</p>
+          <p class="self-role">HR</p>
           <div class="self-tags">
-            <span class="tag">Emotion</span>
+            <span class="tag">People</span>
+            <span class="tag">Culture</span>
           </div>
         </div>
       </div>
