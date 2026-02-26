@@ -834,104 +834,120 @@
       height: 14px;
     }
     
-    /* Skills Section */
+    /* Skills Section - Portrait.so style */
     .skills-section {
-      padding: 160px 48px;
-      background: var(--pika-black);
-      color: var(--pika-white);
+      padding: 120px 48px;
+      background: white;
     }
     .skills-inner {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .skills-header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 80px;
     }
     .skills-header .section-tag {
-      color: var(--pika-key);
+      color: var(--pika-warm);
+      font-size: 11px;
     }
     .skills-header .section-title {
-      color: var(--pika-white);
+      color: var(--pika-black);
+      font-size: 48px;
     }
     .skills-header .section-desc {
-      color: rgba(255,255,255,0.6);
+      color: var(--pika-warm);
       max-width: 500px;
       margin: 0 auto;
     }
     .skills-category {
-      margin-bottom: 48px;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px dashed rgba(0,0,0,0.15);
     }
     .skills-category:last-child {
       margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
     .skills-category-title {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--pika-black);
-      margin-bottom: 20px;
-      padding-left: 4px;
+      letter-spacing: 0.2em;
+      color: var(--pika-warm);
+      margin-bottom: 40px;
+      text-align: center;
     }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 24px;
     }
-    @media (max-width: 700px) {
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 800px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .skills-grid { grid-template-columns: 1fr; }
     }
     .skill-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 20px;
-      transition: transform 0.4s var(--ease-out-expo), background 0.4s, border-color 0.3s;
+      text-align: center;
+      padding: 0;
+      background: transparent;
     }
-    .skill-card:hover {
+    .skill-card:hover .skill-icon {
       transform: translateY(-4px);
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(207, 195, 255, 0.3);
     }
     .skill-card-header {
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 10px;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
     .skill-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(207, 195, 255, 0.2);
-      border-radius: 10px;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      margin-bottom: 20px;
+      transition: transform 0.3s var(--ease-out-expo);
     }
+    /* Pastel icon colors */
+    .skill-card:nth-child(6n+1) .skill-icon { background: #E3F4FC; }
+    .skill-card:nth-child(6n+1) .skill-icon svg { color: #2D6A8A; }
+    .skill-card:nth-child(6n+2) .skill-icon { background: #FFF0E5; }
+    .skill-card:nth-child(6n+2) .skill-icon svg { color: #C4763D; }
+    .skill-card:nth-child(6n+3) .skill-icon { background: #E5F7E8; }
+    .skill-card:nth-child(6n+3) .skill-icon svg { color: #3D8B4D; }
+    .skill-card:nth-child(6n+4) .skill-icon { background: #FCE5F3; }
+    .skill-card:nth-child(6n+4) .skill-icon svg { color: #A8447A; }
+    .skill-card:nth-child(6n+5) .skill-icon { background: #F0E5FF; }
+    .skill-card:nth-child(6n+5) .skill-icon svg { color: #6B4D9E; }
+    .skill-card:nth-child(6n+6) .skill-icon { background: #FFF8E0; }
+    .skill-card:nth-child(6n+6) .skill-icon svg { color: #9E8A3D; }
     .skill-icon svg {
-      width: 22px;
-      height: 22px;
-      color: #806ECA;
+      width: 24px;
+      height: 24px;
     }
     .skill-info {
       flex: 1;
       min-width: 0;
     }
     .skill-name {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 2px;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
       color: var(--pika-black);
     }
     .skill-desc {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 400;
       color: var(--pika-warm);
-      line-height: 1.5;
+      line-height: 1.6;
+      max-width: 260px;
+      margin: 0 auto;
     }
 
     /* Statement */
