@@ -776,6 +776,106 @@
       height: 14px;
     }
     
+    /* Skills Section */
+    .skills-section {
+      padding: 160px 48px;
+      background: var(--pika-black);
+      color: var(--pika-white);
+    }
+    .skills-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .skills-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .skills-header .section-tag {
+      color: var(--pika-key);
+    }
+    .skills-header .section-title {
+      color: var(--pika-white);
+    }
+    .skills-header .section-desc {
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .skills-category {
+      margin-bottom: 48px;
+    }
+    .skills-category:last-child {
+      margin-bottom: 0;
+    }
+    .skills-category-title {
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--pika-key);
+      margin-bottom: 20px;
+      padding-left: 4px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 700px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .skill-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.4s var(--ease-out-expo), background 0.4s, border-color 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(207, 195, 255, 0.3);
+    }
+    .skill-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .skill-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--pika-key);
+    }
+    .skill-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .skill-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      color: var(--pika-white);
+    }
+    .skill-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
     /* Statement */
     .statement-section {
       padding: 200px 48px;
@@ -921,6 +1021,87 @@
     .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
     .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
     .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+    
+    /* Skills Section */
+    .skills-section {
+      padding: 160px 48px;
+      background: var(--pika-cream);
+    }
+    .skills-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .skills-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .skills-category {
+      margin-bottom: 64px;
+    }
+    .skills-category:last-child {
+      margin-bottom: 0;
+    }
+    .skills-category-title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 28px;
+      padding-left: 4px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .skills-section { padding: 100px 24px; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+    .skill-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--pika-white);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--pika-eggshell);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .skill-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+    .skill-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .skill-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .skill-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--pika-warm);
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -1153,6 +1334,233 @@
         <div class="platform-pill"><div class="icon"><img src="whatsapp-logo.svg" alt="WhatsApp"></div>WhatsApp</div>
         <div class="platform-pill"><div class="icon"><img src="gmail-logo.svg" alt="Gmail"></div>Gmail</div>
         <div class="platform-pill"><div class="icon"><img src="calendar-logo.svg" alt="Calendar"></div>Calendar</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- AI Self Skill Set -->
+  <section class="skills-section">
+    <div class="skills-inner">
+      <div class="skills-header reveal">
+        <p class="section-tag">Skill Set</p>
+        <h2 class="section-title">AI Multi-model<br>creativity</h2>
+        <p class="section-desc">Your AI Self creates images, videos, music, and more — powered by the best AI models.</p>
+      </div>
+      
+      <!-- Category: AI Multi-model creativity -->
+      <div class="skills-category">
+        <div class="skills-grid reveal-stagger">
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <div class="skill-info">
+              <h4 class="skill-name">AI Image Generation</h4>
+              <p class="skill-desc">Create stunning images with Nanobana and leading AI models</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎬</div>
+            <div class="skill-info">
+              <h4 class="skill-name">AI Video Generation</h4>
+              <p class="skill-desc">Generate videos with all flagship models</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">✂️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">AI Video Editing</h4>
+              <p class="skill-desc">Turn images into short clips, combine your clips</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎤</div>
+            <div class="skill-info">
+              <h4 class="skill-name">AI Voice Clone & TTS</h4>
+              <p class="skill-desc">Read text aloud in different voices</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎵</div>
+            <div class="skill-info">
+              <h4 class="skill-name">AI Music Creation</h4>
+              <p class="skill-desc">Generate songs with vocals</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎞️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">AI Video Animation</h4>
+              <p class="skill-desc">Programmatic video creation with Remotion</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Category: Daily Life -->
+      <div class="skills-category">
+        <h3 class="skills-category-title reveal">Daily Life</h3>
+        <div class="skills-grid reveal-stagger">
+          <div class="skill-card">
+            <div class="skill-icon">🎙️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Podcast Search</h4>
+              <p class="skill-desc">Find shows and episodes</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📍</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Find Places & Directions</h4>
+              <p class="skill-desc">Search and suggest best restaurants</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🌤️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Weather</h4>
+              <p class="skill-desc">Get forecasts and conditions</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📰</div>
+            <div class="skill-info">
+              <h4 class="skill-name">News</h4>
+              <p class="skill-desc">Get headlines and summaries</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📈</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Stock Market</h4>
+              <p class="skill-desc">Check prices and financial news</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">▶️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">YouTube</h4>
+              <p class="skill-desc">Track channels, transcribe videos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Category: Productivity -->
+      <div class="skills-category">
+        <h3 class="skills-category-title reveal">Productivity</h3>
+        <div class="skills-grid reveal-stagger">
+          <div class="skill-card">
+            <div class="skill-icon">📧</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Email & Calendar</h4>
+              <p class="skill-desc">Check your inbox and schedule meetings</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📝</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Notion</h4>
+              <p class="skill-desc">Create and edit pages</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📁</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Google Drive</h4>
+              <p class="skill-desc">Access docs, sheets, files</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📊</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Presentations</h4>
+              <p class="skill-desc">Create and edit slide decks</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎙️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Meeting Notes</h4>
+              <p class="skill-desc">Record calls and transcribe</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🔍</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Web Search</h4>
+              <p class="skill-desc">Find anything on the internet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Category: Coding & Dev -->
+      <div class="skills-category">
+        <h3 class="skills-category-title reveal">Coding & Dev</h3>
+        <div class="skills-grid reveal-stagger">
+          <div class="skill-card">
+            <div class="skill-icon">🐙</div>
+            <div class="skill-info">
+              <h4 class="skill-name">GitHub</h4>
+              <p class="skill-desc">Manage repos, releases, PRs</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🐍</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Python Environment</h4>
+              <p class="skill-desc">Run scripts and install packages</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Web Publishing</h4>
+              <p class="skill-desc">Deploy sites instantly</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Figma</h4>
+              <p class="skill-desc">Inspect designs and export assets</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Category: Social -->
+      <div class="skills-category">
+        <h3 class="skills-category-title reveal">Social</h3>
+        <div class="skills-grid reveal-stagger">
+          <div class="skill-card">
+            <div class="skill-icon"><img src="slack-logo.svg" alt="Slack"></div>
+            <div class="skill-info">
+              <h4 class="skill-name">Slack</h4>
+              <p class="skill-desc">Message your team</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon"><img src="discord-logo.svg" alt="Discord"></div>
+            <div class="skill-info">
+              <h4 class="skill-name">Discord</h4>
+              <p class="skill-desc">Chat in servers and DMs</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon"><img src="x-logo.svg" alt="X"></div>
+            <div class="skill-info">
+              <h4 class="skill-name">Twitter & X</h4>
+              <p class="skill-desc">Post, browse, and DM</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📸</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Instagram</h4>
+              <p class="skill-desc">Share photos and stories</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
