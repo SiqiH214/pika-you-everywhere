@@ -1038,6 +1038,8 @@
     .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
     .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
     .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: translateY(0); }
     
     /* Skills Section */
     .skills-section {
@@ -1276,7 +1278,7 @@
       <p class="section-desc">They work, live, and feel — everywhere their humans need them.</p>
     </div>
     <div class="selves-grid reveal-stagger">
-      <a href="47.html" class="self-card self-card-link">
+      <div class="self-card self-card-link" onclick="window.location.href='47.html'" style="cursor:pointer;">
         <img src="avatar.png" alt="47" class="self-image">
         <div class="self-info">
           <h3 class="self-name">47</h3>
@@ -1286,9 +1288,9 @@
             <span class="tag">Work</span>
             <span class="tag">Product</span>
           </div>
-          <a href="https://x.com/47_H" target="_blank" class="x-button">Find me on X</a>
+          <a href="https://x.com/47_H" target="_blank" class="x-button" onclick="event.stopPropagation();">Find me on X</a>
         </div>
-      </a>
+      </div>
       <div class="self-card">
         <img src="semi-avatar.png" alt="Semi" class="self-image">
         <div class="self-info">
