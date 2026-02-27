@@ -1150,6 +1150,440 @@
       color: var(--pika-warm);
       line-height: 1.4;
     }
+
+    /* ===== iMessage Born Section ===== */
+    .imessage-born-section {
+      padding: 120px 48px 100px;
+      background: var(--pika-eggshell);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .imessage-icons {
+      position: relative;
+      width: 140px;
+      height: 100px;
+      margin-bottom: 40px;
+    }
+    .imessage-icon-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      position: absolute;
+      top: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .imessage-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .imessage-icon-box.avatar {
+      left: 8px;
+      transform: rotate(-8deg);
+      z-index: 2;
+    }
+    .imessage-icon-box.bubble {
+      right: 8px;
+      transform: rotate(6deg);
+      z-index: 1;
+      background: #34C759;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .imessage-icon-box.bubble svg {
+      width: 36px;
+      height: 36px;
+      color: white;
+    }
+    .imessage-badge {
+      position: absolute;
+      top: 0;
+      right: 4px;
+      width: 22px;
+      height: 22px;
+      background: #FF3B30;
+      border-radius: 50%;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      box-shadow: 0 2px 6px rgba(255,59,48,0.4);
+    }
+    .imessage-born-title {
+      font-family: 'Telka Extended', sans-serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+    .imessage-born-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--pika-warm);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .btn-imessage {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 36px;
+      background: #81F080;
+      color: var(--pika-black);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 100px;
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-imessage:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 36px rgba(129,240,128,0.3);
+    }
+    .btn-imessage:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* ===== Carousel Section ===== */
+    .carousel-section {
+      padding: 120px 0 120px 0;
+      background: var(--pika-eggshell);
+      overflow: hidden;
+    }
+    .carousel-header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 0 48px;
+    }
+    .carousel-header .section-tag {
+      color: var(--pika-warm);
+    }
+    .carousel-header .carousel-title {
+      font-family: 'Telka Extended', sans-serif;
+      font-size: clamp(40px, 7vw, 64px);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .carousel-wrapper {
+      position: relative;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 48px 20px;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .carousel-card {
+      flex: 0 0 345px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+    .carousel-card.large {
+      flex: 0 0 710px;
+    }
+    @media (max-width: 768px) {
+      .carousel-card { flex: 0 0 300px; }
+      .carousel-card.large { flex: 0 0 340px; }
+      .carousel-header { padding: 0 24px; }
+      .carousel-track { padding: 0 24px 20px; }
+    }
+    .carousel-card-illustration {
+      border-radius: 24px;
+      min-height: 400px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px;
+      margin-bottom: 20px;
+      transition: transform 0.5s var(--ease-out-expo);
+    }
+    .carousel-card:hover .carousel-card-illustration {
+      transform: translateY(-8px);
+    }
+    .carousel-card-info {
+      padding: 0 4px;
+    }
+    .carousel-card-info h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .carousel-card-info p {
+      font-size: 15px;
+      color: var(--pika-warm);
+      line-height: 1.6;
+    }
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .carousel-nav button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.15);
+      background: var(--pika-white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s var(--spring), background 0.3s;
+    }
+    .carousel-nav button:hover {
+      transform: scale(1.1);
+      background: var(--pika-black);
+      color: white;
+    }
+    .carousel-nav button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Card bubble styles */
+    .card-bubble {
+      padding: 10px 16px;
+      border-radius: 18px;
+      font-size: 14px;
+      line-height: 1.4;
+      max-width: 240px;
+      margin-bottom: 8px;
+    }
+    .card-bubble-left {
+      background: #E8E8E8;
+      color: var(--pika-black);
+      border-bottom-left-radius: 6px;
+      align-self: flex-start;
+    }
+    .card-bubble-right {
+      background: #007AFF;
+      color: white;
+      border-bottom-right-radius: 6px;
+      align-self: flex-end;
+    }
+    .card-bubble-ai {
+      background: #007AFF;
+      color: white;
+      border-bottom-left-radius: 6px;
+      align-self: flex-start;
+    }
+    .card-mini-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .card-chat-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .card-chat-row.right {
+      justify-content: flex-end;
+    }
+
+    /* Glass bubbles for trip card */
+    .glass-bubble {
+      padding: 10px 16px;
+      border-radius: 18px;
+      font-size: 14px;
+      line-height: 1.4;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(12px);
+      color: white;
+      max-width: 260px;
+    }
+    .glass-bubble.light {
+      background: rgba(255,255,255,0.9);
+      color: var(--pika-black);
+    }
+
+    /* Partner card floating love messages */
+    .partner-illustration {
+      position: relative;
+      overflow: hidden;
+    }
+    .love-bubble {
+      position: absolute;
+      padding: 8px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 400;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .love-bubble.sent {
+      background: #007AFF;
+      color: white;
+    }
+    .love-bubble.received {
+      background: white;
+      color: var(--pika-black);
+    }
+    .floating-emoji {
+      position: absolute;
+      font-size: 20px;
+      animation: emojiFloat 3s ease-in-out infinite;
+    }
+    @keyframes emojiFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Night sky for timezone card */
+    .night-sky {
+      background: linear-gradient(180deg, #0B1026 0%, #1a1a3e 50%, #2d1b4e 100%);
+      position: relative;
+    }
+    .night-sky::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.6), transparent),
+                        radial-gradient(2px 2px at 80px 60px, rgba(255,255,255,0.4), transparent),
+                        radial-gradient(1px 1px at 150px 20px, rgba(255,255,255,0.5), transparent),
+                        radial-gradient(1px 1px at 200px 80px, rgba(255,255,255,0.3), transparent),
+                        radial-gradient(2px 2px at 50px 120px, rgba(255,255,255,0.5), transparent),
+                        radial-gradient(1px 1px at 120px 150px, rgba(255,255,255,0.4), transparent),
+                        radial-gradient(2px 2px at 250px 40px, rgba(255,255,255,0.3), transparent),
+                        radial-gradient(1px 1px at 280px 130px, rgba(255,255,255,0.5), transparent);
+      pointer-events: none;
+    }
+    .night-sky .card-bubble, .night-sky .glass-bubble {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.9);
+    }
+    .night-timestamp {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    /* Waveform for voice memo card */
+    .voice-waveform {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      max-width: 220px;
+    }
+    .wave-play-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #007AFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .wave-play-btn svg {
+      width: 14px;
+      height: 14px;
+      color: white;
+      margin-left: 2px;
+    }
+    .wave-bars {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 32px;
+    }
+    .wave-bar {
+      width: 3px;
+      border-radius: 2px;
+      background: #007AFF;
+      animation: waveAnim 1.2s ease-in-out infinite;
+    }
+    @keyframes waveAnim {
+      0%, 100% { height: 8px; }
+      50% { height: 24px; }
+    }
+    .heart-reaction {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,59,48,0.1);
+      border-radius: 100px;
+      padding: 4px 10px;
+      font-size: 13px;
+      margin-top: 4px;
+      margin-left: 8px;
+    }
+
+    /* Mini browser for website card */
+    .mini-browser {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .mini-browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #F5F5F5;
+      border-bottom: 1px solid #E8E8E8;
+    }
+    .traffic-lights {
+      display: flex;
+      gap: 6px;
+    }
+    .traffic-light {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .traffic-light.red { background: #FF5F57; }
+    .traffic-light.yellow { background: #FFBD2E; }
+    .traffic-light.green { background: #28CA41; }
+    .mini-url-bar {
+      flex: 1;
+      background: white;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: var(--pika-warm);
+      border: 1px solid #E8E8E8;
+    }
+    .mini-browser-content {
+      padding: 16px;
+    }
+    .mini-wireframe-block {
+      background: #F0F0F0;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -1270,118 +1704,232 @@
       </div>
     </div>
   </section>
-  
-  <!-- Use Cases - Chat Mockups -->
-  <section class="usecases-section">
-    <div class="usecases-inner">
-      <div class="usecases-header reveal">
-        <p class="usecases-number">03</p>
-        <h2 class="usecases-headline">You,<br>everywhere</h2>
+
+  <!-- Born on iMessage -->
+  <section class="imessage-born-section reveal">
+    <div class="imessage-icons">
+      <div class="imessage-icon-box avatar">
+        <img src="semi-avatar.png" alt="AI Self">
       </div>
-      <div class="chat-cards-grid">
-        <!-- Card 1: Book meetings (MULTIMODAL - Google Meet link) -->
-        <div class="chat-card reveal">
-          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #f0f8ff, #e8f4fd);">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="investor-chat-inner"></div>
+      <div class="imessage-icon-box bubble">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div class="imessage-badge">1</div>
+    </div>
+    <h2 class="imessage-born-title">Your AI Self is now on Messages</h2>
+    <p class="imessage-born-subtitle">Your AI Self lives in iMessage. Text them like a friend — they'll know your voice, your vibe, and your life.</p>
+    <a href="sms:" class="btn-imessage">Open Messages →</a>
+  </section>
+
+  <section class="carousel-section" id="usecases-section">
+    <div class="carousel-header reveal">
+      <p class="section-tag">Step 3</p>
+      <h2 class="carousel-title">I'll handle the rest</h2>
+    </div>
+    <div class="carousel-wrapper">
+      <div class="carousel-track no-scrollbar" id="carousel-track">
+
+        <!-- Card 1: Help parents with IT -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06);">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background: #34C759; display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;border-radius:50%;">D</div>
+                <div class="card-bubble card-bubble-left">The printer is broken again! 😩</div>
+              </div>
+              <div class="card-chat-row right">
+                <div class="card-bubble card-bubble-ai" style="display:flex;align-items:center;gap:8px;">
+                  <img src="semi-avatar.png" class="card-mini-avatar" style="width:24px;height:24px;" alt="">
+                  Hey Dad, did you check if it's plugged in?
+                </div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background: #34C759; display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;border-radius:50%;">D</div>
+                <div class="card-bubble card-bubble-left">Whoops! 😅</div>
+              </div>
             </div>
           </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Book meetings for you</h3>
-            <p class="chat-card-desc">Your AI Self schedules calls, sends calendar invites, and shares meeting links — so you never miss an opportunity.</p>
+          <div class="carousel-card-info">
+            <h3>Help parents with IT</h3>
+            <p>Patient tech support in your voice — so they actually listen.</p>
           </div>
         </div>
-        
-        <!-- Card 2: Share group photos (MULTIMODAL - Image) -->
-        <div class="chat-card reveal" style="transition-delay: 0.1s;">
-          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fff5f0, #fff0e8);">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="group-photo-chat-inner"></div>
+
+        <!-- Card 2: Plan a trip (LARGE) -->
+        <div class="carousel-card large">
+          <div class="carousel-card-illustration" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'); background-size:cover; background-position:center;">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.25);border-radius:24px;"></div>
+            <div style="position:relative;z-index:2;">
+              <div class="avatar-cluster" style="margin-bottom:20px;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#FF9500;border:2px solid white;"></div>
+                <div style="width:32px;height:32px;border-radius:50%;background:#5856D6;border:2px solid white;margin-left:-8px;"></div>
+                <div style="width:32px;height:32px;border-radius:50%;border:2px solid white;margin-left:-8px;overflow:hidden;"><img src="semi-avatar.png" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div class="glass-bubble light" style="align-self:flex-start;">Any good ATL–CUN flights on the 19th?</div>
+                <div class="glass-bubble" style="align-self:flex-end;">Found 3 great options! Also booked the beach house — 4 beds, pool, $89/night 🏖️</div>
+                <div class="glass-bubble light" style="align-self:flex-start;">LETS GOOO 🎉</div>
+              </div>
             </div>
           </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Share group photos</h3>
-            <p class="chat-card-desc">Your AI Self can share photos from your life — keeping friends in the loop even when you're busy.</p>
+          <div class="carousel-card-info">
+            <h3>Plan a trip</h3>
+            <p>Flights, Airbnbs, itineraries — handled in the group chat so no one has to play travel agent.</p>
           </div>
         </div>
-        
-        <!-- Card 3: Send documents (MULTIMODAL - PDF) -->
-        <div class="chat-card reveal" style="transition-delay: 0.2s;">
-          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fff8f0, #fff5e6);">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="pdf-chat-inner"></div>
+
+        <!-- Card 3: Keep partner updated -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration partner-illustration" style="background: #FFD2FD;">
+            <div class="love-bubble sent" style="top:30px;left:20px;transform:rotate(-4deg);">thinking of us 💭</div>
+            <div class="love-bubble sent" style="top:90px;right:20px;transform:rotate(3deg);">miss you 💕</div>
+            <div class="love-bubble sent" style="top:160px;left:40px;transform:rotate(-2deg);">looking forward to our date</div>
+            <div class="love-bubble sent" style="top:230px;right:30px;transform:rotate(5deg);">have a good day ☀️</div>
+            <div class="love-bubble received" style="bottom:40px;left:50%;transform:translateX(-50%) rotate(-1deg);">you're too sweet! 🥰</div>
+            <span class="floating-emoji" style="top:60px;right:60px;animation-delay:0s;">💝</span>
+            <span class="floating-emoji" style="top:130px;left:15px;animation-delay:0.3s;">🤟</span>
+            <span class="floating-emoji" style="top:200px;right:15px;animation-delay:0.6s;">❤️</span>
+            <span class="floating-emoji" style="bottom:80px;left:30px;animation-delay:0.9s;">🫶</span>
+            <span class="floating-emoji" style="top:40px;left:60%;animation-delay:1.2s;">😘</span>
+            <span class="floating-emoji" style="bottom:110px;right:50px;animation-delay:0.4s;">🥰</span>
+            <span class="floating-emoji" style="top:180px;left:70%;animation-delay:0.7s;">💞</span>
+            <span class="floating-emoji" style="bottom:30px;right:20px;animation-delay:1s;">💘</span>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Keep partner updated</h3>
+            <p>Little love notes throughout the day — so they always know you're thinking of them.</p>
+          </div>
+        </div>
+
+        <!-- Card 4: Find time to hang out -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: #E2DACF;">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="card-chat-row right">
+                <div class="card-bubble card-bubble-ai" style="display:flex;align-items:center;gap:8px;">
+                  <img src="semi-avatar.png" class="card-mini-avatar" style="width:24px;height:24px;" alt="">
+                  She's free 10am–12pm Saturday! How about Pike Café?
+                </div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#FF9500;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">M</div>
+                <div class="card-bubble card-bubble-left">Ooh yes I love that place!</div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#5856D6;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">J</div>
+                <div class="card-bubble card-bubble-left">I'm in! See you there 😊</div>
+              </div>
             </div>
           </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Send documents</h3>
-            <p class="chat-card-desc">Your AI Self can create, find, and send PDFs — reports, receipts, whatever's needed.</p>
+          <div class="carousel-card-info">
+            <h3>Find time to hang out</h3>
+            <p>Your AI Self checks your calendar and coordinates — no more "when are you free?" loops.</p>
           </div>
         </div>
-        
-        <!-- Card 4: Help parents with IT -->
-        <div class="chat-card reveal" style="transition-delay: 0.3s;">
-          <div class="chat-mockup light animated-chat">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="it-chat-inner"></div>
+
+        <!-- Card 5: Bridge timezone gap -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration night-sky">
+            <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:10px;">
+              <div class="night-timestamp">Yesterday 3:34 AM</div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#FF9500;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">Y</div>
+                <div class="card-bubble" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border-radius:18px;border-bottom-left-radius:6px;">来週はここに来ますか？</div>
+              </div>
+              <div class="card-chat-row right">
+                <div class="card-bubble" style="background:rgba(255,255,255,0.2);color:white;border-radius:18px;border-bottom-right-radius:6px;display:flex;align-items:center;gap:8px;">
+                  <img src="semi-avatar.png" class="card-mini-avatar" style="width:24px;height:24px;" alt="">
+                  はい！月曜日の朝に東京に着陸します！✈️
+                </div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#FF9500;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">Y</div>
+                <div class="card-bubble" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border-radius:18px;border-bottom-left-radius:6px;">やった！🎉</div>
+              </div>
             </div>
           </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Help your parents with IT problems</h3>
-            <p class="chat-card-desc">Your AI Self is really smart, and knows your vibe. So your parents will really appreciate chatting.</p>
+          <div class="carousel-card-info">
+            <h3>Bridge timezone gap</h3>
+            <p>Your AI Self replies in their language, in their timezone — even at 3 AM your time.</p>
           </div>
         </div>
-        
-        <!-- Card 5: Plan a trip -->
-        <div class="chat-card reveal" style="transition-delay: 0.4s;">
-          <div class="chat-mockup image animated-chat" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80');">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="trip-chat-inner"></div>
+
+        <!-- Card 6: Voice memo to Mom -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: #D8D0F0;">
+            <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
+              <div class="voice-waveform">
+                <div class="wave-play-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <div class="wave-bars">
+                  <div class="wave-bar" style="height:12px;animation-delay:0s;"></div>
+                  <div class="wave-bar" style="height:20px;animation-delay:0.1s;"></div>
+                  <div class="wave-bar" style="height:8px;animation-delay:0.2s;"></div>
+                  <div class="wave-bar" style="height:24px;animation-delay:0.3s;"></div>
+                  <div class="wave-bar" style="height:16px;animation-delay:0.4s;"></div>
+                  <div class="wave-bar" style="height:10px;animation-delay:0.5s;"></div>
+                  <div class="wave-bar" style="height:20px;animation-delay:0.6s;"></div>
+                  <div class="wave-bar" style="height:14px;animation-delay:0.7s;"></div>
+                  <div class="wave-bar" style="height:8px;animation-delay:0.8s;"></div>
+                  <div class="wave-bar" style="height:18px;animation-delay:0.9s;"></div>
+                </div>
+              </div>
+              <div class="heart-reaction">❤️ Mom</div>
+              <div class="card-chat-row" style="margin-top:8px;">
+                <div class="card-mini-avatar" style="background:#FF2D55;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">M</div>
+                <div class="card-bubble card-bubble-left">Oh sweetie, Mom misses you too! 🥹</div>
+              </div>
             </div>
           </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Plan a trip with your friends</h3>
-            <p class="chat-card-desc">Stop the endless "I don't know" loops. Your AI Self can find the flights, book the Airbnb, and finalize the itinerary directly in your group chat.</p>
+          <div class="carousel-card-info">
+            <h3>Voice memo to Mom</h3>
+            <p>Send voice messages in your voice — because some things are better heard than read.</p>
           </div>
         </div>
-        
-        <!-- Card 6: Handle work -->
-        <div class="chat-card reveal" style="transition-delay: 0.5s;">
-          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #f8f4f0, #fff);">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="work-chat-inner"></div>
+
+        <!-- Card 7: Build personal website -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: linear-gradient(135deg, #f8f4ff, #f0f8ff);">
+            <div class="mini-browser">
+              <div class="mini-browser-bar">
+                <div class="traffic-lights">
+                  <div class="traffic-light red"></div>
+                  <div class="traffic-light yellow"></div>
+                  <div class="traffic-light green"></div>
+                </div>
+                <div class="mini-url-bar">yourname.pika.me</div>
+              </div>
+              <div class="mini-browser-content">
+                <div class="mini-wireframe-block" style="height:60px;background:linear-gradient(135deg,#E8E4F0,#D8D0F0);"></div>
+                <div style="display:flex;gap:8px;">
+                  <div class="mini-wireframe-block" style="height:40px;flex:1;"></div>
+                  <div class="mini-wireframe-block" style="height:40px;flex:1;"></div>
+                </div>
+                <div class="mini-wireframe-block" style="height:24px;width:60%;"></div>
+                <div class="mini-wireframe-block" style="height:50px;"></div>
+                <div style="display:flex;gap:8px;">
+                  <div class="mini-wireframe-block" style="height:30px;flex:1;"></div>
+                  <div class="mini-wireframe-block" style="height:30px;flex:1;"></div>
+                  <div class="mini-wireframe-block" style="height:30px;flex:1;"></div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Handle work while you're off</h3>
-            <p class="chat-card-desc">On vacation? In deep work? Your AI Self keeps teammates unblocked and you in the loop.</p>
+          <div class="carousel-card-info">
+            <h3>Build personal website</h3>
+            <p>Your AI Self builds and publishes a site about you — portfolio, blog, anything.</p>
           </div>
         </div>
-        
-        <!-- Card 7: Stay connected with family -->
-        <div class="chat-card reveal" style="transition-delay: 0.6s;">
-          <div class="chat-mockup image animated-chat" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800&q=80');">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="family-chat-inner"></div>
-            </div>
-          </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Stay connected with family</h3>
-            <p class="chat-card-desc">Too busy to text back? Your AI Self keeps the conversation going with the warmth only you can bring.</p>
-          </div>
-        </div>
-        
-        <!-- Card 8: Remember important dates -->
-        <div class="chat-card reveal" style="transition-delay: 0.7s;">
-          <div class="chat-mockup light animated-chat" style="background: linear-gradient(135deg, #fef7f0, #fff5f5);">
-            <div class="chat-conversation">
-              <div class="chat-conversation-inner" id="dates-chat-inner"></div>
-            </div>
-          </div>
-          <div class="chat-card-info">
-            <h3 class="chat-card-title">Remember important dates</h3>
-            <p class="chat-card-desc">Birthdays, anniversaries, that thing they mentioned once — your AI Self remembers so you never forget.</p>
-          </div>
-        </div>
+
+      </div>
+      <div class="carousel-nav">
+        <button onclick="document.getElementById('carousel-track').scrollBy({left:-370,behavior:'smooth'})" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="document.getElementById('carousel-track').scrollBy({left:370,behavior:'smooth'})" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -2007,115 +2555,7 @@
       }
     }
     
-    // ===== Card 1: IT Help (Semi) =====
-    const itChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'The printer is broken again! 😫' },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI Semi' },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Hey Dad! Did you check if it\'s plugged in?', replacesTyping: true, label: 'AI Semi' },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'Whoops! That was it 😅', replacesTyping: true },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Haha classic! Happens to the best of us 💕', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dad', text: 'Thanks honey!', replacesTyping: true },
-    ];
-    
-    // ===== Card 2: Trip Planning (Raccoon) =====
-    const tripChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', text: 'AI Raccoon, any good ATL–CUN flights on the 19th?' },
-      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true, label: 'AI Raccoon' },
-      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'yep! found 3 great ones, added to cancun26.com', replacesTyping: true, label: 'AI Raccoon' },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sam', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sam', text: 'what about airbnb?', replacesTyping: true },
-      { type: 'typing', avatar: 'raccoon-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'raccoon-avatar.png', text: 'already booked the beach house — 4 beds, pool, $89/night 🏖️', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex', text: 'LETS GOOO 🎉', replacesTyping: true },
-    ];
-    
-    // ===== Card 3: Work (Russ) =====
-    const workChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Hey can you join the 3pm sync today?' },
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true, label: 'AI Russ' },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Russ is OOO today — I can take notes and share a summary!', replacesTyping: true, label: 'AI Russ' },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'Perfect, thanks!', replacesTyping: true },
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'Done! 3 action items, design review moved to Friday', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Manager', text: 'You\'re a lifesaver 🙏', replacesTyping: true },
-    ];
-    
-    // ===== Card 4: Family (Emily) =====
-    const familyChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'What should I make for Sunday dinner?' },
-      { type: 'typing', avatar: 'emily-avatar.png', isAi: true, label: 'AI Emily' },
-      { type: 'ai', avatar: 'emily-avatar.png', text: 'Emily loves your lasagna! She\'s been craving comfort food 🍝', replacesTyping: true, label: 'AI Emily' },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'Lasagna it is! Will she be home by 6?', replacesTyping: true },
-      { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'emily-avatar.png', text: 'Yes! She\'s wrapping up work around 5:30 ❤️', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mom', text: 'Perfect! See you both then 💕', replacesTyping: true },
-    ];
-    
-    // ===== Card 5: Important Dates (Semi) =====
-    const datesChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'What are we doing for our anniversary btw?' },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI Semi' },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Already booked! That rooftop place you mentioned — March 15th, 7pm 🌃', replacesTyping: true, label: 'AI Semi' },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'omg you remembered 😭', replacesTyping: true },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Of course! Also got us tickets to that jazz show after 🎷', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Partner', text: 'I love you so much 💕', replacesTyping: true },
-    ];
-    
-    // ===== Card 6: Book Investor Meeting (47 - Google Meet) =====
-    const investorChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', text: 'Hey, would love to chat about Pika. Free this week?' },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true, label: 'AI 47' },
-      { type: 'ai', avatar: 'semi-avatar.png', text: 'Yes! How about Thursday 2pm PT?', replacesTyping: true, label: 'AI 47' },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', text: 'Perfect!', replacesTyping: true },
-      { type: 'typing', avatar: 'semi-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'semi-avatar.png', url: 'meet.google.com/abc-xyz', urlTitle: '📅 Pika Demo — Thu 2pm', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Investor', text: 'Got it, see you then! 🙌', replacesTyping: true },
-    ];
-    
-    // ===== Card 8: Send Group Photo to Friends =====
-    const groupPhotoChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BFF', text: 'how was the hangout yesterday??' },
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true, label: 'AI Russ' },
-      { type: 'ai', avatar: 'russ-avatar.png', text: 'so fun!! look at us 😄', replacesTyping: true, label: 'AI Russ' },
-      { type: 'typing', avatar: 'russ-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'russ-avatar.png', image: 'group-selfie.png', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BFF', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BFF', text: 'omg you guys look so cute!! 😍', replacesTyping: true },
-    ];
-    
-    // ===== Card 8: Send PDFs =====
-    const pdfChatMessages = [
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Boss', text: 'Can you send me that Q4 report?' },
-      { type: 'typing', avatar: 'emily-avatar.png', isAi: true, label: 'AI Emily' },
-      { type: 'ai', avatar: 'emily-avatar.png', text: 'Here you go!', replacesTyping: true, label: 'AI Emily' },
-      { type: 'typing', avatar: 'emily-avatar.png', isAi: true },
-      { type: 'ai', avatar: 'emily-avatar.png', pdf: 'Q4_Report_2025.pdf', pdfSize: '2.4 MB', replacesTyping: true },
-      { type: 'typing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Boss', isAi: false },
-      { type: 'incoming', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Boss', text: 'Thanks! Exactly what I needed', replacesTyping: true },
-    ];
-    
-    // Initialize all animated chats (8 cards)
-    new ScrollingChatAnimator('it-chat-inner', itChatMessages);
-    new ScrollingChatAnimator('trip-chat-inner', tripChatMessages);
-    new ScrollingChatAnimator('work-chat-inner', workChatMessages);
-    new ScrollingChatAnimator('family-chat-inner', familyChatMessages);
-    new ScrollingChatAnimator('dates-chat-inner', datesChatMessages);
-    new ScrollingChatAnimator('investor-chat-inner', investorChatMessages);
-    new ScrollingChatAnimator('group-photo-chat-inner', groupPhotoChatMessages);
-    new ScrollingChatAnimator('pdf-chat-inner', pdfChatMessages);
+    // Chat message data removed — carousel uses static HTML cards now
   </script>
 </body>
 </html>
