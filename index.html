@@ -1215,15 +1215,16 @@
       right: 8px;
       transform: rotate(6deg);
       z-index: 1;
-      background: #34C759;
+      background: transparent;
+      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .imessage-icon-box.bubble svg {
-      width: 36px;
-      height: 36px;
-      color: white;
+    .imessage-icon-box.bubble img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .imessage-badge {
       position: absolute;
@@ -1710,12 +1711,12 @@
         <img src="semi-avatar.png" alt="AI Self">
       </div>
       <div class="imessage-icon-box bubble">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        <img src="messages-icon.png" alt="Messages">
       </div>
       <div class="imessage-badge">1</div>
     </div>
-    <h2 class="imessage-born-title">Your AI Self is now on Messages</h2>
-    <p class="imessage-born-subtitle">Your AI Self lives in iMessage. Text them like a friend — they'll know your voice, your vibe, and your life.</p>
+    <h2 class="imessage-born-title">AI Jay is now<br>on Messages</h2>
+    <p class="imessage-born-subtitle">Check your phone. AI Jay just messaged the number ending in 5578.<br>Didn't get the message? Click here to resend it.</p>
     <a href="sms:" class="btn-imessage">Open Messages →</a>
   </section>
 
