@@ -861,30 +861,66 @@
       margin: 0 auto;
     }
     .skills-category {
-      margin-bottom: 60px;
-      padding-bottom: 60px;
-      border-bottom: 1px dashed rgba(0,0,0,0.15);
+      margin-bottom: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
     .skills-category:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
       border-bottom: none;
     }
+    .skills-category-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .skills-category-toggle:hover {
+      opacity: 0.7;
+    }
+    .skills-category-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
     .skills-category-title {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
+      color: var(--pika-black);
+      margin-bottom: 0;
+      text-align: left;
+    }
+    .skills-category-count {
+      font-size: 13px;
       color: var(--pika-warm);
-      margin-bottom: 40px;
-      text-align: center;
+      font-weight: 400;
+    }
+    .skills-category-chevron {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s var(--ease-out-expo);
+      color: var(--pika-black);
+    }
+    .skills-category.open .skills-category-chevron {
+      transform: rotate(180deg);
+    }
+    .skills-grid-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-out-expo);
+    }
+    .skills-category.open .skills-grid-wrapper {
+      max-height: 1200px;
     }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding-bottom: 32px;
     }
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 500px) {
@@ -916,19 +952,9 @@
       margin-bottom: 20px;
       transition: transform 0.3s var(--ease-out-expo);
     }
-    /* Pastel icon colors */
-    .skill-card:nth-child(6n+1) .skill-icon { background: #E3F4FC; }
-    .skill-card:nth-child(6n+1) .skill-icon svg { color: #2D6A8A; }
-    .skill-card:nth-child(6n+2) .skill-icon { background: #FFF0E5; }
-    .skill-card:nth-child(6n+2) .skill-icon svg { color: #C4763D; }
-    .skill-card:nth-child(6n+3) .skill-icon { background: #E5F7E8; }
-    .skill-card:nth-child(6n+3) .skill-icon svg { color: #3D8B4D; }
-    .skill-card:nth-child(6n+4) .skill-icon { background: #FCE5F3; }
-    .skill-card:nth-child(6n+4) .skill-icon svg { color: #A8447A; }
-    .skill-card:nth-child(6n+5) .skill-icon { background: #F0E5FF; }
-    .skill-card:nth-child(6n+5) .skill-icon svg { color: #6B4D9E; }
-    .skill-card:nth-child(6n+6) .skill-icon { background: #FFF8E0; }
-    .skill-card:nth-child(6n+6) .skill-icon svg { color: #9E8A3D; }
+    /* Black and white icons */
+    .skill-icon { background: #F2F2F2; }
+    .skill-icon svg { color: #1A1A1A; }
     .skill-icon svg {
       width: 24px;
       height: 24px;
@@ -1968,8 +1994,14 @@
       </div>
       
       <!-- AI Multi-model Creativity -->
-      <div class="skills-category reveal">
-        <h3 class="skills-category-title">AI Multi-model Creativity</h3>
+      <div class="skills-category reveal open">
+        <div class="skills-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+          <div class="skills-category-left">
+            <h3 class="skills-category-title">AI Multi-model Creativity</h3>
+          </div>
+          <svg class="skills-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-grid-wrapper">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2042,7 +2074,13 @@
       
       <!-- Daily Life -->
       <div class="skills-category reveal">
-        <h3 class="skills-category-title">Daily Life</h3>
+        <div class="skills-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+          <div class="skills-category-left">
+            <h3 class="skills-category-title">Daily Life</h3>
+          </div>
+          <svg class="skills-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-grid-wrapper">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2115,7 +2153,13 @@
       
       <!-- Productivity -->
       <div class="skills-category reveal">
-        <h3 class="skills-category-title">Productivity</h3>
+        <div class="skills-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+          <div class="skills-category-left">
+            <h3 class="skills-category-title">Productivity</h3>
+          </div>
+          <svg class="skills-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-grid-wrapper">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2221,7 +2265,13 @@
       
       <!-- Coding & Dev -->
       <div class="skills-category reveal">
-        <h3 class="skills-category-title">Coding & Dev</h3>
+        <div class="skills-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+          <div class="skills-category-left">
+            <h3 class="skills-category-title">Coding & Dev</h3>
+          </div>
+          <svg class="skills-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-grid-wrapper">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2283,7 +2333,13 @@
       
       <!-- Social -->
       <div class="skills-category reveal">
-        <h3 class="skills-category-title">Social</h3>
+        <div class="skills-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+          <div class="skills-category-left">
+            <h3 class="skills-category-title">Social</h3>
+          </div>
+          <svg class="skills-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-grid-wrapper">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
