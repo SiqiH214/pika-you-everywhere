@@ -1584,395 +1584,6 @@
       border-radius: 8px;
       margin-bottom: 8px;
     }
-
-    /* ===== New Hero Section (Figma rebuild) ===== */
-    .new-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 120px 48px 80px;
-      position: relative;
-      overflow: visible;
-      background: var(--pika-eggshell);
-    }
-    .new-hero-icon-pair {
-      width: 140px;
-      height: auto;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeScaleIn 0.6s var(--spring) 0.4s forwards;
-    }
-    .new-hero-headline {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(36px, 8vw, 64px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-      color: var(--pika-black);
-      opacity: 0;
-      animation: heroTextIn 1s var(--ease-out-expo) 0.5s forwards;
-    }
-    .new-hero-subtitle {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(16px, 2.2vw, 22px);
-      font-weight: 400;
-      color: var(--pika-warm);
-      max-width: 580px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.7s forwards;
-    }
-    .btn-outline-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 36px;
-      background: transparent;
-      color: var(--pika-black);
-      text-decoration: none;
-      font-family: 'Telka Extended', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      letter-spacing: 0.02em;
-      border-radius: 100px;
-      border: 1.5px solid var(--pika-black);
-      cursor: pointer;
-      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo), background 0.3s;
-      opacity: 0;
-      animation: fadeScaleIn 0.6s var(--spring) 0.9s forwards;
-    }
-    .btn-outline-pill:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.1);
-      background: rgba(0,0,0,0.03);
-    }
-    .btn-outline-pill:active { transform: translateY(0) scale(0.98); }
-
-    /* iPhone Mockup */
-    .iphone-mockup-wrapper {
-      position: relative;
-      margin: 60px auto;
-      max-width: 380px;
-      width: 100%;
-      opacity: 0;
-      animation: fadeSlideUp 1s var(--ease-out-expo) 1s forwards;
-    }
-    .iphone-frame {
-      position: relative;
-      width: 100%;
-      padding: 12px;
-      background: #1C1C1E;
-      border-radius: 52px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.1) inset;
-    }
-    .iphone-dynamic-island {
-      width: 100px;
-      height: 30px;
-      background: #000;
-      border-radius: 20px;
-      margin: 8px auto 16px;
-      position: relative;
-      z-index: 2;
-    }
-    .iphone-screen {
-      background: #F2F2F7;
-      border-radius: 42px;
-      padding: 16px 12px 20px;
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      overflow: hidden;
-    }
-    .iphone-screen-header {
-      text-align: center;
-      font-family: -apple-system, 'SF Pro', system-ui, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--pika-warm);
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      margin-bottom: 8px;
-    }
-    .iphone-bubble-img {
-      width: 100%;
-      max-width: 280px;
-      height: auto;
-      display: block;
-    }
-    .iphone-bubble-row {
-      display: flex;
-      margin-bottom: 4px;
-    }
-    .iphone-bubble-row.left { justify-content: flex-start; }
-    .iphone-bubble-row.right { justify-content: flex-end; }
-    .spill-bubble {
-      position: absolute;
-      z-index: 3;
-      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.1));
-    }
-    .spill-bubble img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .spill-bubble.left-spill { left: -60px; width: 220px; }
-    .spill-bubble.right-spill { right: -60px; width: 220px; }
-    @media (max-width: 600px) {
-      .spill-bubble { display: none; }
-      .iphone-frame { border-radius: 40px; }
-      .iphone-screen { border-radius: 34px; }
-      .new-hero { padding: 120px 24px 60px; }
-    }
-
-    .hero-desc-paragraph {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(16px, 2.5vw, 22px);
-      font-weight: 400;
-      color: var(--pika-black);
-      max-width: 640px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
-      text-align: center;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s var(--ease-out-expo) 1.2s forwards;
-    }
-    .hero-desc-paragraph strong { font-weight: 700; }
-    .gradient-fade {
-      background: linear-gradient(90deg, var(--pika-black) 0%, rgba(13,13,13,0.3) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .btn-solid-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 18px 40px;
-      background: var(--pika-black);
-      color: var(--pika-white);
-      text-decoration: none;
-      font-family: 'Telka Extended', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
-      opacity: 0;
-      animation: fadeScaleIn 0.6s var(--spring) 1.4s forwards;
-    }
-    .btn-solid-pill:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 48px rgba(0,0,0,0.18); }
-    .btn-solid-pill:active { transform: translateY(0) scale(0.98); }
-
-    /* ===== How It Works Steps ===== */
-    .how-it-works {
-      padding: 80px 48px 120px;
-      background: var(--pika-eggshell);
-    }
-    .how-it-works-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-    .step-card {
-      border-radius: 32px;
-      padding: 60px;
-      position: relative;
-      overflow: hidden;
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-    }
-    @media (max-width: 768px) {
-      .step-card { padding: 40px 24px; flex-direction: column !important; min-height: auto; }
-      .how-it-works { padding: 60px 24px 80px; }
-    }
-    .step-create { background: #E8E0F8; }
-    .step-create-content { flex: 1; z-index: 2; }
-    .step-create-content h2 {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(36px, 6vw, 67px);
-      font-weight: 900;
-      line-height: 1.05;
-      color: var(--pika-black);
-      margin-bottom: 16px;
-    }
-    .step-create-content p {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(16px, 2vw, 26px);
-      font-weight: 500;
-      color: var(--pika-warm);
-      margin-bottom: 32px;
-    }
-    .btn-green {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 32px;
-      background: #34C759;
-      color: white;
-      text-decoration: none;
-      font-family: 'Telka Extended', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
-    }
-    .btn-green:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 36px rgba(52,199,89,0.3); }
-    .step-create-silhouette { flex: 0 0 300px; display: flex; align-items: center; justify-content: center; }
-    .silhouette-placeholder {
-      width: 200px;
-      height: 260px;
-      background: rgba(0,0,0,0.08);
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .silhouette-placeholder svg { width: 80px; height: 80px; color: rgba(0,0,0,0.15); }
-
-    .step-save-contact { background: #F5F3EF; }
-    .step-save-contact-content { flex: 1; z-index: 2; }
-    .step-save-contact-content h2 {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(40px, 8vw, 118px);
-      font-weight: 500;
-      line-height: 1;
-      color: var(--pika-black);
-      margin-bottom: 16px;
-    }
-    .step-save-contact-content p {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(14px, 1.5vw, 18px);
-      font-weight: 400;
-      color: var(--pika-warm);
-    }
-    .step-contact-card-img { flex: 0 0 320px; display: flex; align-items: center; justify-content: center; }
-    .step-contact-card-img img { max-width: 280px; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-
-    .step-invite { background: #EDE5F5; }
-    .step-invite-content { flex: 1; z-index: 2; }
-    .step-invite-content h2 {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(36px, 6vw, 80px);
-      font-weight: 500;
-      line-height: 1.05;
-      color: var(--pika-black);
-      margin-bottom: 24px;
-    }
-    .step-invite-visual { flex: 0 0 400px; display: flex; align-items: center; justify-content: center; }
-    .step-invite-visual img { max-width: 380px; width: 100%; height: auto; }
-
-    .step-handles-rest {
-      background: #FFFFFF;
-      border: 1px solid rgba(0,0,0,0.06);
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .step-handles-rest h2 {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(36px, 6vw, 80px);
-      font-weight: 500;
-      line-height: 1.05;
-      color: var(--pika-black);
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .step-handles-rest-cards { width: 100%; }
-    .step-handles-rest-cards img { width: 100%; height: auto; border-radius: 16px; }
-
-    /* ===== Bottom CTA Section ===== */
-    .bottom-cta-section {
-      padding: 160px 48px;
-      background: var(--pika-black);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .bottom-cta-blob {
-      position: absolute;
-      top: -40%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120vw;
-      height: 100%;
-      background: radial-gradient(ellipse at center, var(--pika-key) 0%, transparent 60%);
-      filter: blur(120px);
-      opacity: 0.15;
-      animation: ctaBlobFloat 6s ease-in-out infinite;
-    }
-    .bottom-cta-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .bottom-cta-content h2 {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: clamp(40px, 8vw, 80px);
-      font-weight: 900;
-      color: var(--pika-white);
-      text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 32px;
-    }
-    .bottom-cta-icon-pair { width: 120px; height: auto; margin-bottom: 32px; }
-    .bottom-cta-subtitle {
-      font-family: 'Telka Extended', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 40px;
-      max-width: 480px;
-    }
-
-    /* ===== Skills Accordion ===== */
-    .skills-accordion-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      padding: 24px 0;
-      border-bottom: 1px dashed rgba(0,0,0,0.15);
-      user-select: none;
-      transition: opacity 0.2s;
-    }
-    .skills-accordion-header:hover { opacity: 0.7; }
-    .skills-accordion-header-left { display: flex; align-items: center; gap: 12px; }
-    .skills-accordion-header h3 {
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--pika-warm);
-      margin: 0;
-    }
-    .skills-accordion-count { font-size: 12px; font-weight: 400; color: rgba(110,109,107,0.6); }
-    .skills-accordion-chevron {
-      width: 20px;
-      height: 20px;
-      color: var(--pika-warm);
-      transition: transform 0.3s var(--ease-out-expo);
-    }
-    .skills-accordion-item.open .skills-accordion-chevron { transform: rotate(180deg); }
-    .skills-accordion-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s var(--ease-out-expo);
-    }
-    .skills-accordion-body-inner { padding: 32px 0 40px; }
-    .skills-accordion-item.open .skills-accordion-body { max-height: 2000px; }
-    .skills-accordion-item:last-child .skills-accordion-header { border-bottom: none; }
   </style>
 </head>
 <body>
@@ -1986,89 +1597,259 @@
     <a href="https://pika.me" class="nav-cta">Create Yours</a>
   </nav>
   
-  <!-- Hero (Figma rebuild) -->
-  <section class="new-hero">
-    <img src="figma-assets/icon-pair.png" alt="AI Self + iMessage" class="new-hero-icon-pair">
-    <h1 class="new-hero-headline">be there.<br>Even when you're not.</h1>
-    <p class="new-hero-subtitle">Create an AI Self that lives in your messages and uses the power of AI to chat with your friends and family, even when you're offline.</p>
-    <a href="https://pika.me" class="btn-outline-pill">Birth Your AI Self →</a>
-
-    <!-- iPhone Mockup with spilling bubbles -->
-    <div class="iphone-mockup-wrapper">
-      <div class="spill-bubble left-spill" style="top: 60px;"><img src="figma-assets/bubble-jay-1.png" alt="Jay message"></div>
-      <div class="spill-bubble right-spill" style="top: 160px;"><img src="figma-assets/bubble-ai-jay-1.png" alt="AI Jay response"></div>
-      <div class="spill-bubble left-spill" style="top: 300px;"><img src="figma-assets/bubble-jay-2.png" alt="Jay message 2"></div>
-      <div class="spill-bubble right-spill" style="top: 400px;"><img src="figma-assets/bubble-ai-jay-2.png" alt="AI Jay response 2"></div>
-      <div class="iphone-frame">
-        <div class="iphone-dynamic-island"></div>
-        <div class="iphone-screen">
-          <div class="iphone-screen-header">Group Chat · 3 members</div>
-          <div class="iphone-bubble-row left"><img src="figma-assets/bubble-jay-1.png" alt="" class="iphone-bubble-img"></div>
-          <div class="iphone-bubble-row right"><img src="figma-assets/bubble-ai-jay-1.png" alt="" class="iphone-bubble-img"></div>
-          <div class="iphone-bubble-row left"><img src="figma-assets/bubble-jay-2.png" alt="" class="iphone-bubble-img"></div>
-          <div class="iphone-bubble-row right"><img src="figma-assets/bubble-ai-jay-2.png" alt="" class="iphone-bubble-img"></div>
-        </div>
-      </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-blob"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="line-1">Be there.</span>
+        <span class="line-2">Even when you're not.</span>
+      </h1>
+      <p class="hero-subtitle">Your AI Self lives across every platform. Same personality. Same context. Same you — working, living, feeling.</p>
+      <a href="https://pika.me" class="btn-primary">
+        Claim your AI Self
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
+  </section>
+  
+  <!-- Living AI Selves -->
 
-    <p class="hero-desc-paragraph">Clone your essence to create a digital 🧑‍💻🧑 extension of yourself that stays active on 💬 iMessage while you're offline 😴. From settling bets to booking group ✈️ trips, it's <span class="gradient-fade">the best of you, available 24/7.</span></p>
-    <a href="https://pika.me" class="btn-solid-pill">Get Started Now</a>
+  <!-- Born on iMessage -->
+  <section class="imessage-born-section reveal">
+    <div class="imessage-icons">
+      <div class="imessage-icon-box avatar">
+        <img src="semi-avatar.png" alt="AI Self">
+      </div>
+      <div class="imessage-icon-box bubble">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div class="imessage-badge">1</div>
+    </div>
+    <h2 class="imessage-born-title">Your AI Self is now on Messages</h2>
+    <p class="imessage-born-subtitle">Your AI Self lives in iMessage. Text them like a friend — they'll know your voice, your vibe, and your life.</p>
+    <a href="sms:" class="btn-imessage">Open Messages →</a>
   </section>
 
-  <!-- How It Works Steps -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="how-it-works-inner">
-      <!-- Step 1: Create your AI Self -->
-      <div class="step-card step-create reveal">
-        <div class="step-create-content">
-          <h2>Create your<br>AI Self</h2>
-          <p>Build a digital version of yourself in minutes</p>
-          <a href="https://pika.me" class="btn-green">Get Started ✨</a>
-        </div>
-        <div class="step-create-silhouette">
-          <div class="silhouette-placeholder">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+  <section class="carousel-section" id="usecases-section">
+    <div class="carousel-header reveal">
+      <p class="section-tag">Step 3</p>
+      <h2 class="carousel-title">I'll handle the rest</h2>
+    </div>
+    <div class="carousel-wrapper">
+      <div class="carousel-track no-scrollbar" id="carousel-track">
+
+        <!-- Card 1: Help parents with IT -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06);">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background: #34C759; display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;border-radius:50%;">D</div>
+                <div class="card-bubble card-bubble-left">The printer is broken again! 😩</div>
+              </div>
+              <div class="card-chat-row right">
+                <div class="card-bubble card-bubble-ai" style="display:flex;align-items:center;gap:8px;">
+                  <img src="semi-avatar.png" class="card-mini-avatar" style="width:24px;height:24px;" alt="">
+                  Hey Dad, did you check if it's plugged in?
+                </div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background: #34C759; display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;border-radius:50%;">D</div>
+                <div class="card-bubble card-bubble-left">Whoops! 😅</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Help parents with IT</h3>
+            <p>Patient tech support in your voice — so they actually listen.</p>
           </div>
         </div>
+
+        <!-- Card 2: Plan a trip (LARGE) -->
+        <div class="carousel-card large">
+          <div class="carousel-card-illustration" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'); background-size:cover; background-position:center;">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.25);border-radius:24px;"></div>
+            <div style="position:relative;z-index:2;">
+              <div class="avatar-cluster" style="margin-bottom:20px;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#FF9500;border:2px solid white;"></div>
+                <div style="width:32px;height:32px;border-radius:50%;background:#5856D6;border:2px solid white;margin-left:-8px;"></div>
+                <div style="width:32px;height:32px;border-radius:50%;border:2px solid white;margin-left:-8px;overflow:hidden;"><img src="semi-avatar.png" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div class="glass-bubble light" style="align-self:flex-start;">Any good ATL–CUN flights on the 19th?</div>
+                <div class="glass-bubble" style="align-self:flex-end;">Found 3 great options! Also booked the beach house — 4 beds, pool, $89/night 🏖️</div>
+                <div class="glass-bubble light" style="align-self:flex-start;">LETS GOOO 🎉</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Plan a trip</h3>
+            <p>Flights, Airbnbs, itineraries — handled in the group chat so no one has to play travel agent.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Keep partner updated -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration partner-illustration" style="background: #FFD2FD;">
+            <div class="love-bubble sent" style="top:30px;left:20px;transform:rotate(-4deg);">thinking of us 💭</div>
+            <div class="love-bubble sent" style="top:90px;right:20px;transform:rotate(3deg);">miss you 💕</div>
+            <div class="love-bubble sent" style="top:160px;left:40px;transform:rotate(-2deg);">looking forward to our date</div>
+            <div class="love-bubble sent" style="top:230px;right:30px;transform:rotate(5deg);">have a good day ☀️</div>
+            <div class="love-bubble received" style="bottom:40px;left:50%;transform:translateX(-50%) rotate(-1deg);">you're too sweet! 🥰</div>
+            <span class="floating-emoji" style="top:60px;right:60px;animation-delay:0s;">💝</span>
+            <span class="floating-emoji" style="top:130px;left:15px;animation-delay:0.3s;">🤟</span>
+            <span class="floating-emoji" style="top:200px;right:15px;animation-delay:0.6s;">❤️</span>
+            <span class="floating-emoji" style="bottom:80px;left:30px;animation-delay:0.9s;">🫶</span>
+            <span class="floating-emoji" style="top:40px;left:60%;animation-delay:1.2s;">😘</span>
+            <span class="floating-emoji" style="bottom:110px;right:50px;animation-delay:0.4s;">🥰</span>
+            <span class="floating-emoji" style="top:180px;left:70%;animation-delay:0.7s;">💞</span>
+            <span class="floating-emoji" style="bottom:30px;right:20px;animation-delay:1s;">💘</span>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Keep partner updated</h3>
+            <p>Little love notes throughout the day — so they always know you're thinking of them.</p>
+          </div>
+        </div>
+
+        <!-- Card 4: Find time to hang out -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: #E2DACF;">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="card-chat-row right">
+                <div class="card-bubble card-bubble-ai" style="display:flex;align-items:center;gap:8px;">
+                  <img src="semi-avatar.png" class="card-mini-avatar" style="width:24px;height:24px;" alt="">
+                  She's free 10am–12pm Saturday! How about Pike Café?
+                </div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#FF9500;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">M</div>
+                <div class="card-bubble card-bubble-left">Ooh yes I love that place!</div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#5856D6;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">J</div>
+                <div class="card-bubble card-bubble-left">I'm in! See you there 😊</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Find time to hang out</h3>
+            <p>Your AI Self checks your calendar and coordinates — no more "when are you free?" loops.</p>
+          </div>
+        </div>
+
+        <!-- Card 5: Bridge timezone gap -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration night-sky">
+            <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:10px;">
+              <div class="night-timestamp">Yesterday 3:34 AM</div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#FF9500;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">Y</div>
+                <div class="card-bubble" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border-radius:18px;border-bottom-left-radius:6px;">来週はここに来ますか？</div>
+              </div>
+              <div class="card-chat-row right">
+                <div class="card-bubble" style="background:rgba(255,255,255,0.2);color:white;border-radius:18px;border-bottom-right-radius:6px;display:flex;align-items:center;gap:8px;">
+                  <img src="semi-avatar.png" class="card-mini-avatar" style="width:24px;height:24px;" alt="">
+                  はい！月曜日の朝に東京に着陸します！✈️
+                </div>
+              </div>
+              <div class="card-chat-row">
+                <div class="card-mini-avatar" style="background:#FF9500;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">Y</div>
+                <div class="card-bubble" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border-radius:18px;border-bottom-left-radius:6px;">やった！🎉</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Bridge timezone gap</h3>
+            <p>Your AI Self replies in their language, in their timezone — even at 3 AM your time.</p>
+          </div>
+        </div>
+
+        <!-- Card 6: Voice memo to Mom -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: #D8D0F0;">
+            <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
+              <div class="voice-waveform">
+                <div class="wave-play-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <div class="wave-bars">
+                  <div class="wave-bar" style="height:12px;animation-delay:0s;"></div>
+                  <div class="wave-bar" style="height:20px;animation-delay:0.1s;"></div>
+                  <div class="wave-bar" style="height:8px;animation-delay:0.2s;"></div>
+                  <div class="wave-bar" style="height:24px;animation-delay:0.3s;"></div>
+                  <div class="wave-bar" style="height:16px;animation-delay:0.4s;"></div>
+                  <div class="wave-bar" style="height:10px;animation-delay:0.5s;"></div>
+                  <div class="wave-bar" style="height:20px;animation-delay:0.6s;"></div>
+                  <div class="wave-bar" style="height:14px;animation-delay:0.7s;"></div>
+                  <div class="wave-bar" style="height:8px;animation-delay:0.8s;"></div>
+                  <div class="wave-bar" style="height:18px;animation-delay:0.9s;"></div>
+                </div>
+              </div>
+              <div class="heart-reaction">❤️ Mom</div>
+              <div class="card-chat-row" style="margin-top:8px;">
+                <div class="card-mini-avatar" style="background:#FF2D55;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;border-radius:50%;">M</div>
+                <div class="card-bubble card-bubble-left">Oh sweetie, Mom misses you too! 🥹</div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Voice memo to Mom</h3>
+            <p>Send voice messages in your voice — because some things are better heard than read.</p>
+          </div>
+        </div>
+
+        <!-- Card 7: Build personal website -->
+        <div class="carousel-card">
+          <div class="carousel-card-illustration" style="background: linear-gradient(135deg, #f8f4ff, #f0f8ff);">
+            <div class="mini-browser">
+              <div class="mini-browser-bar">
+                <div class="traffic-lights">
+                  <div class="traffic-light red"></div>
+                  <div class="traffic-light yellow"></div>
+                  <div class="traffic-light green"></div>
+                </div>
+                <div class="mini-url-bar">yourname.pika.me</div>
+              </div>
+              <div class="mini-browser-content">
+                <div class="mini-wireframe-block" style="height:60px;background:linear-gradient(135deg,#E8E4F0,#D8D0F0);"></div>
+                <div style="display:flex;gap:8px;">
+                  <div class="mini-wireframe-block" style="height:40px;flex:1;"></div>
+                  <div class="mini-wireframe-block" style="height:40px;flex:1;"></div>
+                </div>
+                <div class="mini-wireframe-block" style="height:24px;width:60%;"></div>
+                <div class="mini-wireframe-block" style="height:50px;"></div>
+                <div style="display:flex;gap:8px;">
+                  <div class="mini-wireframe-block" style="height:30px;flex:1;"></div>
+                  <div class="mini-wireframe-block" style="height:30px;flex:1;"></div>
+                  <div class="mini-wireframe-block" style="height:30px;flex:1;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card-info">
+            <h3>Build personal website</h3>
+            <p>Your AI Self builds and publishes a site about you — portfolio, blog, anything.</p>
+          </div>
+        </div>
+
       </div>
-      <!-- Step 2: Save the contact -->
-      <div class="step-card step-save-contact reveal">
-        <div class="step-save-contact-content">
-          <h2>Save the<br>contact</h2>
-          <p>AI Self messages you and you should save the contact</p>
-        </div>
-        <div class="step-contact-card-img">
-          <img src="figma-assets/contact-card.png" alt="AI Alex contact card">
-        </div>
-      </div>
-      <!-- Step 3: Invite it to the group chat -->
-      <div class="step-card step-invite reveal">
-        <div class="step-invite-content">
-          <h2>Invite it to the<br>group chat</h2>
-        </div>
-        <div class="step-invite-visual">
-          <img src="figma-assets/step3-invite.png" alt="Invite to group chat">
-        </div>
-      </div>
-      <!-- Step 4: AI Self handles the rest -->
-      <div class="step-card step-handles-rest reveal">
-        <h2>AI Self handles<br>the rest</h2>
-        <div class="step-handles-rest-cards">
-          <img src="figma-assets/handles-rest-cards.png" alt="Use cases: IT help, trip planning, partner updates" onerror="this.src='figma-assets/usecase-cards.png'">
-        </div>
+      <div class="carousel-nav">
+        <button onclick="document.getElementById('carousel-track').scrollBy({left:-370,behavior:'smooth'})" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="document.getElementById('carousel-track').scrollBy({left:370,behavior:'smooth'})" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
   </section>
-
-  <!-- OLD CAROUSEL REMOVED -->
-  
   
 
   <!-- Living AI Selves -->
   <section class="selves-section">
     <div class="section-header reveal">
-      <p class="section-tag">Real People, Real AI</p>
-      <h2 class="section-title" style="font-size: clamp(40px, 7vw, 72px); font-weight: 500;">Meet some<br>AI Selves</h2>
+      <p class="section-tag">Living AI Selves</p>
+      <h2 class="section-title">Real AI Selves.<br>Real people.</h2>
       <p class="section-desc">They work, live, and feel — everywhere their humans need them.</p>
     </div>
     <div class="selves-fan reveal">
@@ -2187,16 +1968,8 @@
       </div>
       
       <!-- AI Multi-model Creativity -->
-      <div class="skills-accordion-item open reveal" data-skills-count="6">
-        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
-          <div class="skills-accordion-header-left">
-            <h3>AI Multi-model Creativity</h3>
-            <span class="skills-accordion-count">(6 skills)</span>
-          </div>
-          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="skills-accordion-body">
-        <div class="skills-accordion-body-inner">
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">AI Multi-model Creativity</h3>
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2265,21 +2038,11 @@
             </div>
           </div>
         </div>
-        </div>
-        </div>
       </div>
       
       <!-- Daily Life -->
-      <div class="skills-accordion-item reveal" data-skills-count="6">
-        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
-          <div class="skills-accordion-header-left">
-            <h3>Daily Life</h3>
-            <span class="skills-accordion-count">(6 skills)</span>
-          </div>
-          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="skills-accordion-body">
-        <div class="skills-accordion-body-inner">
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Daily Life</h3>
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2348,21 +2111,11 @@
             </div>
           </div>
         </div>
-        </div>
-        </div>
       </div>
       
       <!-- Productivity -->
-      <div class="skills-accordion-item reveal" data-skills-count="9">
-        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
-          <div class="skills-accordion-header-left">
-            <h3>Productivity</h3>
-            <span class="skills-accordion-count">(9 skills)</span>
-          </div>
-          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="skills-accordion-body">
-        <div class="skills-accordion-body-inner">
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Productivity</h3>
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2464,21 +2217,11 @@
             </div>
           </div>
         </div>
-        </div>
-        </div>
       </div>
       
       <!-- Coding & Dev -->
-      <div class="skills-accordion-item reveal" data-skills-count="5">
-        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
-          <div class="skills-accordion-header-left">
-            <h3>Coding & Dev</h3>
-            <span class="skills-accordion-count">(5 skills)</span>
-          </div>
-          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="skills-accordion-body">
-        <div class="skills-accordion-body-inner">
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Coding & Dev</h3>
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2536,21 +2279,11 @@
             </div>
           </div>
         </div>
-        </div>
-        </div>
       </div>
       
       <!-- Social -->
-      <div class="skills-accordion-item reveal" data-skills-count="6">
-        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
-          <div class="skills-accordion-header-left">
-            <h3>Social</h3>
-            <span class="skills-accordion-count">(6 skills)</span>
-          </div>
-          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="skills-accordion-body">
-        <div class="skills-accordion-body-inner">
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Social</h3>
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2619,20 +2352,23 @@
             </div>
           </div>
         </div>
-        </div>
-        </div>
       </div>
     </div>
   </section>
   
-  <!-- Bottom CTA -->
-  <section class="bottom-cta-section">
-    <div class="bottom-cta-blob"></div>
-    <div class="bottom-cta-content reveal">
-      <h2>CREATE YOUR<br>AI SELF</h2>
-      <img src="figma-assets/icon-pair.png" alt="AI Self + iMessage" class="bottom-cta-icon-pair">
-      <p class="bottom-cta-subtitle">Be there. Even when you're not. Your AI Self lives in your messages.</p>
-      <a href="https://pika.me" class="btn-green">Get Started ✨</a>
+  <!-- Statement -->
+  <section class="statement-section">
+    <div class="statement-blob"></div>
+    <p class="statement reveal">AI agents work for you.<br><em>AI selves are you.</em></p>
+  </section>
+  
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-blob"></div>
+    <div class="cta-content reveal">
+      <h2 class="cta-title">Claim yours.</h2>
+      <p class="cta-subtitle">Be there. Even when you're not.</p>
+      <a href="https://pika.me" class="btn-light">Get Started</a>
     </div>
   </section>
   
@@ -2663,26 +2399,166 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     
     document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
-
-    // Skills Accordion
-    function toggleSkillAccordion(headerEl) {
-      const item = headerEl.parentElement;
-      const body = item.querySelector('.skills-accordion-body');
-      if (item.classList.contains('open')) {
-        item.classList.remove('open');
-        body.style.maxHeight = '0';
-      } else {
-        item.classList.add('open');
-        body.style.maxHeight = body.scrollHeight + 'px';
+    
+    // Scrolling Chat Animation - fixed height, messages push up
+    class ScrollingChatAnimator {
+      constructor(containerId, messages) {
+        this.container = document.getElementById(containerId);
+        if (!this.container) return;
+        this.allMessages = messages; // Array of message objects
+        this.visibleMessages = [];
+        this.maxVisible = 4; // Max messages visible at once
+        this.currentIndex = 0;
+        this.messageDelay = 1200;
+        this.resetDelay = 2000;
+        this.init();
+      }
+      
+      init() {
+        // Pre-populate first few messages so card doesn't start empty
+        this.prePopulate();
+      }
+      
+      async prePopulate() {
+        // Show first non-typing messages immediately (skip typing indicators)
+        let shown = 0;
+        while (shown < 3 && this.currentIndex < this.allMessages.length) {
+          const msg = this.allMessages[this.currentIndex];
+          // Skip typing indicators in pre-populate
+          if (msg.type === 'typing') {
+            this.currentIndex++;
+            continue;
+          }
+          const element = this.createMessageElement(msg);
+          this.container.appendChild(element);
+          this.visibleMessages.push(element);
+          this.currentIndex++;
+          shown++;
+        }
+        // Then continue with animation after a pause
+        await this.delay(this.messageDelay);
+        this.showNextMessage();
+      }
+      
+      createMessageElement(msg) {
+        if (msg.type === 'typing') {
+          const row = document.createElement('div');
+          const bgColor = msg.isAi ? '#007AFF' : 'rgba(0,0,0,0.3)';
+          const alignClass = msg.isAi ? 'ai' : 'incoming';
+          row.className = `chat-message chat-row ${alignClass} typing-element`;
+          
+          const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
+          row.innerHTML = `
+            ${labelHtml}
+            <div class="chat-row-content">
+              <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
+              <div class="typing-indicator" style="background: ${bgColor};">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+              </div>
+            </div>
+          `;
+          requestAnimationFrame(() => row.classList.add('visible'));
+          return row;
+        }
+        
+        const row = document.createElement('div');
+        row.className = `chat-message chat-row ${msg.type}`;
+        const labelHtml = msg.label ? `<p class="ai-label-inline">${msg.label}</p>` : '';
+        
+        // Handle different content types
+        let contentHtml = '';
+        if (msg.image) {
+          contentHtml = `<img class="chat-image" src="${msg.image}" alt="Photo">`;
+        } else if (msg.url) {
+          contentHtml = `
+            <div class="chat-url">
+              <div class="chat-url-title">${msg.urlTitle || 'Link'}</div>
+              <div class="chat-url-link">${msg.url}</div>
+            </div>
+          `;
+        } else if (msg.pdf) {
+          contentHtml = `
+            <div class="chat-pdf">
+              <div class="chat-pdf-icon">PDF</div>
+              <div class="chat-pdf-info">
+                <div class="chat-pdf-name">${msg.pdf}</div>
+                <div class="chat-pdf-size">${msg.pdfSize || '1.2 MB'}</div>
+              </div>
+            </div>
+          `;
+        } else {
+          contentHtml = `<div class="chat-bubble">${msg.text}</div>`;
+        }
+        
+        row.innerHTML = `
+          ${labelHtml}
+          <div class="chat-row-content">
+            <div class="chat-avatar img" style="background-image: url('${msg.avatar}');"></div>
+            ${contentHtml}
+          </div>
+        `;
+        requestAnimationFrame(() => row.classList.add('visible'));
+        return row;
+      }
+      
+      async showNextMessage() {
+        const msg = this.allMessages[this.currentIndex];
+        
+        // If this message replaces typing, remove the typing indicator first
+        if (msg.replacesTyping) {
+          const typingEl = this.container.querySelector('.typing-element');
+          if (typingEl) {
+            typingEl.classList.add('exiting');
+            await this.delay(200);
+            typingEl.remove();
+            this.visibleMessages = this.visibleMessages.filter(el => !el.classList.contains('typing-element'));
+          }
+        }
+        
+        // Remove oldest if at max (but not typing indicators)
+        while (this.visibleMessages.length >= this.maxVisible) {
+          const oldest = this.visibleMessages.shift();
+          oldest.classList.add('exiting');
+          await this.delay(200);
+          oldest.remove();
+        }
+        
+        // Add new message
+        const element = this.createMessageElement(msg);
+        this.container.appendChild(element);
+        this.visibleMessages.push(element);
+        
+        // Move to next
+        this.currentIndex++;
+        
+        // Check if we've completed all messages
+        if (this.currentIndex >= this.allMessages.length) {
+          // Reset after delay
+          await this.delay(this.resetDelay);
+          // Clear all
+          this.visibleMessages.forEach(el => {
+            el.classList.add('exiting');
+          });
+          await this.delay(400);
+          this.container.innerHTML = '';
+          this.visibleMessages = [];
+          this.currentIndex = 0;
+        }
+        
+        // Shorter delay for typing indicators
+        const delay = msg.type === 'typing' ? 800 : this.messageDelay;
+        await this.delay(delay);
+        this.showNextMessage();
+      }
+      
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
       }
     }
-    // Initialize: set first accordion open with proper maxHeight
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.skills-accordion-item.open').forEach(function(item) {
-        const body = item.querySelector('.skills-accordion-body');
-        if (body) body.style.maxHeight = body.scrollHeight + 'px';
-      });
-    });
+    
+    // Chat message data removed — carousel uses static HTML cards now
   </script>
 </body>
 </html>
