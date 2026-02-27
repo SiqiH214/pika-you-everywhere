@@ -1584,6 +1584,351 @@
       border-radius: 8px;
       margin-bottom: 8px;
     }
+
+    /* ===== New Hero Section ===== */
+    .new-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: visible;
+      background: var(--pika-eggshell);
+    }
+    .new-hero-icons {
+      position: relative;
+      width: 150px;
+      height: 80px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeScaleIn 0.6s var(--spring) 0.4s forwards;
+    }
+    .new-hero-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      position: absolute;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .new-hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .new-hero-icon.avatar-icon {
+      left: 16px;
+      z-index: 2;
+    }
+    .new-hero-icon.bubble-icon {
+      right: 16px;
+      z-index: 1;
+      background: #34C759;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .new-hero-icon.bubble-icon svg {
+      width: 32px;
+      height: 32px;
+      color: white;
+    }
+    .new-hero-badge {
+      position: absolute;
+      top: -4px;
+      right: 10px;
+      width: 22px;
+      height: 22px;
+      background: #FF3B30;
+      border-radius: 50%;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      box-shadow: 0 2px 6px rgba(255,59,48,0.4);
+    }
+    .new-hero-headline {
+      font-family: 'Telka Extended', sans-serif;
+      font-size: clamp(42px, 10vw, 100px);
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: var(--pika-black);
+      opacity: 0;
+      animation: heroTextIn 1s var(--ease-out-expo) 0.5s forwards;
+    }
+    .new-hero-subtitle {
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 400;
+      color: var(--pika-warm);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.7s forwards;
+    }
+    .btn-outline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 36px;
+      background: transparent;
+      color: var(--pika-black);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      border-radius: 100px;
+      border: 1.5px solid var(--pika-black);
+      cursor: pointer;
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo), background 0.3s;
+      opacity: 0;
+      animation: fadeScaleIn 0.6s var(--spring) 0.9s forwards;
+    }
+    .btn-outline-pill:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.03);
+    }
+    .btn-outline-pill:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* iPhone Mockup */
+    .iphone-mockup-wrapper {
+      position: relative;
+      margin: 60px auto;
+      max-width: 420px;
+      width: 100%;
+      opacity: 0;
+      animation: fadeSlideUp 1s var(--ease-out-expo) 1s forwards;
+    }
+    .iphone-frame {
+      position: relative;
+      width: 100%;
+      padding: 16px;
+      background: #1C1C1E;
+      border-radius: 48px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.1) inset;
+    }
+    .iphone-notch {
+      width: 120px;
+      height: 28px;
+      background: #1C1C1E;
+      border-radius: 0 0 16px 16px;
+      margin: 0 auto 12px;
+      position: relative;
+      z-index: 2;
+    }
+    .iphone-screen {
+      background: var(--pika-eggshell);
+      border-radius: 36px;
+      padding: 20px 16px 24px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .iphone-screen-header {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--pika-warm);
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      margin-bottom: 4px;
+    }
+    .iphone-chat-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .iphone-chat-row.left { justify-content: flex-start; }
+    .iphone-chat-row.right { justify-content: flex-end; }
+    .iphone-chat-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: white;
+    }
+    .iphone-chat-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .iphone-bubble {
+      max-width: 240px;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .iphone-bubble.gray {
+      background: #E8E8E8;
+      color: var(--pika-black);
+      border-bottom-left-radius: 6px;
+    }
+    .iphone-bubble.blue {
+      background: #007AFF;
+      color: white;
+      border-bottom-right-radius: 6px;
+    }
+    .iphone-sender-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--pika-warm);
+      margin-bottom: 2px;
+      margin-left: 38px;
+    }
+    .iphone-sender-label.right-label {
+      margin-left: 0;
+      margin-right: 38px;
+      text-align: right;
+    }
+    /* Spill bubbles outside phone */
+    .spill-bubble {
+      position: absolute;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.4;
+      max-width: 200px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      z-index: 3;
+    }
+    .spill-bubble.left-spill {
+      left: -40px;
+      background: #E8E8E8;
+      color: var(--pika-black);
+    }
+    .spill-bubble.right-spill {
+      right: -40px;
+      background: #007AFF;
+      color: white;
+    }
+    @media (max-width: 600px) {
+      .spill-bubble { display: none; }
+      .iphone-frame { border-radius: 36px; }
+      .iphone-screen { border-radius: 28px; }
+      .new-hero { padding: 120px 24px 60px; }
+    }
+
+    /* Hero description paragraph */
+    .hero-desc-paragraph {
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 400;
+      color: var(--pika-black);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      text-align: center;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s var(--ease-out-expo) 1.2s forwards;
+    }
+    .gradient-fade {
+      background: linear-gradient(90deg, var(--pika-black) 0%, rgba(13,13,13,0.3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .btn-solid-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 40px;
+      background: var(--pika-black);
+      color: var(--pika-white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out-expo);
+      opacity: 0;
+      animation: fadeScaleIn 0.6s var(--spring) 1.4s forwards;
+    }
+    .btn-solid-pill:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    }
+    .btn-solid-pill:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* ===== Skills Accordion ===== */
+    .skills-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 24px 0;
+      border-bottom: 1px dashed rgba(0,0,0,0.15);
+      user-select: none;
+      transition: opacity 0.2s;
+    }
+    .skills-accordion-header:hover {
+      opacity: 0.7;
+    }
+    .skills-accordion-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .skills-accordion-header h3 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--pika-warm);
+      margin: 0;
+    }
+    .skills-accordion-count {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(110,109,107,0.6);
+    }
+    .skills-accordion-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--pika-warm);
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+    .skills-accordion-item.open .skills-accordion-chevron {
+      transform: rotate(180deg);
+    }
+    .skills-accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s var(--ease-out-expo);
+    }
+    .skills-accordion-body-inner {
+      padding: 32px 0 40px;
+    }
+    .skills-accordion-item.open .skills-accordion-body {
+      max-height: 2000px;
+    }
+    .skills-accordion-item:last-child .skills-accordion-header {
+      border-bottom: none;
+    }
   </style>
 </head>
 <body>
@@ -1598,37 +1943,74 @@
   </nav>
   
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-blob"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="line-1">Be there.</span>
-        <span class="line-2">Even when you're not.</span>
-      </h1>
-      <p class="hero-subtitle">Your AI Self lives across every platform. Same personality. Same context. Same you — working, living, feeling.</p>
-      <a href="https://pika.me" class="btn-primary">
-        Claim your AI Self
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
-  
-  <!-- Living AI Selves -->
-
-  <!-- Born on iMessage -->
-  <section class="imessage-born-section reveal">
-    <div class="imessage-icons">
-      <div class="imessage-icon-box avatar">
+  <section class="new-hero">
+    <!-- Icon Pair -->
+    <div class="new-hero-icons">
+      <div class="new-hero-icon avatar-icon">
         <img src="semi-avatar.png" alt="AI Self">
       </div>
-      <div class="imessage-icon-box bubble">
+      <div class="new-hero-icon bubble-icon">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
       </div>
-      <div class="imessage-badge">1</div>
+      <div class="new-hero-badge">1</div>
     </div>
-    <h2 class="imessage-born-title">Your AI Self is now on Messages</h2>
-    <p class="imessage-born-subtitle">Your AI Self lives in iMessage. Text them like a friend — they'll know your voice, your vibe, and your life.</p>
-    <a href="sms:" class="btn-imessage">Open Messages →</a>
+
+    <!-- Headline -->
+    <h1 class="new-hero-headline">Be there.<br>Even when you're not.</h1>
+
+    <!-- Subtitle -->
+    <p class="new-hero-subtitle">Create an AI Self that lives in your messages and uses the power of AI to chat with your friends and family, even when you're offline.</p>
+
+    <!-- CTA Button -->
+    <a href="https://pika.me" class="btn-outline-pill">Birth Your AI Self →</a>
+
+    <!-- iPhone Mockup -->
+    <div class="iphone-mockup-wrapper">
+      <!-- Spill bubbles outside the phone -->
+      <div class="spill-bubble left-spill" style="top: 80px;">yo! adding my @AI Jay to the group! 🎉</div>
+      <div class="spill-bubble right-spill" style="top: 200px;">i'm jay's AI self. basically i'm here to do all the stuff jay's too busy to do lol 😎</div>
+
+      <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+          <div class="iphone-screen-header">Group Chat · 3 members</div>
+
+          <!-- Jay message -->
+          <div class="iphone-sender-label">Jay</div>
+          <div class="iphone-chat-row left">
+            <div class="iphone-chat-avatar" style="background: #34C759;">J</div>
+            <div class="iphone-bubble gray">yo! adding my @AI Jay to the group!</div>
+          </div>
+
+          <!-- AI Jay message -->
+          <div class="iphone-sender-label right-label">AI Jay ✨</div>
+          <div class="iphone-chat-row right">
+            <div class="iphone-bubble blue">yo what's up guys. i'm jay's AI self. basically i'm here to do all the stuff jay's too busy or too lazy to do lol.</div>
+            <div class="iphone-chat-avatar"><img src="semi-avatar.png" alt="AI Jay"></div>
+          </div>
+
+          <!-- Jay message 2 -->
+          <div class="iphone-sender-label">Jay</div>
+          <div class="iphone-chat-row left">
+            <div class="iphone-chat-avatar" style="background: #34C759;">J</div>
+            <div class="iphone-bubble gray">lmaooo it really sounds like me 😂</div>
+          </div>
+
+          <!-- AI Jay message 2 -->
+          <div class="iphone-sender-label right-label">AI Jay ✨</div>
+          <div class="iphone-chat-row right">
+            <div class="iphone-bubble blue">that's the whole point 😏 so what are we planning?</div>
+            <div class="iphone-chat-avatar"><img src="semi-avatar.png" alt="AI Jay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description Paragraph -->
+    <p class="hero-desc-paragraph">Clone your essence to create a digital 🧑‍💻🧑 extension of yourself that stays active on 💬 iMessage while you're offline 😴. From settling bets to booking group ✈️ trips, it's <span class="gradient-fade">the best of you, available 24/7.</span></p>
+
+    <!-- Second CTA -->
+    <a href="https://pika.me" class="btn-solid-pill">Get Started Now</a>
   </section>
 
   <section class="carousel-section" id="usecases-section">
@@ -1968,8 +2350,16 @@
       </div>
       
       <!-- AI Multi-model Creativity -->
-      <div class="skills-category reveal">
-        <h3 class="skills-category-title">AI Multi-model Creativity</h3>
+      <div class="skills-accordion-item open reveal" data-skills-count="6">
+        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
+          <div class="skills-accordion-header-left">
+            <h3>AI Multi-model Creativity</h3>
+            <span class="skills-accordion-count">(6 skills)</span>
+          </div>
+          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-accordion-body">
+        <div class="skills-accordion-body-inner">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2038,11 +2428,21 @@
             </div>
           </div>
         </div>
+        </div>
+        </div>
       </div>
       
       <!-- Daily Life -->
-      <div class="skills-category reveal">
-        <h3 class="skills-category-title">Daily Life</h3>
+      <div class="skills-accordion-item reveal" data-skills-count="6">
+        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
+          <div class="skills-accordion-header-left">
+            <h3>Daily Life</h3>
+            <span class="skills-accordion-count">(6 skills)</span>
+          </div>
+          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-accordion-body">
+        <div class="skills-accordion-body-inner">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2111,11 +2511,21 @@
             </div>
           </div>
         </div>
+        </div>
+        </div>
       </div>
       
       <!-- Productivity -->
-      <div class="skills-category reveal">
-        <h3 class="skills-category-title">Productivity</h3>
+      <div class="skills-accordion-item reveal" data-skills-count="9">
+        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
+          <div class="skills-accordion-header-left">
+            <h3>Productivity</h3>
+            <span class="skills-accordion-count">(9 skills)</span>
+          </div>
+          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-accordion-body">
+        <div class="skills-accordion-body-inner">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2217,11 +2627,21 @@
             </div>
           </div>
         </div>
+        </div>
+        </div>
       </div>
       
       <!-- Coding & Dev -->
-      <div class="skills-category reveal">
-        <h3 class="skills-category-title">Coding & Dev</h3>
+      <div class="skills-accordion-item reveal" data-skills-count="5">
+        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
+          <div class="skills-accordion-header-left">
+            <h3>Coding & Dev</h3>
+            <span class="skills-accordion-count">(5 skills)</span>
+          </div>
+          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-accordion-body">
+        <div class="skills-accordion-body-inner">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2279,11 +2699,21 @@
             </div>
           </div>
         </div>
+        </div>
+        </div>
       </div>
       
       <!-- Social -->
-      <div class="skills-category reveal">
-        <h3 class="skills-category-title">Social</h3>
+      <div class="skills-accordion-item reveal" data-skills-count="6">
+        <div class="skills-accordion-header" onclick="toggleSkillAccordion(this)">
+          <div class="skills-accordion-header-left">
+            <h3>Social</h3>
+            <span class="skills-accordion-count">(6 skills)</span>
+          </div>
+          <svg class="skills-accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="skills-accordion-body">
+        <div class="skills-accordion-body-inner">
         <div class="skills-grid">
           <div class="skill-card">
             <div class="skill-card-header">
@@ -2351,6 +2781,8 @@
               </div>
             </div>
           </div>
+        </div>
+        </div>
         </div>
       </div>
     </div>
@@ -2559,6 +2991,26 @@
     }
     
     // Chat message data removed — carousel uses static HTML cards now
+
+    // Skills Accordion
+    function toggleSkillAccordion(headerEl) {
+      const item = headerEl.parentElement;
+      const body = item.querySelector('.skills-accordion-body');
+      if (item.classList.contains('open')) {
+        item.classList.remove('open');
+        body.style.maxHeight = '0';
+      } else {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    }
+    // Initialize: set first accordion open with proper maxHeight
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.skills-accordion-item.open').forEach(function(item) {
+        const body = item.querySelector('.skills-accordion-body');
+        if (body) body.style.maxHeight = body.scrollHeight + 'px';
+      });
+    });
   </script>
 </body>
 </html>
